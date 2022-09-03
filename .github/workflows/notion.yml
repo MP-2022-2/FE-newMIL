@@ -1,13 +1,19 @@
-name: notion
 on:
   issues:
+    types: [opened, reopened, closed, deleted]
 jobs:
   build:
     runs-on: ubuntu-latest
+    name: 'Run github issue notion sync'
     steps:
       - uses: actions/checkout@v2
-      - name: Notion Card Creator
-        uses: dodo4114/issue-to-notion@v1.1.1
-        env:
-          NOTION_TOKEN: ${secret_KpAqa8t9NZTzZYersYTBNJO6rbzzAmXarFbaEgrUVK6}
-          DATABASE_URL: https://wisesaturn.notion.site/02d536f102314fe092450c68ddf2f87a?v=6ab8cae6cc7a4035990d87a9a86a861f,
+      - name: create env file
+        run: |
+          touch .env
+          echo PERSONAL_GITHUB_ACCESS_KEY=${{ secrets.PERSONAL_GITHUB_ACCESS_KEY }} >> .env
+          echo NOTION_KEY=${{ secrets.NOTION_KEY }} >> .env
+          echo NOTION_DATABASE_ID=${{ secrets.NOTION_DATABASE_ID }} >> .env
+          echo REPO_OWNER=${{ secrets.REPO_OWNER }} >> .env
+          echo REPO_NAME=${{ secrets.REPO_NAME }} >> .env
+      - name: docker compose up
+        run: docker-compose --env-file .env up
