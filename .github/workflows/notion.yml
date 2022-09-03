@@ -4,7 +4,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: 'Run github issue notion sync'
+    name: 'Github Issue to Notion (sync)'
     steps:
       - uses: actions/checkout@v2
       - name: create env file
@@ -15,5 +15,5 @@ jobs:
           echo NOTION_DATABASE_ID=${{ secrets.NOTION_DATABASE_ID }} >> .env
           echo REPO_OWNER=${{ secrets.REPO_OWNER }} >> .env
           echo REPO_NAME=${{ secrets.REPO_NAME }} >> .env
-      - name: docker compose up
+      - name: docker compose
         run: docker-compose --env-file .env up
