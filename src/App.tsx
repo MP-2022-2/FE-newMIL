@@ -1,4 +1,4 @@
-import Main from './Pages/Main';
+import Main from '@/Pages/Main';
 
 const App = () => (
   <>
