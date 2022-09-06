@@ -1,9 +1,10 @@
 import { MainContainer } from './style';
 
-const main = () => (
-  <>
-    <MainContainer>하이하이</MainContainer>
-  </>
+const MainPage = () => (
+  <MainContainer>
+    이 페이지는 메인 페이지 입니다. <br />
+    메인
+  </MainContainer>
 );
 
-export default main;
+export default MainPage;
