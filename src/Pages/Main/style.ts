@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.div`
-  display: flex;
-  color: red;
+  display: block;
+  text-align: center;
+  justify-content: center;
+  color: blue;
 `;
