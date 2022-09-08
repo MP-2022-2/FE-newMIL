@@ -1,5 +1,5 @@
 import LoginForm from './LoginForm';
-import RegisterForm from './RegisterForm';
+import SignUpForm from './SignUpForm';
 
-export { LoginForm, RegisterForm };
+export { LoginForm, SignUpForm };
 export default LoginForm;

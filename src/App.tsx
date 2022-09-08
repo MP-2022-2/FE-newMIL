@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoginPage from '@/Pages/Login';
-import RegisterPage from '@/Pages/Register';
+import SignUpPage from '@/Pages/SingUp';
 import Navigation from '@/Components/Header';
 import MainPage from '@/Pages/Main';
 
@@ -11,7 +11,7 @@ const App = () => (
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/register" element={<SignUpPage />} />
         <Route path="/CIL" element={'CIL'} />
         <Route path="/talk" element={'소통'} />
         <Route path="/professor" element={'교수님'} />
