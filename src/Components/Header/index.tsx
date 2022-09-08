@@ -1,13 +1,14 @@
 import { ReactElement } from 'react';
-import LinkButton from '../Button';
+import { HeaderButton } from '../Button';
 import { HeaderContainer } from './style';
 
 const Header = (): ReactElement => (
   <HeaderContainer>
-    <LinkButton url="/">홈</LinkButton>
-    <LinkButton url="/cil">CIL</LinkButton>
-    <LinkButton url="/talk">소통</LinkButton>
-    <LinkButton url="/professor">교수님</LinkButton>
+    <HeaderButton url="/">홈</HeaderButton>
+    <HeaderButton url="/cil">CIL</HeaderButton>
+    <HeaderButton url="/talk">소통</HeaderButton>
+    <HeaderButton url="/professor">교수님</HeaderButton>
+    <HeaderButton url="/Login">로그인</HeaderButton>
   </HeaderContainer>
 );
 
