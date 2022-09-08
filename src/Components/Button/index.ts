@@ -1,4 +1,5 @@
-import LinkButton from './LinkButton';
+import HeaderButton from './HeaderButton';
+import DefaultButton from './DefaultButton';
 
-export default LinkButton;
-export * from '../Button';
+export { HeaderButton, DefaultButton };
+export default DefaultButton;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LoginContainer = styled.section`
+export const SignUpContainer = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
