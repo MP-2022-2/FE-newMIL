@@ -22,11 +22,10 @@
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
-    "allowTernary" : "off",
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "react/react-in-jsx-scope": "off",
     "import/no-named-as-default": "off",
-    "import/extensions": [
+    "import/extensions": [ // 확장자 명시
       "error",
       "ignorePackages",
       {
@@ -34,6 +33,12 @@
         "jsx": "never",
         "ts": "never",
         "tsx": "never"
+      }
+    ],
+    "no-unused-expressions" : [ // 사용 안하는 표현 (예외 제외 Error 표시)
+      "error", {
+        "allowTernary" : true, // a ? b : 0 (삼항 연산자)
+        "allowShortCircuit": true // a || b
       }
     ],
     "no-param-reassign": ["error", { "props": false }],
