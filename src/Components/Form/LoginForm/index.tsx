@@ -6,7 +6,7 @@ const LoginForm = () => (
     <input type="text" placeholder="이메일" />
     <input type="text" placeholder="비밀번호" />
     <DefaultButton>로그인</DefaultButton>
-    <DefaultButton url="/register">회원가입</DefaultButton>
+    <DefaultButton url="/signup">회원가입</DefaultButton>
   </LoginFormContainer>
 );
 

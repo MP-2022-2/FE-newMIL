@@ -7,7 +7,7 @@ const SignUpForm = () => (
     <input type="text" placeholder="학번" />
     <div className="email">
       <input type="text" placeholder="이메일" />
-      <span>@ ajou.ac.kr</span>
+      <span>@ajou.ac.kr</span>
     </div>
     <input type="text" placeholder="비밀번호" />
     <input type="text" placeholder="회사" />

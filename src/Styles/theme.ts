@@ -6,9 +6,10 @@ const size = {
 };
 
 const theme = {
-  mainColor: '#4B89DC',
+  blue: '#4B89DC',
   black: '#333333',
   white: '#fefefe',
+  darkBlue: '#0A2B52',
   ajouBlue: '#0066B3',
   ajouGold: '#BB8732',
   ajouSky: '#88B2DF',
