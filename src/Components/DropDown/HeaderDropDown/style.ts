@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import { ButtonContainer } from '@/Components/Button/HeaderButton/style';
 
 export const DropDownContainer = styled(ButtonContainer)`
+  a,
+  span {
+    z-index: 2;
+  }
+
   a {
     :hover::before {
       width: 0%;
@@ -26,5 +31,15 @@ export const DropDownContainer = styled(ButtonContainer)`
       list-style-type: none;
       padding: 0.8rem 0.2rem;
     }
+  }
+
+  div {
+    z-index: 1;
+    position: absolute;
+    display: block;
+    top: -25%;
+    left: 0;
+    width: 100%;
+    height: 125%;
   }
 `;

@@ -5,10 +5,9 @@ import DropDownProps from './types';
 
 const DropDown = ({ title, items }: DropDownProps): ReactElement => {
   const [open, setOpen] = useState(false);
-  const toggle = () => setOpen(!open);
 
   return (
-    <DropDownContainer onClick={() => toggle()}>
+    <DropDownContainer onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
       <span>{title}</span>
       {open && (
         <ul>
@@ -19,6 +18,7 @@ const DropDown = ({ title, items }: DropDownProps): ReactElement => {
               </li>
             </Link>
           ))}
+          <div />
         </ul>
       )}
     </DropDownContainer>
