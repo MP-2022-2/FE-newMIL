@@ -4,7 +4,7 @@ import { DropDownContainer } from './style';
 import DropDownProps from './types';
 
 const DropDown = ({ title, items }: DropDownProps): ReactElement => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
     <DropDownContainer onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
@@ -18,7 +18,7 @@ const DropDown = ({ title, items }: DropDownProps): ReactElement => {
               </li>
             </Link>
           ))}
-          <div />
+          <div className="checked" />
         </ul>
       )}
     </DropDownContainer>
