@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { atom, selector } from 'recoil';
-import { UserType } from '@/@Types/UserType'
+import { UserType } from '@/@Types/UserType';
 
 export const userState = atom<UserType>({
   key: 'userState',
