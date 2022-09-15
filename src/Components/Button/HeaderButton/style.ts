@@ -12,9 +12,14 @@ export const ButtonContainer = styled.button`
   border: 0;
 
   a {
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-decoration: none;
-    color: #333;
-    font-weight: bold;
+    color: ${(props) => props.theme.white};
+    font-weight: 500;
+
+    :hover {
+      color: ${(props) => props.theme.ajouSky};
+      transition: 0.2s;
+    }
   }
 `;
