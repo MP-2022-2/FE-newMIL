@@ -31,7 +31,8 @@
   "scripts": {
     "dev": "craco start",
     "build": "craco build",
-    "test": "craco test"
+    "test": "craco test",
+    "deploy": "git pull origin main && craco build && pm2 serve build 7777 --spa"
   },
   "browserslist": {
     "production": [
