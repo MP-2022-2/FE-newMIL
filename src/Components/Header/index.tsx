@@ -5,10 +5,11 @@ import { HeaderContainer } from './style';
 const Header = (): ReactElement => (
   <HeaderContainer>
     <HeaderButton url="/">홈</HeaderButton>
+    <HeaderButton url="/media">미디어학과</HeaderButton>
+    <HeaderButton url="/talk">게시판</HeaderButton>
     <HeaderButton url="/cil">CIL</HeaderButton>
-    <HeaderButton url="/talk">소통</HeaderButton>
-    <HeaderButton url="/professor">교수님</HeaderButton>
-    <HeaderButton url="/Login">로그인</HeaderButton>
+    <HeaderButton url="/login">로그인</HeaderButton>
+    <HeaderButton url="/signup">회원가입</HeaderButton>
   </HeaderContainer>
 );
 

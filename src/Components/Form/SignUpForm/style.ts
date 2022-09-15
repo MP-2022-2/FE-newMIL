@@ -24,4 +24,14 @@ export const SignUpFormContainer = styled.form`
   button + button {
     margin-top: 1rem;
   }
+
+  .email {
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      margin: auto 0;
+      font-weight: bold;
+    }
+  }
 `;
