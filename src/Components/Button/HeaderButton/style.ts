@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const ButtonContainer = styled.button`
+  position: relative;
   display: block;
   text-align: center;
   padding: 0.4rem 2rem;
@@ -11,10 +12,34 @@ export const ButtonContainer = styled.button`
   appearance: none;
   border: 0;
 
-  a {
-    font-size: 1rem;
+  a,
+  span {
+    position: relative;
+    font-size: 1.2rem;
     text-decoration: none;
-    color: #333;
-    font-weight: bold;
+    color: ${(props) => props.theme.white};
+    font-weight: 500;
+
+    ::before {
+      content: '';
+      height: 5px;
+      width: 0;
+      background-color: #fff;
+      border-radius: 10px;
+      transition: 0.3s;
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+    }
+
+    :hover {
+      color: ${(props) => props.theme.ajouSky};
+      transition: 0.2s;
+
+      ::before {
+        width: 100%;
+        background-color: ${(props) => props.theme.ajouYellow};
+      }
+    }
   }
 `;
