@@ -42,6 +42,10 @@ export const NaviWrapper = styled.div`
     }
   }
 
+  #naviBut {
+    vertical-align: sub;
+  }
+
   #naviCancelBut {
     z-index: 3;
     float: right;
