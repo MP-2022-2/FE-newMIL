@@ -26,10 +26,8 @@ const color = {
 };
 
 const size = {
-  mobile: '425px',
-  tablet: '786px',
-  laptop: '1280px',
-  desktop: '1920px',
+  mobile: '786px',
+  desktop: '787px',
 };
 
 const layout: {
@@ -37,17 +35,13 @@ const layout: {
   column: number;
   maxWidth: string;
   mobile: string;
-  tablet: string;
-  laptop: string;
   desktop: string;
 } = {
   maxWidth: '90rem',
   gutter: 24,
   column: 98,
-  mobile: `(max-width: ${size.mobile})`,
-  tablet: `(max-width: ${size.tablet})`,
-  laptop: `(max-width: ${size.laptop})`,
-  desktop: `(min-width: ${size.desktop})`,
+  mobile: `screen and (max-width: ${size.mobile})`,
+  desktop: `screen and (min-width: ${size.desktop})`,
 };
 
 const theme = {
