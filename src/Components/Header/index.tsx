@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import { HeaderButton } from '@/Components/Button';
+import GridSection from '@/Components/Section';
 import HeaderDropDown from '@/Components/DropDown/HeaderDropDown';
 import { HeaderContainer } from './style';
 
@@ -23,23 +24,23 @@ const mediaItems = [
 
 const Header = (): ReactElement => (
   <HeaderContainer>
-    <section>
+    <GridSection col2>
       <img src="pictures/MIL.png" />
-    </section>
-    <section>
+    </GridSection>
+    <GridSection>
       <HeaderButton url="/">홈</HeaderButton>
       <HeaderDropDown title="미디어학과" items={mediaItems} />
       <HeaderButton url="/talk">게시판</HeaderButton>
       <HeaderButton url="/cil">CIL</HeaderButton>
-    </section>
-    <section>
+    </GridSection>
+    <GridSection>
       <HeaderButton url="/login" regular>
         로그인
       </HeaderButton>
       <HeaderButton url="/signup" regular>
         회원가입
       </HeaderButton>
-    </section>
+    </GridSection>
   </HeaderContainer>
 );
 

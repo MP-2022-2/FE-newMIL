@@ -12,9 +12,4 @@ export const HeaderContainer = styled.header`
   margin: 0 auto;
   vertical-align: middle;
   background-color: ${({ theme }) => theme.color.lightBlue};
-
-  section {
-    width: 90%;
-    max-width: ${({ theme }) => theme.layout.column};
-  }
 `;

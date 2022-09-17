@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-
-const pixelToRem = (size: number) => `${size / 16}rem`;
+import { pixelToRem } from '@/Utils/Libs/layoutFunc';
 
 const GlobalStyle = createGlobalStyle`
 @import url(fonts.googleapis.com/earlyaccess/notosanskr.css);
