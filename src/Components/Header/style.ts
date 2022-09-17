@@ -1,10 +1,20 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-  background-color: ${(props) => props.theme.lightBlue};
+  ${({ theme }) => theme.common.flexCenter};
 
-  padding: 1.6rem 0;
+  width: 90%;
+  max-width: ${({ theme }) => theme.layout.maxWidth};
+  height: 5rem;
+  line-height: 5rem;
+  justify-content: space-between;
+
+  margin: 0 auto;
+  vertical-align: middle;
+  background-color: ${({ theme }) => theme.color.lightBlue};
+
+  section {
+    width: 90%;
+    max-width: ${({ theme }) => theme.layout.column};
+  }
 `;

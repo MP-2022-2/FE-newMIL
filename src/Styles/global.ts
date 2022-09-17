@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+const pixelToRem = (size: number) => `${size / 16}rem`;
+
 const GlobalStyle = createGlobalStyle`
 @import url(fonts.googleapis.com/earlyaccess/notosanskr.css);
 
@@ -14,27 +16,27 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-size : 28px;
+    font-size : ${pixelToRem(28)};
     font-weight : bold;
   }
 
   h2 {
-    font-size : 24px;
+    font-size : ${pixelToRem(24)};
     font-weight : bold;
   }
 
   h3 {
-    font-size : 18px;
+    font-size : ${pixelToRem(18)};
     font-weight : medium;
   }
 
   h4 {
-    font-size : 14px;
+    font-size : ${pixelToRem(14)};
     font-weight : medium;
   }
 
   caption {
-    font-size : 10px;
+    font-size : ${pixelToRem(10)};
     font-weight : 300;
   }
 `;

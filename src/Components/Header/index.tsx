@@ -23,13 +23,23 @@ const mediaItems = [
 
 const Header = (): ReactElement => (
   <HeaderContainer>
-    <img src="pictures/MIL.png" />
-    <HeaderButton url="/">홈</HeaderButton>
-    <HeaderDropDown title="미디어학과" items={mediaItems} />
-    <HeaderButton url="/talk">게시판</HeaderButton>
-    <HeaderButton url="/cil">CIL</HeaderButton>
-    <HeaderButton url="/login">로그인</HeaderButton>
-    <HeaderButton url="/signup">회원가입</HeaderButton>
+    <section>
+      <img src="pictures/MIL.png" />
+    </section>
+    <section>
+      <HeaderButton url="/">홈</HeaderButton>
+      <HeaderDropDown title="미디어학과" items={mediaItems} />
+      <HeaderButton url="/talk">게시판</HeaderButton>
+      <HeaderButton url="/cil">CIL</HeaderButton>
+    </section>
+    <section>
+      <HeaderButton url="/login" regular>
+        로그인
+      </HeaderButton>
+      <HeaderButton url="/signup" regular>
+        회원가입
+      </HeaderButton>
+    </section>
   </HeaderContainer>
 );
 
