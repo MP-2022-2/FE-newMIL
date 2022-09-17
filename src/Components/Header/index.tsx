@@ -35,8 +35,8 @@ const Header = (): ReactElement => {
     <>
       <PC>
         <HeaderContainer>
-          <GridSection col6>
-            <GridSection col2>
+          <GridSection col5>
+            <GridSection>
               <img src="pictures/MIL.png" />
             </GridSection>
             <GridSection col4>
