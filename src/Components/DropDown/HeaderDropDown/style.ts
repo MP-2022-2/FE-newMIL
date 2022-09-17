@@ -30,6 +30,10 @@ export const DropDownContainer = styled(ButtonContainer)`
       margin-bottom: 0.2rem;
       list-style-type: none;
       padding: 0.8rem 0.2rem;
+
+      > span {
+        color: ${(props) => props.theme.white};
+      }
     }
   }
 

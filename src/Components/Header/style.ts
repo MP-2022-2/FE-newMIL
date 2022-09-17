@@ -4,7 +4,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
-  background-color: ${(props) => props.theme.ajouBlue};
+  background-color: ${(props) => props.theme.lightBlue};
 
   padding: 1.6rem 0;
 `;

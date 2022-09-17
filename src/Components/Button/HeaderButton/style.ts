@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ButtonContainer = styled.button`
+export const ButtonContainer = styled.span`
   position: relative;
   display: block;
   text-align: center;
@@ -17,7 +17,7 @@ export const ButtonContainer = styled.button`
     position: relative;
     font-size: 1.2rem;
     text-decoration: none;
-    color: ${(props) => props.theme.white};
+    color: ${(props) => props.theme.black};
     font-weight: 500;
 
     ::before {

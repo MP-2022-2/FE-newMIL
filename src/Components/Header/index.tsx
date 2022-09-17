@@ -23,6 +23,7 @@ const mediaItems = [
 
 const Header = (): ReactElement => (
   <HeaderContainer>
+    <img src="pictures/MIL.png" />
     <HeaderButton url="/">홈</HeaderButton>
     <HeaderDropDown title="미디어학과" items={mediaItems} />
     <HeaderButton url="/talk">게시판</HeaderButton>
