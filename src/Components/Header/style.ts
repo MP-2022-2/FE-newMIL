@@ -13,3 +13,13 @@ export const HeaderContainer = styled.header`
   vertical-align: middle;
   background-color: ${({ theme }) => theme.color.lightBlue};
 `;
+
+export const LoginContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: right;
+
+  h3:nth-child(2) {
+    padding-left: 1.5rem;
+  }
+`;

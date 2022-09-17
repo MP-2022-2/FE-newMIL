@@ -21,16 +21,16 @@ export const SignUpContainer = styled.section`
     a {
       font-size: 1.2rem;
       width: 50%;
-      color: ${(props) => props.theme.white};
+      color: ${({ theme }) => theme.color.white};
       cursor: pointer;
     }
 
     .on {
-      background-color: ${(props) => props.theme.darkBlue};
+      background-color: ${({ theme }) => theme.color.darkBlue};
     }
 
     .off {
-      background-color: ${(props) => props.theme.ajouBlue};
+      background-color: ${({ theme }) => theme.color.ajouBlue};
     }
   }
 `;

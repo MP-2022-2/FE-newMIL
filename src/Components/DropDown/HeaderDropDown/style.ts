@@ -21,9 +21,9 @@ export const DropDownContainer = styled(ButtonContainer)`
 
   ul {
     position: absolute;
-    left: 1rem;
-    right: 1rem;
     top: 5rem;
+    right: -2.5rem;
+    min-width: 10rem;
 
     li {
       background-color: ${({ theme }) => theme.color.darkBlue};
