@@ -1,12 +1,20 @@
-const size = {
-  mobile: '425px',
-  tablet: '786px',
-  laptop: '1280px',
-  desktop: '1920px',
+const common = {
+  flexCenter: `
+    display: flex;
+    justify-contents: center;
+    align-items: center;
+  `,
+  flexCenterColumn: `
+    display: flex;
+    flex-direction: column;
+    justify-contents: center;
+    align-items: center;
+  `,
 };
 
-const theme = {
+const color = {
   blue: '#4B89DC',
+  lightblue: '#FCFDFF',
   black: '#333333',
   white: '#fefefe',
   darkBlue: '#0A2B52',
@@ -17,12 +25,29 @@ const theme = {
   ajouSilver: '#959B9D',
 };
 
-export const boundary = {
-  maxWidth: '1440px',
-  mobile: `(max-width: ${size.mobile})`,
-  tablet: `(max-width: ${size.tablet})`,
-  laptop: `(max-width: ${size.laptop})`,
-  desktop: `(min-width: ${size.desktop})`,
+const size = {
+  mobile: '786px',
+  desktop: '787px',
+};
+
+const layout: {
+  gutter: number;
+  column: number;
+  maxWidth: string;
+  mobile: string;
+  desktop: string;
+} = {
+  maxWidth: '90rem',
+  gutter: 24,
+  column: 98,
+  mobile: `screen and (max-width: ${size.mobile})`,
+  desktop: `screen and (min-width: ${size.desktop})`,
+};
+
+const theme = {
+  common,
+  color,
+  layout,
 };
 
 export default theme;

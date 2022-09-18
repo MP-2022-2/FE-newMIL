@@ -1,10 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const ButtonContainer = styled.button`
+export const ButtonContainer = styled.h3<{ regular?: boolean }>`
   position: relative;
   display: block;
   text-align: center;
-  padding: 0.4rem 2rem;
 
   background-color: transparent;
   -webkit-appearance: none;
@@ -15,11 +14,10 @@ export const ButtonContainer = styled.button`
   a,
   span {
     position: relative;
-    font-size: 1.2rem;
     text-decoration: none;
-    color: ${(props) => props.theme.white};
-    font-weight: 500;
+    color: ${({ theme }) => theme.color.black};
 
+    // 밑줄 이펙트
     ::before {
       content: '';
       height: 5px;
@@ -33,13 +31,30 @@ export const ButtonContainer = styled.button`
     }
 
     :hover {
-      color: ${(props) => props.theme.ajouSky};
+      color: ${({ theme }) => theme.color.ajouSky};
       transition: 0.2s;
 
       ::before {
         width: 100%;
-        background-color: ${(props) => props.theme.ajouYellow};
+        background-color: ${({ theme }) => theme.color.ajouYellow};
       }
     }
+
+    // regular 적용시
+    ${(props) =>
+      props.regular &&
+      css`
+        font-weight: 300;
+
+        ::before {
+          height: 0px;
+        }
+
+        :hover {
+          ::before {
+            width: 0%;
+          }
+        }
+      `}
   }
 `;

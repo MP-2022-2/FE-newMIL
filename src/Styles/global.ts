@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { pixelToRem } from '@/Utils/Libs/layoutFunc';
 
 const GlobalStyle = createGlobalStyle`
 @import url(fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -7,10 +8,35 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;  
     font-family: "Noto Sans KR", sans-serif;
-}
+  }
 
-body {
+  body {
     box-sizing: border-box;
+  }
+
+  h1 {
+    font-size : ${pixelToRem(28)};
+    font-weight : bold;
+  }
+
+  h2 {
+    font-size : ${pixelToRem(24)};
+    font-weight : bold;
+  }
+
+  h3 {
+    font-size : ${pixelToRem(18)};
+    font-weight : medium;
+  }
+
+  h4 {
+    font-size : ${pixelToRem(14)};
+    font-weight : medium;
+  }
+
+  caption {
+    font-size : ${pixelToRem(10)};
+    font-weight : 300;
   }
 `;
 

@@ -21,15 +21,30 @@ export const DropDownContainer = styled(ButtonContainer)`
 
   ul {
     position: absolute;
-    left: 1rem;
-    right: 1rem;
-    top: 3rem;
+    top: 5rem;
+    right: -2.5rem;
+    min-width: 10rem;
 
     li {
-      background-color: ${(props) => props.theme.darkBlue};
+      background-color: ${({ theme }) => theme.color.darkBlue};
       margin-bottom: 0.2rem;
       list-style-type: none;
-      padding: 0.8rem 0.2rem;
+
+      height: 2.5rem;
+      line-height: 2.5rem;
+
+      > span {
+        color: ${({ theme }) => theme.color.white};
+        ::before {
+          height: 0px;
+        }
+
+        :hover {
+          ::before {
+            width: 0%;
+          }
+        }
+      }
     }
   }
 
