@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const LoginContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
+  ${({ theme }) => theme.common.flexCenterColumn};
+  padding-top: 5rem;
 `;

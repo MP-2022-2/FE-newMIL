@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { pixelToRem } from '@/Utils/Libs/layoutFunc';
+import theme from '@/Styles/theme';
 
 const GlobalStyle = createGlobalStyle`
 @import url(fonts.googleapis.com/earlyaccess/notosanskr.css);
@@ -15,28 +15,23 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-size : ${pixelToRem(28)};
-    font-weight : bold;
+    ${theme.common.h1};
   }
-
+    
   h2 {
-    font-size : ${pixelToRem(24)};
-    font-weight : bold;
+    ${theme.common.h2};
   }
-
+  
   h3 {
-    font-size : ${pixelToRem(18)};
-    font-weight : medium;
+    ${theme.common.h3};
   }
-
+  
   h4 {
-    font-size : ${pixelToRem(14)};
-    font-weight : medium;
+    ${theme.common.h4};
   }
-
+  
   caption {
-    font-size : ${pixelToRem(10)};
-    font-weight : 300;
+    ${theme.common.caption};
   }
 `;
 

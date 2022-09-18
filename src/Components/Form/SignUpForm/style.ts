@@ -1,38 +1,19 @@
 import styled from 'styled-components';
+import { LoginFormContainer } from '@/Components/Form/LoginForm/style';
 
-export const SignUpFormContainer = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 20rem;
-  margin: 0 auto;
+export const SignUpFormContainer = styled(LoginFormContainer)`
   margin-top: 1rem;
 
-  input {
-    padding: 0.8rem 2rem 0.8rem 0.4rem;
-    border-radius: 5px;
-    border: 0;
-  }
-
-  input + input {
-    margin-top: 0.3rem;
-  }
-
-  button {
-    margin-top: 3rem;
-  }
-
-  button + button {
-    margin-top: 1rem;
-  }
-
   .email {
-    display: flex;
+    ${({ theme }) => theme.common.flexCenter};
     justify-content: space-between;
-    margin: 0.3rem 0;
 
     span {
-      margin: auto 0;
-      font-weight: bold;
+      ${({ theme }) => theme.common.h4};
+    }
+
+    + label {
+      margin-top: 1rem;
     }
   }
 `;

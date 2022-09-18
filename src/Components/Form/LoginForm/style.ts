@@ -7,21 +7,31 @@ export const LoginFormContainer = styled.form`
   margin: 0 auto;
   margin-top: 3rem;
 
+  label {
+    text-align: left;
+    padding-bottom: 0.4rem;
+    ${({ theme }) => theme.common.h4}
+  }
+
   input {
-    padding: 0.8rem 2rem 0.6rem 0.4rem;
+    padding: 0.8rem 0.8rem 0.6rem;
     border-radius: 5px;
-    border: 0;
+    outline: none;
+    border: solid 1px #bcbcbc;
+
+    :focus {
+      border-color: #0982f0;
+    }
+
+    + label {
+      margin-top: 1rem;
+    }
   }
 
-  input + input {
-    margin-top: 0.3rem;
-  }
-
-  button {
+  a {
     margin-top: 3rem;
-  }
-
-  button + button {
-    margin-top: 1rem;
+    + a {
+      margin-top: 1rem;
+    }
   }
 `;

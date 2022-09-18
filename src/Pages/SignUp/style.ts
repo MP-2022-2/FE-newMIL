@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
 export const SignUpContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  ${({ theme }) => theme.common.flexCenterColumn};
   text-align: center;
+  padding-top: 5rem;
 
   .select {
     display: flex;
