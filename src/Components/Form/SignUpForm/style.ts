@@ -5,10 +5,10 @@ export const SignUpFormContainer = styled.form`
   flex-direction: column;
   width: 20rem;
   margin: 0 auto;
-  margin-top: 3rem;
+  margin-top: 1rem;
 
   input {
-    padding: 0.8rem 2rem 0.6rem 0.4rem;
+    padding: 0.8rem 2rem 0.8rem 0.4rem;
     border-radius: 5px;
     border: 0;
   }
@@ -23,5 +23,16 @@ export const SignUpFormContainer = styled.form`
 
   button + button {
     margin-top: 1rem;
+  }
+
+  .email {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.3rem 0;
+
+    span {
+      margin: auto 0;
+      font-weight: bold;
+    }
   }
 `;
