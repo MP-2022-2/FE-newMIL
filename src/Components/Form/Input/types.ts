@@ -7,4 +7,8 @@ export default interface InputProps {
   required?: boolean | undefined;
   min?: string;
   label?: string;
+  value?: string | number;
+
+  // eslint-disable-next-line no-unused-vars
+  onChange?: (e: any) => void;
 }

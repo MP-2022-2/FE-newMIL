@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const SignUpContainer = styled.section`
   ${({ theme }) => theme.common.flexCenterColumn};
   text-align: center;
-  padding-top: 5rem;
+  padding-top: 2rem;
 
   .select {
     display: flex;

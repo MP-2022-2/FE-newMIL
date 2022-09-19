@@ -1,19 +1,55 @@
-import { useEffect } from 'react';
 import { DefaultButton } from '@/Components/Button';
 import { Input } from '@/Components/Form';
+import axios from 'axios';
+import React, { useState } from 'react';
 import { LoginFormContainer } from './style';
 
 const LoginForm = () => {
-  useEffect(() => {
-    console.log('MODE', process.env.REACT_APP_MODE);
-    console.log('MODE', process.env.REACT_APP_API_URL);
+  const [values, setValues] = useState({
+    userId: '',
+    password: '',
   });
 
+  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const target = e.target as HTMLTextAreaElement;
+    setValues({
+      ...values,
+      [target.id]: target.value,
+    });
+  };
+
+  const LoginFunc = () => {
+    axios.post(`${process.env.REACT_APP_API_URL}/user/login`, {
+      userId: `${values.userId}`,
+      password: `${values.password}`,
+    });
+  };
+
   return (
-    <LoginFormContainer action="/user/login" method="post">
-      <Input label="아이디" id="id" type="text" place="example" autoFocus required />
-      <Input label="비밀번호" id="pw" type="password" place="********" min="6" required />
-      <DefaultButton type="submit">로그인</DefaultButton>
+    <LoginFormContainer action="/" method="post">
+      <Input
+        onChange={handleChange}
+        value={values.userId}
+        label="아이디"
+        id="userId"
+        type="text"
+        place="example"
+        autoFocus
+        required
+      />
+      <Input
+        onChange={handleChange}
+        value={values.password}
+        label="비밀번호"
+        id="password"
+        type="password"
+        place="********"
+        min="6"
+        required
+      />
+      <DefaultButton type="submit" onClick={() => LoginFunc()}>
+        로그인
+      </DefaultButton>
       <DefaultButton type="button" url="/user/signup">
         회원가입
       </DefaultButton>
@@ -22,3 +58,8 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+
+//  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+//     e.preventDefault();
+//     alert('onSubmit Test');
+//   };
