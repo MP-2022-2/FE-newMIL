@@ -1,6 +1,6 @@
 {
   "name": "fe-newmil",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "dependencies": {
     "@types/jest": "^27.5.2",
@@ -14,6 +14,7 @@
     "axios": "^0.27.2",
     "craco": "^0.0.3",
     "craco-alias": "^3.0.1",
+    "env-cmd": "^10.1.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-alias": "^1.1.2",
@@ -31,10 +32,12 @@
     "typescript": "^4.8.2"
   },
   "scripts": {
-    "dev": "craco start",
-    "build": "craco build",
+    "dev": "env-cmd -f .env.development craco start",
+    "prod": "env-cmd -f .env.production craco start",
+    "build:prod": "env-cmd -f .env.production craco build",
+    "build:dev": "env-cmd -f .env.development craco build",
     "test": "craco test",
-    "deploy": "git pull origin main && craco build && pm2 serve build 7777 --spa"
+    "deploy": "git pull origin main && env-cmd -f .env.production craco build && pm2 serve build 7777 --spa"
   },
   "browserslist": {
     "production": [
@@ -47,5 +50,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://15.164.192.250:8080"
 }

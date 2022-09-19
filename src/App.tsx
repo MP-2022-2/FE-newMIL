@@ -11,8 +11,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/user/login" element={<LoginPage />} />
+          <Route path="/user/signup" element={<SignUpPage />} />
           <Route path="/cil" element={'CIL'} />
           <Route path="/media" element={'media'} />
           <Route path="/talk" element={'소통'} />

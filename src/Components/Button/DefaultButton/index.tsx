@@ -1,9 +1,9 @@
 import { ButtonContainer } from './style';
 import DefaultButtonProps from './types';
 
-const DefaultButton = ({ url = '', children, ...props }: DefaultButtonProps) => (
+const DefaultButton = ({ type, url = '', children, ...props }: DefaultButtonProps) => (
   <ButtonContainer to={url} {...props}>
-    <button type="button">{children}</button>
+    <button type={type}>{children}</button>
   </ButtonContainer>
 );
 

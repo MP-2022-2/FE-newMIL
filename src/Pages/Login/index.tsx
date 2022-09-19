@@ -1,4 +1,4 @@
-import LoginForm from '@/Components/Form';
+import { LoginForm } from '@/Components/Form';
 import { LoginContainer } from './style';
 
 const LoginPage = () => (

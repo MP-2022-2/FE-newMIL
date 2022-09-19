@@ -48,10 +48,10 @@ const Header = (): ReactElement => {
           </GridSection>
           <GridSection col2>
             <LoginContainer>
-              <HeaderButton url="/login" regular>
+              <HeaderButton url="/user/login" regular>
                 로그인
               </HeaderButton>
-              <HeaderButton url="/signup" regular>
+              <HeaderButton url="/user/signup" regular>
                 회원가입
               </HeaderButton>
             </LoginContainer>

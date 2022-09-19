@@ -1,5 +1,5 @@
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
+import Input from './Input';
 
-export { LoginForm, SignUpForm };
-export default LoginForm;
+export { Input, LoginForm, SignUpForm };
