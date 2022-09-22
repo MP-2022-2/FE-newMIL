@@ -24,7 +24,7 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
     });
   };
 
-  const SignUpFunc = () => {
+  const signUpFunc = () => {
     axios.post(`${process.env.REACT_APP_API_URL}/user/signup`, {
       userId: `${values.userId}`,
       password: `${values.password}`,
@@ -86,7 +86,7 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             place="2021XXXXX"
             required
           />
-          <DefaultButton type="submit" onClick={() => SignUpFunc()}>
+          <DefaultButton type="submit" onClick={() => signUpFunc()}>
             회원가입
           </DefaultButton>
           <DefaultButton type="button" url="/">
@@ -153,7 +153,7 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             place="미디어인더스트리"
             required
           />
-          <DefaultButton type="submit" onClick={() => SignUpFunc()}>
+          <DefaultButton type="submit" onClick={() => signUpFunc()}>
             회원가입
           </DefaultButton>
           <DefaultButton type="button" url="/">

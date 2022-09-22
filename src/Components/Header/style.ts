@@ -1,9 +1,15 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { pixelToRem } from '@/Utils/Libs/layoutFunc';
 
 // 웹
-export const HeaderContainer = styled.header`
+export const HeaderContainer = styled.header<{ visible?: boolean }>`
   ${({ theme }) => theme.common.flexCenter};
+
+  ${(props) =>
+    props.visible === false &&
+    css`
+      display: none;
+    `}
 
   width: 90%;
   max-width: ${({ theme }) => theme.layout.maxWidth};
@@ -14,16 +20,6 @@ export const HeaderContainer = styled.header`
   margin: 0 auto;
   vertical-align: middle;
   background-color: ${({ theme }) => theme.color.lightBlue};
-`;
-
-export const LoginContainer = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: right;
-
-  h3:nth-child(2) {
-    padding-left: 1.5rem;
-  }
 `;
 
 // 모바일

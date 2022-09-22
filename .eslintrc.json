@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "jest": true
   },
   "extends": [
     "plugin:@typescript-eslint/eslint-recommended",
@@ -32,7 +33,7 @@
         "js": "never",
         "jsx": "never",
         "ts": "never",
-        "tsx": "never"
+        "tsx": "never" 
       }
     ],
     "no-unused-expressions" : [ // 사용 안하는 표현 (예외 제외 Error 표시)

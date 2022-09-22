@@ -18,7 +18,7 @@ const LoginForm = () => {
     });
   };
 
-  const LoginFunc = () => {
+  const loginFunc = () => {
     axios.post(`${process.env.REACT_APP_API_URL}/user/login`, {
       userId: `${values.userId}`,
       password: `${values.password}`,
@@ -47,7 +47,7 @@ const LoginForm = () => {
         min="6"
         required
       />
-      <DefaultButton type="submit" onClick={() => LoginFunc()}>
+      <DefaultButton type="submit" onClick={() => loginFunc()}>
         로그인
       </DefaultButton>
       <DefaultButton type="button" url="/user/signup">
