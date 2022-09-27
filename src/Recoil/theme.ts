@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-export const theme = atom<boolean>({
-  key: 'theme',
+export const visible = atom<boolean>({
+  key: 'visible',
   default: true,
 });

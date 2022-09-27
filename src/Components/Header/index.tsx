@@ -1,9 +1,9 @@
-import { ReactElement, useEffect } from 'react';
+import { ReactElement } from 'react';
 import { HeaderButton } from '@/Components/Button';
 import GridSection from '@/Components/Section';
 import HeaderDropDown from '@/Components/DropDown/HeaderDropDown';
 import { UsePc } from '@/Utils/Hooks/useMediaQuery';
-import { HeaderContainer } from './style';
+import { HeaderContainer, Logo } from './style';
 import HeaderMobile from './index.mobile';
 
 const mediaItems = [
@@ -24,34 +24,30 @@ const mediaItems = [
   },
 ];
 
-const Header = (): ReactElement => {
-  useEffect(() => {});
-
-  return (
-    <>
-      <UsePc>
-        <HeaderContainer>
-          <GridSection col4>
-            <GridSection>
-              <img src="pictures/MIL.png" />
-            </GridSection>
-            <GridSection col3>
-              <HeaderButton url="/">홈</HeaderButton>
-              <HeaderDropDown title="미디어학과" items={mediaItems} />
-              <HeaderButton url="/talk">게시판</HeaderButton>
-              <HeaderButton url="/cil">CIL</HeaderButton>
-            </GridSection>
-          </GridSection>
+const Header = (): ReactElement => (
+  <>
+    <UsePc>
+      <HeaderContainer>
+        <GridSection col4>
           <GridSection>
-            <HeaderButton url="/user/login" regular>
-              로그인
-            </HeaderButton>
+            <Logo src="/pictures/MIL.png" />
           </GridSection>
-        </HeaderContainer>
-      </UsePc>
-      <HeaderMobile />
-    </>
-  );
-};
+          <GridSection col3>
+            <HeaderButton url="/">홈</HeaderButton>
+            <HeaderDropDown title="미디어학과" items={mediaItems} />
+            <HeaderButton url="/talk">게시판</HeaderButton>
+            <HeaderButton url="/cil">CIL</HeaderButton>
+          </GridSection>
+        </GridSection>
+        <GridSection>
+          <HeaderButton url="/user/login" regular>
+            로그인
+          </HeaderButton>
+        </GridSection>
+      </HeaderContainer>
+    </UsePc>
+    <HeaderMobile />
+  </>
+);
 
 export default Header;

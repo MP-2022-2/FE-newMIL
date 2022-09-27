@@ -1,5 +1,59 @@
 import { pixelToRem } from '@/Utils/Libs/layoutFunc';
 
+const PC = {
+  h1: `
+    font-size : ${pixelToRem(32)};
+    font-weight : bold;
+  `,
+  h2: `
+    font-size : ${pixelToRem(26)};
+    font-weight : bold;
+  `,
+  h3: `
+    font-size : ${pixelToRem(20)};
+    font-weight : 500;
+  `,
+  h4: `
+    font-size : ${pixelToRem(16)};
+    font-weight : 500;
+  `,
+  body: `
+    font-size : ${pixelToRem(15)};
+    font-weight : 400;
+  `,
+  caption: `
+    font-size : ${pixelToRem(14)};
+    font-weight : 300;
+  `,
+};
+
+const Mobile = {
+  h1: `
+    font-size : ${pixelToRem(26)};
+    font-weight : bold;
+  `,
+  h2: `
+    font-size : ${pixelToRem(22)};
+    font-weight : bold;
+  `,
+  h3: `
+    font-size : ${pixelToRem(18)};
+    font-weight : 500;
+  `,
+  h4: `
+    font-size : ${pixelToRem(14)};
+    font-weight : 500;
+  `,
+  body: `
+    font-size : ${pixelToRem(14)};
+    font-weight : 400;
+  `,
+  caption: `
+    font-size : ${pixelToRem(10)};
+    font-weight : 300;
+  `,
+};
+
 const common = {
   flexCenter: `
     display: flex;
@@ -11,26 +65,6 @@ const common = {
     flex-direction: column;
     justify-contents: center;
     align-items: center;
-  `,
-  h1: `
-    font-size : ${pixelToRem(28)};
-    font-weight : bold;
-  `,
-  h2: `
-    font-size : ${pixelToRem(24)};
-    font-weight : bold;
-  `,
-  h3: `
-    font-size : ${pixelToRem(18)};
-    font-weight : medium;
-  `,
-  h4: `
-    font-size : ${pixelToRem(14)};
-    font-weight : medium;
-  `,
-  caption: `
-    font-size : ${pixelToRem(10)};
-    font-weight : 300;
   `,
 };
 
@@ -70,6 +104,8 @@ const theme = {
   common,
   color,
   layout,
+  PC,
+  Mobile,
 };
 
 export default theme;

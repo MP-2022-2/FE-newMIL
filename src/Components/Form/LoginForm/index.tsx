@@ -47,7 +47,7 @@ const LoginForm = () => {
         min="6"
         required
       />
-      <DefaultButton type="submit" onClick={() => loginFunc()}>
+      <DefaultButton type="submit" onClick={loginFunc}>
         로그인
       </DefaultButton>
       <DefaultButton type="button" url="/user/signup">

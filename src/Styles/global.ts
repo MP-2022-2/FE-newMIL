@@ -14,24 +14,56 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  h1 {
-    ${theme.common.h1};
-  }
+  @media ${theme.layout.desktop} {
+    h1 {
+      ${theme.PC.h1};
+    }
+      
+    h2 {
+      ${theme.PC.h2};
+    }
     
-  h2 {
-    ${theme.common.h2};
+    h3 {
+      ${theme.PC.h3};
+    }
+    
+    h4, button {
+      ${theme.PC.h4};
+    }
+
+    p {
+      ${theme.PC.body};
+    }
+    
+    caption {
+      ${theme.PC.caption};
+    }
   }
-  
-  h3 {
-    ${theme.common.h3};
-  }
-  
-  h4 {
-    ${theme.common.h4};
-  }
-  
-  caption {
-    ${theme.common.caption};
+
+  @media ${theme.layout.mobile} {
+    h1 {
+      ${theme.Mobile.h1};
+    }
+      
+    h2 {
+      ${theme.Mobile.h2};
+    }
+    
+    h3 {
+      ${theme.Mobile.h3};
+    }
+    
+    h4, button {
+      ${theme.Mobile.h4};
+    }
+    
+    p {
+      ${theme.Mobile.body};
+    }
+
+    caption {
+      ${theme.Mobile.caption};
+    }
   }
 `;
 

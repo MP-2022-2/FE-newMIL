@@ -1,6 +1,15 @@
 import { ReactElement, useState } from 'react';
 import { UseMobile } from '@/Utils/Hooks/useMediaQuery';
-import { NaviContainer, NaviWrapper, HeaderMobileContainer } from './style';
+import {
+  NaviContainer,
+  NaviWrapper,
+  HeaderMobileContainer,
+  Navigation,
+  Cancel,
+  Logo,
+  Profile,
+  Dim,
+} from './style';
 
 const HeaderMobile = (): ReactElement => {
   const [open, setOpen] = useState(false);
@@ -9,14 +18,14 @@ const HeaderMobile = (): ReactElement => {
     <UseMobile>
       <HeaderMobileContainer>
         <NaviWrapper>
-          <img id="naviBut" onClick={() => setOpen(!open)} src="pictures/menu.png" />
-          <NaviContainer className={open ? 'Open' : 'Close'}>
-            <img id="naviCancelBut" onClick={() => setOpen(!open)} src="pictures/Cancel.png" />
+          <Navigation onClick={() => setOpen(!open)} src="/pictures/menu.png" />
+          <NaviContainer open={open}>
+            <Cancel onClick={() => setOpen(!open)} src="/pictures/Cancel.png" />
           </NaviContainer>
-          <div className="dim" />
+          <Dim />
         </NaviWrapper>
-        <img src="pictures/MIL.png" />
-        <img src="pictures/profile.png" />
+        <Logo src="/pictures/MIL.png" />
+        <Profile src="/pictures/profile.png" />
       </HeaderMobileContainer>
     </UseMobile>
   );
