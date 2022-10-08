@@ -1,0 +1,16 @@
+# appspec.yml
+# (CodeDeploy Agent가 참조하면서 배포를 진행하는 명세서)
+
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/FE-newMIL/ # 프로젝트 이름
+    overwrite: true
+file_exists_behavior: OVERWRITE
+
+permissions:
+  - object: /
+    pattern: '**'
+    owner: ubuntu
+    group: ubuntu
