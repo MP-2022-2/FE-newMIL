@@ -1,9 +1,8 @@
 import styled from 'styled-components';
+import { LoginContainer } from '@/Pages/Login/style';
 
-export const SignUpContainer = styled.section`
-  ${({ theme }) => theme.common.flexCenterColumn};
+export const SignUpContainer = styled(LoginContainer)`
   text-align: center;
-  padding-top: 2rem;
 
   .select {
     display: flex;

@@ -7,10 +7,14 @@ export const LoginFormContainer = styled.form`
   margin: 0 auto;
   margin-top: 3rem;
 
-  a {
-    margin-top: 3rem;
-    + a {
-      margin-top: 1rem;
+  span {
+    + a,
+    + button {
+      margin-top: 3rem;
     }
+  }
+
+  button {
+    margin-top: 1rem;
   }
 `;

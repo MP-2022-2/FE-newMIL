@@ -28,4 +28,12 @@ const InputTag = styled.input`
   }
 `;
 
-export { LabelTag, InputTag };
+const CaptionTag = styled.span`
+  color: ${theme.color.bad};
+  font-weight: 700;
+  text-align: left;
+  padding-top: 0.2rem;
+  padding-bottom: 1rem;
+`;
+
+export { LabelTag, InputTag, CaptionTag };

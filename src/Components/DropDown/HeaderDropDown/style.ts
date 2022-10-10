@@ -46,9 +46,9 @@ export const DropDownContainer = styled(ButtonContainer)`
 
 export const DropDownList = styled.ul`
   position: absolute;
-  top: 5rem;
-  right: -2.5rem;
-  min-width: 10rem;
+  top: 2.5rem;
+  min-width: 8rem;
+  transform: translateX(-20%);
 `;
 
 export const Dim = styled.div`

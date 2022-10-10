@@ -6,12 +6,16 @@ const GlobalStyle = createGlobalStyle`
 
   * {
     margin: 0;
-    padding: 0;  
+    padding: 0;
     font-family: "Noto Sans KR", sans-serif;
   }
 
   body {
     box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
   }
 
   @media ${theme.layout.desktop} {
@@ -35,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
       ${theme.PC.body};
     }
     
-    caption {
+    span, caption {
       ${theme.PC.caption};
     }
   }
@@ -61,7 +65,7 @@ const GlobalStyle = createGlobalStyle`
       ${theme.Mobile.body};
     }
 
-    caption {
+    span, caption {
       ${theme.Mobile.caption};
     }
   }

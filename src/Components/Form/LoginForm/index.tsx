@@ -1,65 +1,65 @@
-import { DefaultButton } from '@/Components/Button';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { Button } from '@/Components/Button';
 import { Input } from '@/Components/Form';
-import axios from 'axios';
-import React, { useState } from 'react';
 import { LoginFormContainer } from './style';
+import FormValues from './types';
 
 const LoginForm = () => {
-  const [values, setValues] = useState({
-    userId: '',
-    password: '',
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<FormValues>();
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const target = e.target as HTMLTextAreaElement;
-    setValues({
-      ...values,
-      [target.id]: target.value,
-    });
-  };
-
-  const loginFunc = () => {
-    axios.post(`${process.env.REACT_APP_API_URL}/user/login`, {
-      userId: `${values.userId}`,
-      password: `${values.password}`,
-    });
-  };
+  const onSubmit: SubmitHandler<FormValues> = (data) => alert(JSON.stringify(data));
 
   return (
-    <LoginFormContainer action="/" method="post">
+    <LoginFormContainer onSubmit={handleSubmit(onSubmit)}>
       <Input
-        onChange={handleChange}
-        value={values.userId}
         label="아이디"
         id="userId"
         type="text"
-        place="example"
+        placehd="example"
         autoFocus
-        required
+        context={register('id', { required: true })}
       />
       <Input
-        onChange={handleChange}
-        value={values.password}
         label="비밀번호"
         id="password"
         type="password"
-        place="********"
+        placehd="********"
         min="6"
-        required
+        context={register('pw', { required: true })}
       />
-      <DefaultButton type="submit" onClick={loginFunc}>
+      <Button type="submit" disabled={isSubmitting}>
         로그인
-      </DefaultButton>
-      <DefaultButton type="button" url="/user/signup">
+      </Button>
+      <Button type="button" url="/user/signup">
         회원가입
-      </DefaultButton>
+      </Button>
     </LoginFormContainer>
   );
 };
 
 export default LoginForm;
 
+// 구현했던 함수
 //  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 //     e.preventDefault();
 //     alert('onSubmit Test');
 //   };
+
+//  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+//     const target = e.target as HTMLTextAreaElement;
+//     setValues({
+//       ...values,
+//       [target.id]: target.value,
+//     });
+//   };
+
+// const loginFunc = () => {
+//   axios.post(`${process.env.REACT_APP_API_URL}/user/login`, {
+//     userId: `id`,
+//     password: `pw`,
+//   });
+// };

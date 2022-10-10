@@ -1,5 +1,5 @@
 import HeaderButton from './HeaderButton';
-import DefaultButton from './DefaultButton';
+import Button from './DefaultButton';
 
-export { HeaderButton, DefaultButton };
-export default DefaultButton;
+export { HeaderButton, Button };
+export default Button;

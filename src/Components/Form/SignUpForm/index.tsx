@@ -1,4 +1,4 @@
-import { DefaultButton } from '@/Components/Button';
+import { Button } from '@/Components/Button';
 import React, { useState } from 'react';
 import { Input } from '@/Components/Form';
 import axios from 'axios';
@@ -45,7 +45,7 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             label="아이디"
             id="userId"
             type="text"
-            place="example"
+            placehd="example"
             autoFocus
             required
           />
@@ -55,7 +55,7 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             label="비밀번호"
             id="password"
             type="password"
-            place="********"
+            placehd="********"
             min="6"
             required
           />
@@ -65,7 +65,7 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             value={values.email}
             id="email"
             type="email"
-            place="example@ajou.ac.kr"
+            placehd="example@ajou.ac.kr"
             required
           />
           <Input
@@ -74,7 +74,7 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             value={values.name}
             id="name"
             type="text"
-            place="김태석"
+            placehd="김태석"
             required
           />
           <Input
@@ -83,15 +83,15 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             value={values.studentId}
             id="studentId"
             type="text"
-            place="2021XXXXX"
+            placehd="2021XXXXX"
             required
           />
-          <DefaultButton type="submit" onClick={() => signUpFunc()}>
+          <Button type="submit" onClick={() => signUpFunc()}>
             회원가입
-          </DefaultButton>
-          <DefaultButton type="button" url="/">
+          </Button>
+          <Button type="button" url="/">
             뒤로가기
-          </DefaultButton>
+          </Button>
         </SignUpFormContainer>
       )}
 
@@ -103,7 +103,7 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             label="아이디"
             id="userId"
             type="text"
-            place="example"
+            placehd="example"
             autoFocus
             required
           />
@@ -113,7 +113,7 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             label="비밀번호"
             id="password"
             type="password"
-            place="********"
+            placehd="********"
             min="6"
             required
           />
@@ -123,7 +123,7 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             value={values.email}
             id="email"
             type="email"
-            place="example@ajou.ac.kr"
+            placehd="example@ajou.ac.kr"
             required
           />
           <Input
@@ -132,7 +132,7 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             value={values.name}
             id="name"
             type="text"
-            place="김태석"
+            placehd="김태석"
             required
           />
           <Input
@@ -141,7 +141,7 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             value={values.studentId}
             id="studentId"
             type="text"
-            place="2021XXXXX"
+            placehd="2021XXXXX"
             required
           />
           <Input
@@ -150,15 +150,15 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             value={values.company}
             id="company"
             type="text"
-            place="미디어인더스트리"
+            placehd="미디어인더스트리"
             required
           />
-          <DefaultButton type="submit" onClick={() => signUpFunc()}>
+          <Button type="submit" onClick={() => signUpFunc()}>
             회원가입
-          </DefaultButton>
-          <DefaultButton type="button" url="/">
+          </Button>
+          <Button type="button" url="/">
             뒤로가기
-          </DefaultButton>
+          </Button>
         </SignUpFormContainer>
       )}
     </>

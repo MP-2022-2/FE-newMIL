@@ -24,7 +24,7 @@
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
-    "react/react-in-jsx-scope": "off",
+    "react/react-in-jsx-scope": "off", // import React from 'react' 무시
     "import/no-named-as-default": "off",
     "import/extensions": [ // 확장자 명시
       "error",

@@ -1,10 +1,27 @@
-import { ButtonContainer } from './style';
+import { ButtonContainer, ButtonWrapper } from './style';
 import DefaultButtonProps from './types';
 
-const DefaultButton = ({ type, url = '', children, ...props }: DefaultButtonProps) => (
-  <ButtonContainer to={url} {...props}>
-    <button type={type}>{children}</button>
-  </ButtonContainer>
-);
+const Button = (props: DefaultButtonProps) => {
+  // eslint-disable-next-line no-unused-vars
+  const { type, url, children } = props;
 
-export default DefaultButton;
+  return (
+    <>
+      {!!url && (
+        <ButtonWrapper to={url}>
+          <ButtonContainer type={type} {...props}>
+            {children}
+          </ButtonContainer>
+        </ButtonWrapper>
+      )}
+
+      {!url && (
+        <ButtonContainer type={type} {...props}>
+          {children}
+        </ButtonContainer>
+      )}
+    </>
+  );
+};
+
+export default Button;
