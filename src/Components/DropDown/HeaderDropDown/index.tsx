@@ -1,6 +1,6 @@
 import { ReactElement, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { DropDownContainer } from './style';
+import { DropDownContainer, Title, Dim, DropDownList, ListContent } from './style';
 import DropDownProps from './types';
 
 const DropDown = ({ title, items }: DropDownProps): ReactElement => {
@@ -8,18 +8,18 @@ const DropDown = ({ title, items }: DropDownProps): ReactElement => {
 
   return (
     <DropDownContainer onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-      <span>{title}</span>
+      <Title>{title}</Title>
       {open && (
-        <ul>
+        <DropDownList>
           {items.map((item) => (
             <Link to={item.url} key={item.id}>
-              <li>
-                <span>{item.value}</span>
-              </li>
+              <ListContent>
+                <h4>{item.value}</h4>
+              </ListContent>
             </Link>
           ))}
-          <div className="checked" />
-        </ul>
+          <Dim />
+        </DropDownList>
       )}
     </DropDownContainer>
   );

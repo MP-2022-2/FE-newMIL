@@ -11,10 +11,8 @@ const useLogin = () => {
         userIdx: 0,
         name: '',
         password: '',
-        nickname: '',
         studentId: 0,
         email: '',
-        profilePhoto: '',
       });
 
   return userData.status;

@@ -9,10 +9,8 @@ export const userState = atom<UserType>({
     userIdx: 0,
     name: '',
     password: '',
-    nickname: '',
     studentId: 0,
     email: '',
-    profilePhoto: '',
   },
 });
 
