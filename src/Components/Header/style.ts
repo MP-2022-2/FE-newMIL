@@ -21,6 +21,14 @@ export const HeaderContainer = styled.header`
   background-color: ${({ theme }) => theme.color.lightBlue};
 `;
 
+export const LoginedInfo = styled.div`
+  display: flex;
+
+  h4 {
+    line-height: 5rem;
+  }
+`;
+
 // 모바일
 export const HeaderMobileContainer = styled(HeaderContainer)`
   width: 100%;

@@ -1,11 +1,21 @@
-import { Navigate, Outlet } from 'react-router-dom';
-
+import { Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom';
 import useLogin from '@/Utils/Hooks/useLogin';
 
 const LoginRoute = () => {
-  const { isLoggedIn } = useLogin();
-
-  return isLoggedIn ? <Navigate to="/login" /> : <Outlet />;
+  const status = useLogin();
+  return status === 200 ? <Outlet /> : <Navigate to="/user/login" />;
 };
 
-export default LoginRoute;
+const LoginRoutes = () => {
+  const location = useLocation();
+  return (
+    <Routes location={location}>
+      <Route element={<LoginRoute />}>
+        <Route path="talk" element={'게시판'} />
+      </Route>
+      <Route element={'404 Not Found'} path="*" />
+    </Routes>
+  );
+};
+
+export default LoginRoutes;

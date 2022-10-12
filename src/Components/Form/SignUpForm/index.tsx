@@ -1,96 +1,103 @@
 import { Button } from '@/Components/Button';
-import React, { useState } from 'react';
 import { Input } from '@/Components/Form';
-import axios from 'axios';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { SignUpFormContainer } from './style';
-import SignUpFormProps from './types';
+import { SignUpFormProps, SignUpFormValues } from './types';
 
 const SignUpForm = ({ select }: SignUpFormProps) => {
-  const [values, setValues] = useState({
-    userId: '',
-    email: '',
-    name: '',
-    password: '',
-    studentId: '',
-    identity: '',
-    company: '',
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting, errors },
+  } = useForm<SignUpFormValues>();
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const target = e.target as HTMLTextAreaElement;
-    setValues({
-      ...values,
-      [target.id]: target.value,
-    });
+  const onSubmit: SubmitHandler<SignUpFormValues> = async (data) => {
+    alert(JSON.stringify(data));
   };
 
-  const signUpFunc = () => {
-    axios.post(`${process.env.REACT_APP_API_URL}/user/signup`, {
-      userId: `${values.userId}`,
-      password: `${values.password}`,
-      email: `${values.email}`,
-      name: `${values.name}`,
-      studentId: `${values.studentId}`,
-      identity: `${values.identity}`,
-      company: `${values.company}`,
-    });
-  };
   return (
     <>
       {select && (
-        <SignUpFormContainer>
+        <SignUpFormContainer onSubmit={handleSubmit(onSubmit)}>
           <Input
-            onChange={handleChange}
-            value={values.userId}
             label="아이디"
             id="userId"
             type="text"
             placehd="example"
+            caption={errors.id?.message}
             autoFocus
-            required
+            context={register('id', {
+              required: '아이디를 입력하세요.',
+            })}
           />
           <Input
-            onChange={handleChange}
-            value={values.password}
             label="비밀번호"
             id="password"
             type="password"
-            placehd="********"
-            min="6"
-            required
+            placehd="*********"
+            caption={errors.pw?.message}
+            autoFocus
+            context={register('pw', {
+              required: '비밀번호를 입력하세요.',
+              minLength: {
+                value: 6,
+                message: '6자리 이상 비밀번호를 사용하세요.',
+              },
+            })}
+          />
+          <Input
+            label="비밀번호 확인"
+            id="passwordcheck"
+            type="password"
+            placehd="*********"
+            caption={errors.pwcheck?.message}
+            autoFocus
+            context={register('pwcheck', {
+              required: '비밀번호를 입력하세요.',
+              minLength: {
+                value: 6,
+                message: '6자리 이상 비밀번호를 사용하세요.',
+              },
+            })}
           />
           <Input
             label="이메일"
-            onChange={handleChange}
-            value={values.email}
             id="email"
             type="email"
             placehd="example@ajou.ac.kr"
-            required
+            caption={errors.email?.message}
+            autoFocus
+            context={register('email', {
+              required: '이메일을 입력하세요.',
+            })}
           />
           <Input
             label="이름"
-            onChange={handleChange}
-            value={values.name}
             id="name"
             type="text"
             placehd="김태석"
-            required
+            caption={errors.name?.message}
+            autoFocus
+            context={register('name', {
+              required: '이름을 입력하세요.',
+            })}
           />
           <Input
             label="학번"
-            onChange={handleChange}
-            value={values.studentId}
             id="studentId"
             type="text"
-            placehd="2021XXXXX"
-            required
+            placehd="20172XXXX"
+            caption={errors.studentId?.message}
+            autoFocus
+            context={register('studentId', {
+              required: '학번을 입력하세요.',
+            })}
           />
-          <Button type="submit" onClick={() => signUpFunc()}>
+          <Button type="submit" disabled={isSubmitting}>
             회원가입
           </Button>
           <Button type="button" url="/">
-            뒤로가기
+            메인으로
           </Button>
         </SignUpFormContainer>
       )}
@@ -98,62 +105,91 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
       {!select && (
         <SignUpFormContainer>
           <Input
-            onChange={handleChange}
-            value={values.userId}
             label="아이디"
             id="userId"
             type="text"
             placehd="example"
+            caption={errors.id?.message}
             autoFocus
-            required
+            context={register('id', {
+              required: '아이디를 입력하세요.',
+            })}
           />
           <Input
-            onChange={handleChange}
-            value={values.password}
             label="비밀번호"
             id="password"
             type="password"
-            placehd="********"
-            min="6"
-            required
+            placehd="*********"
+            caption={errors.pw?.message}
+            autoFocus
+            context={register('pw', {
+              required: '비밀번호를 입력하세요.',
+              minLength: {
+                value: 6,
+                message: '6자리 이상 비밀번호를 사용하세요.',
+              },
+            })}
+          />
+          <Input
+            label="비밀번호 확인"
+            id="passwordcheck"
+            type="password"
+            placehd="*********"
+            caption={errors.pwcheck?.message}
+            autoFocus
+            context={register('pwcheck', {
+              required: '비밀번호를 입력하세요.',
+              minLength: {
+                value: 6,
+                message: '6자리 이상 비밀번호를 사용하세요.',
+              },
+            })}
           />
           <Input
             label="이메일"
-            onChange={handleChange}
-            value={values.email}
             id="email"
             type="email"
             placehd="example@ajou.ac.kr"
-            required
+            caption={errors.email?.message}
+            autoFocus
+            context={register('email', {
+              required: '이메일을 입력하세요.',
+            })}
           />
           <Input
             label="이름"
-            onChange={handleChange}
-            value={values.name}
             id="name"
             type="text"
             placehd="김태석"
-            required
+            caption={errors.name?.message}
+            autoFocus
+            context={register('name', {
+              required: '이름을 입력하세요.',
+            })}
           />
           <Input
             label="학번"
-            onChange={handleChange}
-            value={values.studentId}
             id="studentId"
             type="text"
-            placehd="2021XXXXX"
-            required
+            placehd="20172XXXX"
+            caption={errors.studentId?.message}
+            autoFocus
+            context={register('studentId', {
+              required: '학번을 입력하세요.',
+            })}
           />
           <Input
             label="회사"
-            onChange={handleChange}
-            value={values.company}
             id="company"
             type="text"
             placehd="미디어인더스트리"
-            required
+            caption={errors.company?.message}
+            autoFocus
+            context={register('company', {
+              required: '회사를 입력하세요.',
+            })}
           />
-          <Button type="submit" onClick={() => signUpFunc()}>
+          <Button type="submit" disabled={isSubmitting}>
             회원가입
           </Button>
           <Button type="button" url="/">

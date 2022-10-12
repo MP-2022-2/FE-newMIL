@@ -4,10 +4,8 @@ export default interface InputProps {
   id: string;
   type: string;
   placehd: string;
-  isError?: boolean | undefined;
   autoFocus?: boolean | undefined;
   required?: boolean | undefined;
-  min?: string | number;
   label?: string;
   value?: string | number;
   caption?: boolean | string;

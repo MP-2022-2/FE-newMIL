@@ -8,10 +8,6 @@ env:
   S3_BUCKET_NAME: fe-newmil-s3
   PROJECT_NAME: FE-newMIL
 
-permissions:
-  id-token: write
-  contents: read
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,15 +23,23 @@ jobs:
           cache: npm
 
       - name: Npm install
-        run: npm install
+        run: npm install --quiet
+        shell: bash
+
+      - name: setting .env file
+        run: |
+          echo "REACT_APP_API_URL=$REACT_APP_API_URL" >> .env.production
+          echo "REACT_APP_MODE=production" >> .env.production
+        env:
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
         shell: bash
 
       - name: Build
-        run: npm run build
+        run: CI=false npm run build:prod
         shell: bash
 
       - name: Make Zip file
-        run: zip -r ./$GITHUB_SHA.zip .
+        run: zip -qq -r ./$GITHUB_SHA.zip .
         shell: bash
 
       - name: Configure AWS credentials

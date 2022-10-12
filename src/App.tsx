@@ -1,7 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import axios from 'axios';
+import LoginRoutes from '@/Routes/LoginRoute';
 import LoginPage from '@/Pages/Login';
 import SignUpPage from '@/Pages/SignUp';
 import MainPage from '@/Pages/Main';
+
+axios.defaults.withCredentials = true;
 
 function App() {
   return (
@@ -9,18 +14,19 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/user">
-            <Route path="login" element={<LoginPage />} />
-            <Route path="signup" element={<SignUpPage />} />
-          </Route>
+          <Route path="cil" element={'CIL'} />
           <Route path="/media">
             <Route path="professor" element={'교수님 소개'} />
             <Route path="graduate" element={'졸업 요건'} />
             <Route path="interview" element={'인터뷰'} />
           </Route>
-          <Route path="talk" element={'게시판'} />
-          <Route path="/cil" element={'CIL'} />
-          <Route path="/*" element={'404 Not Found'} />
+
+          <Route path="/user">
+            <Route path="login" element={<LoginPage />} />
+            <Route path="signup" element={<SignUpPage />} />
+          </Route>
+
+          <Route path="/*" element={<LoginRoutes />} />
         </Routes>
       </BrowserRouter>
     </>

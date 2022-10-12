@@ -1,8 +1,13 @@
-export interface UserType {
-  isAdmin?: boolean;
-  userIdx: number;
-  name: string;
+export interface UserLoginType {
+  userId: string;
   password: string;
-  studentId: number;
+}
+
+export interface UserType extends UserLoginType {
   email: string;
+  name: string;
+  student_id: number;
+  company: string;
+  track: string;
+  identity?: string;
 }
