@@ -1,11 +1,12 @@
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
 import { HeaderButton } from '@/Components/Button';
 import GridSection from '@/Components/Section';
 import HeaderDropDown from '@/Components/DropDown/HeaderDropDown';
 import { UsePc } from '@/Utils/Hooks/useMediaQuery';
-import { userState } from '@/Recoil/user';
-import { useRecoilValue } from 'recoil';
+import { userState, userDataState } from '@/Recoil/user';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { setCookie } from '@/Pages/Login';
+import { APILoginType } from '@/@Types/UserType';
 import { HeaderContainer, Logo, LoginedInfo } from './style';
 import HeaderMobile from './index.mobile';
 
@@ -28,12 +29,17 @@ const mediaItems = [
 ];
 
 const Header = (): ReactElement => {
-  const user = useRecoilValue(userState);
+  const [user, setUser] = useRecoilState(userState);
+  const userData = useRecoilValue<APILoginType>(userDataState);
   const reset = () => {
     setCookie('accessToken', '', { expires: new Date(Date.now()) });
     setCookie('refreshToken', '', { expires: new Date(Date.now()) });
     window.location.replace('/');
   };
+
+  useEffect(() => {
+    userData && setUser(userData);
+  }, [user]);
 
   return (
     <>
@@ -54,7 +60,7 @@ const Header = (): ReactElement => {
             <GridSection col2>
               <LoginedInfo>
                 <h4>{user.name}</h4>
-                <body>님, 환영합니다!</body>
+                <p>님, 환영합니다!</p>
               </LoginedInfo>
               <button onClick={reset}>로그아웃</button>
             </GridSection>

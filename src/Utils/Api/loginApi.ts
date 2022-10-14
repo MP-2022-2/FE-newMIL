@@ -9,9 +9,11 @@ export const loginFunc = (data: UserLoginType) => {
       if (res.status === 200) {
         setCookie('accessToken', JSON.stringify(res.data.accessToken), {
           path: '/',
+          expires: new Date(Date.now() + 60 * 60 * 1 * 1000),
         });
         setCookie('refreshToken', JSON.stringify(res.data.refreshToken), {
           path: '/',
+          expires: new Date(Date.now() + 60 * 60 * 24 * 1000),
         });
       }
       window.location.replace('/');

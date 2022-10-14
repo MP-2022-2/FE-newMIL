@@ -4,13 +4,6 @@ import theme from '@/Styles/theme';
 const LabelTag = styled.label`
   text-align: left;
   padding-bottom: 0.4rem;
-
-  @media ${theme.layout.desktop} {
-    ${theme.PC.h4}
-  }
-  @media ${theme.layout.mobile} {
-    ${theme.Mobile.h4}
-  }
 `;
 
 const InputTag = styled.input`

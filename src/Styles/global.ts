@@ -27,11 +27,11 @@ const GlobalStyle = createGlobalStyle`
       ${theme.PC.h2};
     }
     
-    h3 {
+    h3, button {
       ${theme.PC.h3};
     }
     
-    h4, button {
+    h4, label {
       ${theme.PC.h4};
     }
 
@@ -53,11 +53,11 @@ const GlobalStyle = createGlobalStyle`
       ${theme.Mobile.h2};
     }
     
-    h3 {
+    h3, button {
       ${theme.Mobile.h3};
     }
     
-    h4, button {
+    h4, label {
       ${theme.Mobile.h4};
     }
     

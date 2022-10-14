@@ -24,7 +24,8 @@ export const HeaderContainer = styled.header`
 export const LoginedInfo = styled.div`
   display: flex;
 
-  h4 {
+  h4,
+  p {
     line-height: 5rem;
   }
 `;

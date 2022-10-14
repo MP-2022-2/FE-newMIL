@@ -3,7 +3,8 @@ import useLogin from '@/Utils/Hooks/useLogin';
 
 const LoginRoute = () => {
   const status = useLogin();
-  return status === 200 ? <Outlet /> : <Navigate to="/user/login" />;
+
+  return status ? <Outlet /> : <Navigate to="/user/login" />;
 };
 
 const LoginRoutes = () => {

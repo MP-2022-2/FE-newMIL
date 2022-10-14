@@ -27,10 +27,10 @@ const PC = {
     
   `,
   body: `
-    font-size : ${pixelToRem(15)};
+    font-size : ${pixelToRem(16)};
     font-weight : 400;
     letter-spacing : -0.02rem;
-    line-height : ${calLineHeight(15, 1.6)};
+    line-height : ${calLineHeight(16, 1.6)};
   `,
   caption: `
     font-size : ${pixelToRem(13)};
@@ -105,6 +105,7 @@ const color = {
   ajouSky: '#88B2DF',
   ajouYellow: '#F79433',
   ajouSilver: '#959B9D',
+  disabled: '#dedede',
 };
 
 const size = {

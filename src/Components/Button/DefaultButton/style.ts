@@ -1,16 +1,13 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import theme from '@/Styles/theme';
 
 export const ButtonWrapper = styled(Link)``;
 
 export const ButtonContainer = styled.button`
-  ${({ theme }) => theme.common.h3}
-  color: #eee;
-  font-weight: 500;
-
   display: block;
   text-align: center;
-  ${({ theme }) => theme.PC.h4};
+  font-weight: 500;
   width: 100%;
   color: #fefeff;
 
@@ -22,9 +19,14 @@ export const ButtonContainer = styled.button`
 
   padding: 0.8rem 0;
   border-radius: 5px;
-  background-color: #0099ff;
+  background-color: ${theme.color.ajouBlue};
 
   :hover {
     cursor: pointer;
+  }
+
+  :disabled,
+  [disalbed] {
+    background-color: ${theme.color.disabled};
   }
 `;

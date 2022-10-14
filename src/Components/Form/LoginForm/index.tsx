@@ -2,18 +2,34 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { Button } from '@/Components/Button';
 import { Input } from '@/Components/Form';
 import { loginFunc } from '@/Utils/Api/loginApi';
-import { LoginFormContainer } from './style';
-import FormValues from './types';
+import { UserLoginType } from '@/@Types/UserType';
+import { Link } from 'react-router-dom';
+import { LoginFormContainer, IDCheckBoxContainer, SignUpContainer, SignUpLink } from './style';
 
 const LoginForm = () => {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { isSubmitting, errors },
-  } = useForm<FormValues>();
+  } = useForm<UserLoginType>({
+    mode: 'onChange',
+    defaultValues: {
+      userId: localStorage.getItem('userId') ? String(localStorage.getItem('userId')) : '',
+      password: '',
+      idCheck: Boolean(localStorage.getItem('idCheck')),
+    },
+  });
 
-  const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    loginFunc({ userId: data.id, password: data.pw });
+  const onSubmit: SubmitHandler<UserLoginType> = (data) => {
+    if (data.idCheck) {
+      localStorage.setItem('userId', String(data.userId));
+      localStorage.setItem('idCheck', 'true');
+    } else {
+      localStorage.removeItem('userId');
+      localStorage.removeItem('idCheck');
+    }
+    loginFunc({ userId: data.userId, password: data.password });
   };
 
   return (
@@ -23,9 +39,10 @@ const LoginForm = () => {
         id="userId"
         type="text"
         placehd="example"
-        caption={errors.id?.message}
+        caption={errors.userId?.message}
+        aria-invaild={!!errors.userId}
         autoFocus
-        context={register('id', {
+        context={register('userId', {
           required: '아이디를 입력하세요.',
         })}
       />
@@ -34,8 +51,9 @@ const LoginForm = () => {
         id="password"
         type="password"
         placehd="********"
-        caption={errors.pw?.message}
-        context={register('pw', {
+        caption={errors.password?.message}
+        aria-invaild={!!errors.password}
+        context={register('password', {
           required: '비밀번호를 입력하세요.',
           minLength: {
             value: 6,
@@ -43,17 +61,28 @@ const LoginForm = () => {
           },
         })}
       />
-      <div>
-        <input type="checkbox" id="idCheck" />
+      <IDCheckBoxContainer>
+        <input type="checkbox" id="idCheck" {...register('idCheck')} />
         <label htmlFor="idCheck">아이디 저장</label>
-      </div>
-      <Button type="submit" disabled={isSubmitting}>
+      </IDCheckBoxContainer>
+      <Button
+        type="submit"
+        disabled={
+          isSubmitting ||
+          !!errors.userId ||
+          !!errors.password ||
+          !getValues('userId') ||
+          !getValues('password')
+        }
+      >
         로그인
       </Button>
-      <div>
+      <SignUpContainer>
         <p>아직 MIL 가입을 안하셨나요?</p>
-        <p>회원가입</p>
-      </div>
+        <Link to="/user/signup">
+          <SignUpLink>회원가입</SignUpLink>
+        </Link>
+      </SignUpContainer>
     </LoginFormContainer>
   );
 };

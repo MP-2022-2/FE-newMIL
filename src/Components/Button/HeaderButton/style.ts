@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const ButtonContainer = styled.h4<{ regular?: boolean }>`
+export const ButtonContainer = styled.div<{ regular?: boolean }>`
   position: relative;
   display: block;
   text-align: center;

@@ -11,23 +11,34 @@ export const LoginFormContainer = styled.form`
   padding: 3rem 5rem 8rem;
   border-radius: 10px;
 
-  span {
-    + a,
-    + button {
-      margin-top: 3rem;
-    }
-  }
-
   button {
     margin-top: 1rem;
-  }
-
-  input[type='checkbox'] {
-    margin-right: 0.4rem;
-    vertical-align: middle;
   }
 
   @media ${theme.layout.mobile} {
     padding: 2rem 4rem 6rem;
   }
+`;
+
+export const IDCheckBoxContainer = styled.div`
+  input[type='checkbox'] {
+    margin-right: 0.4rem;
+    vertical-align: middle;
+  }
+
+  input[type='checkbox'],
+  label {
+    cursor: pointer;
+  }
+`;
+
+export const SignUpContainer = styled.div`
+  display: flex;
+  margin: 1.5rem auto 0;
+`;
+
+export const SignUpLink = styled.p`
+  padding-left: 0.8rem;
+  text-decoration: underline;
+  color: ${theme.color.ajouBlue};
 `;

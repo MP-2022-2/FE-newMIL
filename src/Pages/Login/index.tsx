@@ -1,5 +1,6 @@
 import { LoginForm } from '@/Components/Form';
 import Cookies, { CookieSetOptions } from 'universal-cookie';
+import { Link } from 'react-router-dom';
 import { LoginWrapper, LoginContainer, Logo } from './style';
 
 const cookies = new Cookies();
@@ -12,7 +13,9 @@ export const getCookie = (name: string) => cookies.get(name);
 const LoginPage = () => (
   <LoginWrapper>
     <LoginContainer>
-      <Logo src="/pictures/MIL.png" />
+      <Link to="/">
+        <Logo src="/pictures/MIL.png" />
+      </Link>
       <LoginForm />
     </LoginContainer>
   </LoginWrapper>

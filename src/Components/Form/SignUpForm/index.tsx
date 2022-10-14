@@ -1,17 +1,18 @@
 import { Button } from '@/Components/Button';
 import { Input } from '@/Components/Form';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { UserSignUpType } from '@/@Types/UserType';
 import { SignUpFormContainer } from './style';
-import { SignUpFormProps, SignUpFormValues } from './types';
+import { SignUpFormProps } from './types';
 
 const SignUpForm = ({ select }: SignUpFormProps) => {
   const {
     register,
     handleSubmit,
     formState: { isSubmitting, errors },
-  } = useForm<SignUpFormValues>();
+  } = useForm<UserSignUpType>();
 
-  const onSubmit: SubmitHandler<SignUpFormValues> = async (data) => {
+  const onSubmit: SubmitHandler<UserSignUpType> = async (data) => {
     alert(JSON.stringify(data));
   };
 
@@ -24,9 +25,9 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             id="userId"
             type="text"
             placehd="example"
-            caption={errors.id?.message}
+            caption={errors.userId?.message}
             autoFocus
-            context={register('id', {
+            context={register('userId', {
               required: '아이디를 입력하세요.',
             })}
           />
@@ -35,9 +36,9 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             id="password"
             type="password"
             placehd="*********"
-            caption={errors.pw?.message}
+            caption={errors.password?.message}
             autoFocus
-            context={register('pw', {
+            context={register('password', {
               required: '비밀번호를 입력하세요.',
               minLength: {
                 value: 6,
@@ -109,9 +110,9 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             id="userId"
             type="text"
             placehd="example"
-            caption={errors.id?.message}
+            caption={errors.userId?.message}
             autoFocus
-            context={register('id', {
+            context={register('userId', {
               required: '아이디를 입력하세요.',
             })}
           />
@@ -120,9 +121,9 @@ const SignUpForm = ({ select }: SignUpFormProps) => {
             id="password"
             type="password"
             placehd="*********"
-            caption={errors.pw?.message}
+            caption={errors.password?.message}
             autoFocus
-            context={register('pw', {
+            context={register('password', {
               required: '비밀번호를 입력하세요.',
               minLength: {
                 value: 6,
