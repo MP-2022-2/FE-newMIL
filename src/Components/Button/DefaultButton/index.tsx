@@ -1,11 +1,26 @@
-import { Link } from 'react-router-dom';
-import { ButtonContainer } from './style';
+import { ButtonContainer, ButtonWrapper } from './style';
 import DefaultButtonProps from './types';
 
-const DefaultButton = ({ url = '', children, ...props }: DefaultButtonProps) => (
-  <ButtonContainer {...props}>
-    <Link to={url}>{children}</Link>
-  </ButtonContainer>
-);
+const Button = (props: DefaultButtonProps) => {
+  const { type, url, children, disabled } = props;
 
-export default DefaultButton;
+  return (
+    <>
+      {!!url && (
+        <ButtonWrapper to={url}>
+          <ButtonContainer type={type} disabled={disabled} {...props}>
+            {children}
+          </ButtonContainer>
+        </ButtonWrapper>
+      )}
+
+      {!url && (
+        <ButtonContainer type={type} disabled={disabled} {...props}>
+          {children}
+        </ButtonContainer>
+      )}
+    </>
+  );
+};
+
+export default Button;

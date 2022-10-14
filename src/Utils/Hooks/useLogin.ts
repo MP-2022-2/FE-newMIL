@@ -1,23 +1,23 @@
 import { useRecoilState } from 'recoil';
 import { userDataState } from '@/Recoil/user';
+import { APILoginType } from '@/@Types/UserType';
 
 const useLogin = () => {
-  const [userData, setUserData] = useRecoilState(userDataState);
+  const [userData, setUserData] = useRecoilState<APILoginType>(userDataState);
 
-  userData.status
-    ? setUserData(userData.user)
-    : setUserData({
-        isAdmin: false,
-        userIdx: 0,
-        name: '',
-        password: '',
-        nickname: '',
-        studentId: 0,
-        email: '',
-        profilePhoto: '',
-      });
-
-  return userData.status;
+  if (userData.status === 200) {
+    setUserData(userData);
+    return true;
+  }
+  setUserData({
+    ...userData,
+    name: '',
+    track: '',
+    studentId: 0,
+    company: '',
+    email: '',
+  });
+  return false;
 };
 
 export default useLogin;

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const ButtonContainer = styled.h3<{ regular?: boolean }>`
+export const ButtonContainer = styled.div<{ regular?: boolean }>`
   position: relative;
   display: block;
   text-align: center;
@@ -12,7 +12,7 @@ export const ButtonContainer = styled.h3<{ regular?: boolean }>`
   border: 0;
 
   a,
-  span {
+  h4 {
     position: relative;
     text-decoration: none;
     color: ${({ theme }) => theme.color.black};

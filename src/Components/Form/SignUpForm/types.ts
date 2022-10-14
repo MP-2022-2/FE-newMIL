@@ -1,3 +1,3 @@
-export default interface SignUpFormProps {
+export interface SignUpFormProps {
   select: boolean;
 }

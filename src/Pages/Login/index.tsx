@@ -1,11 +1,24 @@
-import LoginForm from '@/Components/Form';
-import { LoginContainer } from './style';
+import { LoginForm } from '@/Components/Form';
+import Cookies, { CookieSetOptions } from 'universal-cookie';
+import { Link } from 'react-router-dom';
+import { LoginWrapper, LoginContainer, Logo } from './style';
+
+const cookies = new Cookies();
+
+export const setCookie = (name: string, value: string, option?: CookieSetOptions) =>
+  cookies.set(name, value, { ...option });
+
+export const getCookie = (name: string) => cookies.get(name);
 
 const LoginPage = () => (
-  <LoginContainer>
-    <h2>로그인</h2>
-    <LoginForm />
-  </LoginContainer>
+  <LoginWrapper>
+    <LoginContainer>
+      <Link to="/">
+        <Logo src="/pictures/MIL.png" />
+      </Link>
+      <LoginForm />
+    </LoginContainer>
+  </LoginWrapper>
 );
 
 export default LoginPage;

@@ -1,5 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { pixelToRem } from '@/Utils/Libs/layoutFunc';
+
+// 공통 이미지
+export const Logo = styled.img`
+  display: block;
+`;
 
 // 웹
 export const HeaderContainer = styled.header`
@@ -16,13 +21,12 @@ export const HeaderContainer = styled.header`
   background-color: ${({ theme }) => theme.color.lightBlue};
 `;
 
-export const LoginContainer = styled.div`
+export const LoginedInfo = styled.div`
   display: flex;
-  width: 100%;
-  justify-content: right;
 
-  h3:nth-child(2) {
-    padding-left: 1.5rem;
+  h4,
+  p {
+    line-height: 5rem;
   }
 `;
 
@@ -34,51 +38,78 @@ export const HeaderMobileContainer = styled(HeaderContainer)`
   line-height: ${pixelToRem(50)};
 `;
 
-export const NaviWrapper = styled.div`
-  #naviBut,
-  #naviCancelBut {
-    :hover {
-      cursor: pointer;
-    }
-  }
-
-  #naviBut {
-    vertical-align: sub;
-  }
-
-  #naviCancelBut {
-    z-index: 3;
-    float: right;
-    margin: 1rem;
-  }
-
-  // 열렸을 때
-  .Open {
-    width: 50%;
-    height: 100%;
-    background-color: white;
-    z-index: 2;
-
-    + .dim {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: #555;
-      opacity: 0.5;
-      z-index: 1;
-    }
-  }
-
-  // 닫혔을 때
-  .Close {
-    display: none;
-  }
+export const NaviWrapper = styled.aside`
+  display: block;
 `;
 
-export const NaviContainer = styled.section`
+export const NaviContainer = styled.nav<{ open: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
+
+  // Navi 열렸을 때
+  ${(props) =>
+    props.open === true &&
+    css`
+      width: 50%;
+      height: 100%;
+      background-color: white;
+      z-index: 2;
+
+      + div {
+        display: block;
+      }
+    `}
+
+  // Navi 닫혔을 때
+  ${(props) =>
+    props.open === false &&
+    css`
+      display: none;
+
+      + div {
+        display: none;
+      }
+    `}
 `;
+
+// Navi 흐릿한 배경
+export const Dim = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #555;
+  opacity: 0.5;
+  z-index: 1;
+`;
+
+// 모바일 아이콘
+export const Navigation = styled.img`
+  vertical-align: sub;
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+export const Cancel = styled.img`
+  z-index: 3;
+  float: right;
+  margin: 1rem;
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+export const Profile = styled(Logo)``;
+
+// 가독성 논의
+
+// ${(props) =>
+// props.open === false &&
+
+// ${(props) =>
+// !props.open &&

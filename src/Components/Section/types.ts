@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
 export interface GridSectionStyleProps {
   col2?: boolean;
@@ -8,8 +8,9 @@ export interface GridSectionStyleProps {
   col6?: boolean;
   col8?: boolean;
   col12?: boolean;
+  right?: boolean;
 }
 
 export default interface GridSectionProps extends GridSectionStyleProps {
-  children: string | ReactElement | ReactElement[];
+  children: string | ReactElement | ReactElement[] | ReactNode;
 }
