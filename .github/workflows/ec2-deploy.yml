@@ -2,7 +2,9 @@ name: AWS EC2 Deploy
 
 on:
   push:
-    branches: [main, hotfix]
+    branches: [hotfix]
+  pull_request:
+    branches: [main, develop]
 
 env:
   S3_BUCKET_NAME: fe-newmil-s3
@@ -26,7 +28,7 @@ jobs:
         run: npm install --quiet
         shell: bash
 
-      - name: setting .env file
+      - name: setting env file
         run: |
           echo "REACT_APP_API_URL=$REACT_APP_API_URL" >> .env.production
           echo "REACT_APP_MODE=production" >> .env.production

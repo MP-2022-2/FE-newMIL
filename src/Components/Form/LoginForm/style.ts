@@ -4,7 +4,7 @@ import theme from '@/Styles/theme';
 export const LoginFormContainer = styled.form`
   display: flex;
   flex-direction: column;
-  width: 20rem;
+  width: 22rem;
   margin: 0 auto;
   margin-top: 3rem;
   background-color: white;
