@@ -1,12 +1,12 @@
 import { ReactElement, useEffect } from 'react';
-import { HeaderButton } from '@/Components/Button';
 import GridSection from '@/Components/Section';
-import HeaderDropDown from '@/Components/DropDown/HeaderDropDown';
+import HeaderDropDown from '@/Components/Header/DropDown';
 import { UsePc } from '@/Utils/Hooks/useMediaQuery';
 import { userState, userDataState } from '@/Recoil/user';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { setCookie } from '@/Pages/Login';
 import { APILoginType } from '@/@Types/UserType';
+import HeaderNavigation from './Navigation';
 import { HeaderContainer, Logo, LoginedInfo } from './style';
 import HeaderMobile from './index.mobile';
 
@@ -50,10 +50,10 @@ const Header = (): ReactElement => {
               <Logo src="/pictures/MIL.png" />
             </GridSection>
             <GridSection col3>
-              <HeaderButton url="/">홈</HeaderButton>
+              <HeaderNavigation url="/">홈</HeaderNavigation>
               <HeaderDropDown title="미디어학과" items={mediaItems} />
-              <HeaderButton url="/talk">게시판</HeaderButton>
-              <HeaderButton url="/cil">CIL</HeaderButton>
+              <HeaderNavigation url="/talk">게시판</HeaderNavigation>
+              <HeaderNavigation url="/cil">CIL</HeaderNavigation>
             </GridSection>
           </GridSection>
           {user.name !== '' && (
@@ -67,9 +67,9 @@ const Header = (): ReactElement => {
           )}
           {user.name === '' && (
             <GridSection right>
-              <HeaderButton url="/user/login" regular>
+              <HeaderNavigation url="/user/login" regular>
                 로그인
-              </HeaderButton>
+              </HeaderNavigation>
             </GridSection>
           )}
         </HeaderContainer>

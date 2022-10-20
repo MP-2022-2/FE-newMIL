@@ -1,4 +1,4 @@
-import { Button } from '@/Components/Button';
+import Button from '@/Components/Button';
 import { Input } from '@/Components/Form';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { UserSignUpType } from '@/@Types/UserType';

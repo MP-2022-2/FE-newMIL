@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ButtonContainer } from '@/Components/Button/HeaderButton/style';
+import { NaviContainer } from '../Navigation/style';
 
 export const Title = styled.h4`
   z-index: 2;
@@ -32,7 +32,7 @@ export const ListContent = styled.li`
   }
 `;
 
-export const DropDownContainer = styled(ButtonContainer)`
+export const DropDownContainer = styled(NaviContainer)`
   a,
   h4 {
     z-index: 2;
