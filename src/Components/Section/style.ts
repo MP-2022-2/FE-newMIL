@@ -8,11 +8,17 @@ export const SectionContainer = styled.section<GridSectionStyleProps>`
   justify-content: space-between;
   max-width: ${calColumnToRem(1)};
 
-  //justify-content:
+  //align
   ${(props) =>
     props.right &&
     css`
       justify-content: right;
+    `}
+
+  ${(props) =>
+    props.center &&
+    css`
+      margin: 0 auto;
     `}
 
   //column

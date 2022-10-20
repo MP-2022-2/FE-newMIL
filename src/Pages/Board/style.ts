@@ -4,10 +4,15 @@ export const BoardWrapper = styled.div`
   display: block;
 `;
 
-export const MenuContainer = styled.nav`
+export const BoardContainer = styled.section`
   display: block;
+  margin-top: 1rem;
 `;
 
-export const ContentContainer = styled.section`
-  display: block;
+export const NaviContainer = styled.nav`
+  display: flex;
+  width: 90%;
+  max-width: ${({ theme }) => theme.layout.maxWidth};
+  margin: 0 auto;
+  vertical-align: middle;
 `;
