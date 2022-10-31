@@ -28,5 +28,6 @@ export const ButtonContainer = styled.button`
   :disabled,
   [disalbed] {
     background-color: ${theme.color.disabled};
+    cursor: not-allowed;
   }
 `;

@@ -4,5 +4,6 @@ export interface ArticleTypes {
   author: string;
   like: number;
   comments: number;
+  content: string;
   key?: string;
 }

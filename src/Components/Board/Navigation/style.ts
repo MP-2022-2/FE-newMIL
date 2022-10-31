@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import theme from '@/Styles/theme';
 
 export const NaviContainer = styled.nav`
+  display: block;
   width: 100%;
   text-align: center;
   align-self: center;
-  vertical-align: middle;
 
   ${theme.PC.h3};
 

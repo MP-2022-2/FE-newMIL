@@ -57,7 +57,7 @@ const Header = (): ReactElement => {
             </GridSection>
           </GridSection>
           {user.name !== '' && (
-            <GridSection col2>
+            <GridSection col3 right>
               <LoginedInfo>
                 <h4>{user.name}</h4>
                 <p>님, 환영합니다!</p>

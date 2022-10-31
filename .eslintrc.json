@@ -12,7 +12,7 @@
     "plugin:import/warnings",
     "plugin:import/typescript",
     "eslint-config-prettier"
-  ],
+  ],  
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -26,6 +26,7 @@
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "react/react-in-jsx-scope": "off", // import React from 'react' 무시
     "import/no-named-as-default": "off",
+    "no-console": "off", // console 사용하기
     "import/extensions": [ // 확장자 명시
       "error",
       "ignorePackages",
@@ -36,6 +37,9 @@
         "tsx": "never" 
       }
     ],
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "no-unused-vars": "warn", // no-unused-vars : 변수 선언 후 반드시 사용 (interface 임시로 변수 선언하고플 때 해결책)
+    "@typescript-eslint/explicit-module-boundary-types": "off", // module return type 명시 X
     "no-unused-expressions" : [ // 사용 안하는 표현 (예외 제외 Error 표시)
       "error", {
         "allowTernary" : true, // a ? b : 0 (삼항 연산자)

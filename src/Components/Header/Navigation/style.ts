@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const NaviContainer = styled.nav<{ regular?: boolean }>`
+export const NaviContainer = styled.li<{ regular?: boolean }>`
   position: relative;
   display: block;
   text-align: center;

@@ -11,7 +11,7 @@ const LoginForm = () => {
     register,
     handleSubmit,
     getValues,
-    formState: { isSubmitting, errors },
+    formState: { isSubmitting, errors, isValidating },
   } = useForm<UserLoginType>({
     mode: 'onChange',
     defaultValues: {
@@ -69,6 +69,7 @@ const LoginForm = () => {
         type="submit"
         disabled={
           isSubmitting ||
+          isValidating ||
           !!errors.userId ||
           !!errors.password ||
           !getValues('userId') ||

@@ -10,12 +10,27 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Noto Sans KR", sans-serif;
   }
 
+  html, body {
+    width : 100%;
+    height : 100%;
+  }
+  
+
   body {
     box-sizing: border-box;
   }
 
-  a {
+  button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    -webkit-tap-highlight-color : transparent;
+  }
+
+  a, a:visited {
     text-decoration: none;
+    color: #333;
   }
 
   @media ${theme.layout.desktop} {
