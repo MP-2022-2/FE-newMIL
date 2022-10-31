@@ -14,17 +14,17 @@ const mediaItems = [
   {
     id: 1,
     value: '교수님 소개',
-    url: 'media/professor',
+    url: '/media/professor',
   },
   {
     id: 2,
     value: '졸업 요건',
-    url: 'media/graduate',
+    url: '/media/graduate',
   },
   {
     id: 3,
     value: '졸업생 인터뷰',
-    url: 'media/interview',
+    url: '/media/interview',
   },
 ];
 
