@@ -12,5 +12,6 @@ export const LoginContainer = styled.section`
 export const LoginWrapper = styled.div`
   background-color: #efefef;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
 `;

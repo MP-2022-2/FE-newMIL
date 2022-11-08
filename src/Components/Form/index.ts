@@ -1,5 +1,6 @@
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
-import Input from './Input';
+import InfoForm from './InfoForm';
+import Input from './_Input';
 
-export { Input, LoginForm, SignUpForm };
+export { Input, LoginForm, SignUpForm, InfoForm };

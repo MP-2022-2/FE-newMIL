@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from '@/Styles/theme';
 
 const LabelTag = styled.label`
@@ -21,12 +21,19 @@ const InputTag = styled.input`
   }
 `;
 
-const CaptionTag = styled.span`
+const CaptionTag = styled.span<{ visible: string | boolean | undefined }>`
+  visibility: hidden;
   color: ${theme.color.bad};
   font-weight: 700;
   text-align: left;
-  padding-top: 0.2rem;
-  padding-bottom: 1rem;
+  padding: 0.2rem 0 0.5rem;
+
+  ${(props) =>
+    props.visible &&
+    css`
+      visibility: visible;
+      padding-bottom: 1rem;
+    `}
 `;
 
 export { LabelTag, InputTag, CaptionTag };

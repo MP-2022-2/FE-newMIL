@@ -1,5 +1,8 @@
-export interface UserType {
+export interface UserAuthType {
   email: string;
+}
+
+export interface UserType extends UserAuthType {
   name: string;
   studentId: number;
   company: string;
@@ -22,4 +25,5 @@ export interface UserLoginType {
 
 export interface UserSignUpType extends UserLoginType, UserType {
   pwcheck: string;
+  verify: string;
 }
