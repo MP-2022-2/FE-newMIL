@@ -12,8 +12,10 @@ const SignUpForm = () => {
     register,
     handleSubmit,
     getValues,
-    reset,
-    formState: { isSubmitting, errors },
+    trigger,
+    resetField,
+    setValue,
+    formState: { isSubmitting, errors, isValidating },
   } = useForm<UserSignUpType>({ mode: 'onBlur' });
 
   const { choose } = useContext(SignUpContext);
@@ -26,7 +28,7 @@ const SignUpForm = () => {
   const useEmailAuth = () => {
     if (auth) {
       setAuth(false);
-      reset({ verify: '' });
+      resetField('verify');
     } else {
       // emailFunc({ email: getValues('email') });
       setAuth(true);
@@ -49,11 +51,14 @@ const SignUpForm = () => {
             value: /[a-zA-Z0-9]+@ajou.ac.kr/,
             message: '아주 이메일로만 인증이 가능합니다.',
           },
+          onChange: async () => {
+            await trigger('email');
+          },
         })}
       />
       {!auth && (
         <Button
-          disabled={!!errors.email || !getValues('email')}
+          disabled={!getValues('email') || !!errors.email}
           id="email"
           type="button"
           onClick={useEmailAuth}
@@ -74,17 +79,35 @@ const SignUpForm = () => {
                 value: 8,
                 message: '8자리 인증번호를 입력하세요',
               },
+              max: 8,
+              onChange: async () => {
+                await trigger('verify');
+              },
+              validate: {
+                maxLength: () => {
+                  const { verify } = getValues();
+                  if (verify.length > 8) {
+                    setValue('verify', verify.substring(0, 8));
+                  }
+                  return verify.length < 9 || '8자리 이상 입력하실 수 없습니다.';
+                },
+              },
             })}
           />
           <Button
             disabled={!!errors.verify || !getValues('verify')}
-            id="confirm"
+            id="verify"
             type="button"
             onClick={useEmailAuth}
           >
             인증하기
           </Button>
-          <Button third onClick={() => reset({ verify: '' })}>
+          <Button
+            third
+            onClick={() => {
+              resetField('verify');
+            }}
+          >
             아주메일 재전송
           </Button>
         </>
@@ -99,6 +122,9 @@ const SignUpForm = () => {
         autoFocus
         context={register('userId', {
           required: '아이디를 입력하세요.',
+          onChange: async () => {
+            await trigger('userId');
+          },
         })}
       />
       <Input
@@ -115,11 +141,14 @@ const SignUpForm = () => {
             message: '6자리 이상 비밀번호를 사용하세요.',
           },
           maxLength: {
-            value: 16,
-            message: '16자리 이하 비밀번호를 사용하세요.',
+            value: 12,
+            message: '12자리 이하 비밀번호를 사용하세요.',
+          },
+          onChange: async () => {
+            await trigger('password');
           },
           pattern: {
-            value: /^(?=.*\d)(?=.*[a-zA-ZS]).{8,}/,
+            value: /^(?=.*\d)(?=.*[a-zA-ZS]).{6,}/,
             message: '영문과 숫자를 혼용하여 입력해주세요',
           },
         })}
@@ -138,12 +167,15 @@ const SignUpForm = () => {
             message: '6자리 이상 비밀번호를 사용하세요.',
           },
           maxLength: {
-            value: 16,
-            message: '16자리 이하 비밀번호를 사용하세요.',
+            value: 12,
+            message: '12자리 이하 비밀번호를 사용하세요.',
           },
           pattern: {
             value: /^(?=.*\d)(?=.*[a-zA-ZS]).{6,}/,
             message: '영문과 숫자를 혼용하여 입력해주세요',
+          },
+          onChange: async () => {
+            await trigger('pwcheck');
           },
           validate: {
             matchesPw: (val) => {
@@ -163,6 +195,9 @@ const SignUpForm = () => {
         autoFocus
         context={register('name', {
           required: '이름을 입력하세요.',
+          onChange: async () => {
+            await trigger('name');
+          },
         })}
       />
       <Input
@@ -174,38 +209,79 @@ const SignUpForm = () => {
         autoFocus
         context={register('studentId', {
           required: '학번을 입력하세요.',
+          onChange: async () => {
+            await trigger('studentId');
+          },
+          pattern: {
+            value: /^[0-9]+$/,
+            message: '학번을 입력하세요.',
+          },
         })}
       />
-      {choose === '졸업생' && (
-        <Input
-          label="회사"
-          id="company"
-          type="text"
-          placehd="미디어인더스트리"
-          caption={errors.company?.message}
-          autoFocus
-          context={register('company', {
-            required: '회사를 입력하세요.',
-          })}
-        />
+      {choose === '재학생' && (
+        <Button
+          id="signup"
+          type="submit"
+          disabled={
+            !auth ||
+            isValidating ||
+            isSubmitting ||
+            !!errors.userId ||
+            !!errors.password ||
+            !!errors.pwcheck ||
+            !!errors.studentId ||
+            !!errors.name ||
+            !getValues('userId') ||
+            !getValues('password') ||
+            !getValues('pwcheck') ||
+            !getValues('studentId') ||
+            !getValues('name')
+          }
+        >
+          다음으로
+        </Button>
       )}
-      <Button
-        id="signup"
-        type="submit"
-        disabled={
-          isSubmitting ||
-          !!errors.userId ||
-          !!errors.password ||
-          !!errors.studentId ||
-          !!errors.name ||
-          !getValues('userId') ||
-          !getValues('password') ||
-          !getValues('studentId') ||
-          !getValues('name')
-        }
-      >
-        다음으로
-      </Button>
+      {choose === '졸업생' && (
+        <>
+          <Input
+            label="회사"
+            id="company"
+            type="text"
+            placehd="미디어인더스트리"
+            caption={errors.company?.message}
+            autoFocus
+            context={register('company', {
+              required: '회사를 입력하세요.',
+              onChange: async () => {
+                await trigger('company');
+              },
+            })}
+          />
+          <Button
+            id="signup"
+            type="submit"
+            disabled={
+              !auth ||
+              isValidating ||
+              isSubmitting ||
+              !!errors.userId ||
+              !!errors.password ||
+              !!errors.pwcheck ||
+              !!errors.studentId ||
+              !!errors.name ||
+              !!errors.company ||
+              !getValues('userId') ||
+              !getValues('password') ||
+              !getValues('pwcheck') ||
+              !getValues('studentId') ||
+              !getValues('name') ||
+              !getValues('company')
+            }
+          >
+            다음으로
+          </Button>
+        </>
+      )}
     </SignUpFormContainer>
   );
 };
