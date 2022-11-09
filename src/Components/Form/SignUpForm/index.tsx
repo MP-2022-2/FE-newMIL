@@ -1,5 +1,5 @@
 import { Button } from '@/Components/Button';
-import { Input, Timer } from '@/Components/Form';
+import { Input, Timer, TrackForm } from '@/Components/Form';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { UserSignUpType } from '@/@Types/UserType';
 import { SignUpContext } from '@/Pages/SignUp';
@@ -311,7 +311,7 @@ const SignUpForm = () => {
           )}
         </SignUpFormContainer>
       )}
-      {next && <>다음 페이지</>}
+      {next && <TrackForm />}
     </>
   );
 };
