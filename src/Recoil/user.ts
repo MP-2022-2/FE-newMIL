@@ -1,5 +1,5 @@
 import { atom, selector } from 'recoil';
-import { APILoginType } from '@/@Types/UserType';
+import { APILoginType, UserSignUpType } from '@/@Types/UserType';
 import { getCookie } from '@/Pages/Login';
 import { userFunc } from '@/Utils/Api/UserApi';
 
@@ -15,6 +15,20 @@ export const userState = atom<APILoginType>({
     status: 0,
     refreshToken: '',
     accessToken: '',
+  },
+});
+
+export const userSignUpState = atom<UserSignUpType>({
+  key: 'userSignUpState',
+  default: {
+    email: '',
+    userId: '',
+    password: '',
+    name: '',
+    studentId: 0,
+    company: '',
+    track: '',
+    verify: '',
   },
 });
 

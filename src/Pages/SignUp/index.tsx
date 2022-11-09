@@ -1,10 +1,6 @@
 import { InfoForm } from '@/Components/Form';
-import { createContext, useState, ReactNode } from 'react';
+import { createContext, useState } from 'react';
 import { SignUpWrapper } from './style';
-
-interface SignUpProps {
-  children: ReactNode | ReactNode[];
-}
 
 export const SignUpContext = createContext({
   choose: '',
@@ -12,23 +8,17 @@ export const SignUpContext = createContext({
   setChooseHandler: (event: string) => {},
 });
 
-export const SignUpProvider = ({ children }: SignUpProps) => {
+const SignUpPage = () => {
   const [choice, setChoice] = useState('');
   const setChoiceHandler = (event: string) => setChoice(event);
 
   return (
-    <SignUpContext.Provider value={{ choose: choice, setChooseHandler: setChoiceHandler }}>
-      {children}
-    </SignUpContext.Provider>
+    <SignUpWrapper>
+      <SignUpContext.Provider value={{ choose: choice, setChooseHandler: setChoiceHandler }}>
+        <InfoForm />
+      </SignUpContext.Provider>
+    </SignUpWrapper>
   );
 };
-
-const SignUpPage = () => (
-  <SignUpWrapper>
-    <SignUpProvider>
-      <InfoForm />
-    </SignUpProvider>
-  </SignUpWrapper>
-);
 
 export default SignUpPage;
