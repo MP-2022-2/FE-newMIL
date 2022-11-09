@@ -1,23 +1,23 @@
-import { SignUpForm } from '@/Components/Form';
-import { useState } from 'react';
-import { SignUpContainer } from './style';
+import { InfoForm } from '@/Components/Form';
+import { createContext, useState } from 'react';
+import { SignUpWrapper } from './style';
+
+export const SignUpContext = createContext({
+  choose: '',
+  // eslint-disable-next-line no-unused-vars
+  setChooseHandler: (event: string) => {},
+});
 
 const SignUpPage = () => {
-  const [select, setSelect] = useState<boolean>(true);
+  const [choice, setChoice] = useState('');
+  const setChoiceHandler = (event: string) => setChoice(event);
 
   return (
-    <SignUpContainer>
-      <h2>회원가입</h2>
-      <div className="select">
-        <a onClick={() => setSelect(true)}>
-          <li className={select ? 'on' : 'off'}>재학생</li>
-        </a>
-        <a onClick={() => setSelect(false)}>
-          <li className={select ? 'off' : 'on'}>졸업생</li>
-        </a>
-      </div>
-      <SignUpForm select={select} />
-    </SignUpContainer>
+    <SignUpWrapper>
+      <SignUpContext.Provider value={{ choose: choice, setChooseHandler: setChoiceHandler }}>
+        <InfoForm />
+      </SignUpContext.Provider>
+    </SignUpWrapper>
   );
 };
 

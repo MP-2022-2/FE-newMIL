@@ -2,9 +2,7 @@ name: AWS EC2 Deploy
 
 on:
   push:
-    branches: [hotfix]
-  pull_request:
-    branches: [main, develop]
+    branches: [hotfix, main, develop]
 
 env:
   S3_BUCKET_NAME: fe-newmil-s3

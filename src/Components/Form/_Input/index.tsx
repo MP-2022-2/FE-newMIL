@@ -7,7 +7,7 @@ const Input = (props: InputProps) => {
     <>
       <LabelTag htmlFor={id}>{label}</LabelTag>
       <InputTag id={id} type={type} placeholder={placehd} {...context} />
-      <CaptionTag>{caption}</CaptionTag>
+      <CaptionTag visible={caption}>{caption}</CaptionTag>
     </>
   );
 };

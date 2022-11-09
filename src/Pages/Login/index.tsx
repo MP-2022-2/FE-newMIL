@@ -10,6 +10,8 @@ export const setCookie = (name: string, value: string, option?: CookieSetOptions
 
 export const getCookie = (name: string) => cookies.get(name);
 
+export const removeCookie = (name: string) => cookies.remove(name);
+
 const LoginPage = () => (
   <LoginWrapper>
     <LoginContainer>
