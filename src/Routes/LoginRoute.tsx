@@ -1,5 +1,6 @@
 import { Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom';
 import useLogin from '@/Utils/Hooks/useLogin';
+import BoardPage from '@/Pages/Board';
 
 const LoginRoute = () => {
   const status = useLogin();
@@ -12,7 +13,7 @@ const LoginRoutes = () => {
   return (
     <Routes location={location}>
       <Route element={<LoginRoute />}>
-        <Route path="talk" element={'게시판'} />
+        <Route path="talk" element={<BoardPage />} />
       </Route>
       <Route element={'404 Not Found'} path="*" />
     </Routes>

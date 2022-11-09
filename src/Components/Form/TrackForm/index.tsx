@@ -1,7 +1,7 @@
 import SearchBar from '@/Components/SearchBar';
 import { List } from '@/Components/Form';
 import { DivideBar } from '@/Components/Form/SignUpForm/style';
-import { Button } from '@/Components/Button';
+import Button from '@/Components/Button';
 import { TrackFormContainer, Title, SubTitle, TrackContainer, Track } from './style';
 
 const TrackForm = () => (

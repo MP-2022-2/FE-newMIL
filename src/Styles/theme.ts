@@ -120,9 +120,9 @@ const layout: {
   mobile: string;
   desktop: string;
 } = {
-  maxWidth: '90rem',
+  maxWidth: '81rem',
   gutter: 24,
-  column: 98,
+  column: 86,
   mobile: `screen and (max-width: ${size.mobile})`,
   desktop: `screen and (min-width: ${size.desktop})`,
 };

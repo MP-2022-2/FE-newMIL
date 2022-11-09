@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Button } from '@/Components/Button';
+import Button from '@/Components/Button';
 import { Input } from '@/Components/Form';
 import { loginFunc } from '@/Utils/Api/LoginApi';
 import { UserLoginType } from '@/@Types/UserType';
@@ -11,7 +11,7 @@ const LoginForm = () => {
     register,
     handleSubmit,
     getValues,
-    formState: { isSubmitting, errors },
+    formState: { isSubmitting, errors, isValidating },
   } = useForm<UserLoginType>({
     mode: 'onChange',
     defaultValues: {
@@ -69,6 +69,7 @@ const LoginForm = () => {
         type="submit"
         disabled={
           isSubmitting ||
+          isValidating ||
           !!errors.userId ||
           !!errors.password ||
           !getValues('userId') ||

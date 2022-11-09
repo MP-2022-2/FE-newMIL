@@ -9,6 +9,7 @@ export interface GridSectionStyleProps {
   col8?: boolean;
   col12?: boolean;
   right?: boolean;
+  center?: boolean;
 }
 
 export default interface GridSectionProps extends GridSectionStyleProps {

@@ -15,13 +15,13 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="cil" element={'CIL'} />
-          <Route path="/media">
+          <Route path="media">
             <Route path="professor" element={'교수님 소개'} />
             <Route path="graduate" element={'졸업 요건'} />
             <Route path="interview" element={'인터뷰'} />
           </Route>
 
-          <Route path="/user">
+          <Route path="user">
             <Route path="login" element={<LoginPage />} />
             <Route path="signup" element={<SignUpPage />} />
           </Route>

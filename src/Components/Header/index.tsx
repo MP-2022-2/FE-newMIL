@@ -1,12 +1,12 @@
 import { ReactElement, useEffect } from 'react';
-import { HeaderButton } from '@/Components/Button';
 import GridSection from '@/Components/Section';
-import HeaderDropDown from '@/Components/DropDown/HeaderDropDown';
+import HeaderDropDown from '@/Components/Header/DropDown';
 import { UsePc } from '@/Utils/Hooks/useMediaQuery';
 import { userState, userDataState } from '@/Recoil/user';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { removeCookie } from '@/Pages/Login';
 import { APILoginType } from '@/@Types/UserType';
+import HeaderNavigation from './Navigation';
 import { HeaderContainer, Logo, LoginedInfo } from './style';
 import HeaderMobile from './index.mobile';
 
@@ -14,17 +14,17 @@ const mediaItems = [
   {
     id: 1,
     value: '교수님 소개',
-    url: 'media/professor',
+    url: '/media/professor',
   },
   {
     id: 2,
     value: '졸업 요건',
-    url: 'media/graduate',
+    url: '/media/graduate',
   },
   {
     id: 3,
     value: '졸업생 인터뷰',
-    url: 'media/interview',
+    url: '/media/interview',
   },
 ];
 
@@ -50,14 +50,14 @@ const Header = (): ReactElement => {
               <Logo src="/pictures/MIL.png" />
             </GridSection>
             <GridSection col3>
-              <HeaderButton url="/">홈</HeaderButton>
+              <HeaderNavigation url="/">홈</HeaderNavigation>
               <HeaderDropDown title="미디어학과" items={mediaItems} />
-              <HeaderButton url="/talk">게시판</HeaderButton>
-              <HeaderButton url="/cil">CIL</HeaderButton>
+              <HeaderNavigation url="/talk">게시판</HeaderNavigation>
+              <HeaderNavigation url="/cil">CIL</HeaderNavigation>
             </GridSection>
           </GridSection>
           {user.name !== '' && (
-            <GridSection col2>
+            <GridSection col3 right>
               <LoginedInfo>
                 <h4>{user.name}</h4>
                 <p>님, 환영합니다!</p>
@@ -67,9 +67,9 @@ const Header = (): ReactElement => {
           )}
           {user.name === '' && (
             <GridSection right>
-              <HeaderButton url="/user/login" regular>
+              <HeaderNavigation url="/user/login" regular>
                 로그인
-              </HeaderButton>
+              </HeaderNavigation>
             </GridSection>
           )}
         </HeaderContainer>
