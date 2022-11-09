@@ -3,7 +3,7 @@ import { UseFormRegisterReturn } from 'react-hook-form';
 export default interface InputProps {
   id: string;
   type: string;
-  placehd: string;
+  placehd?: string;
   autoFocus?: boolean | undefined;
   required?: boolean | undefined;
   label?: string;

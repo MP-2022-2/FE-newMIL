@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Button from '@/Components/Button';
 import { Input } from '@/Components/Form';
-import { loginFunc } from '@/Utils/Api/loginApi';
+import { loginFunc } from '@/Utils/Api/LoginApi';
 import { UserLoginType } from '@/@Types/UserType';
 import { Link } from 'react-router-dom';
 import { LoginFormContainer, IDCheckBoxContainer, SignUpContainer, SignUpLink } from './style';

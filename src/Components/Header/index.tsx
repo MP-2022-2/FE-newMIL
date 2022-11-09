@@ -4,7 +4,7 @@ import HeaderDropDown from '@/Components/Header/DropDown';
 import { UsePc } from '@/Utils/Hooks/useMediaQuery';
 import { userState, userDataState } from '@/Recoil/user';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import { setCookie } from '@/Pages/Login';
+import { removeCookie } from '@/Pages/Login';
 import { APILoginType } from '@/@Types/UserType';
 import HeaderNavigation from './Navigation';
 import { HeaderContainer, Logo, LoginedInfo } from './style';
@@ -32,8 +32,8 @@ const Header = (): ReactElement => {
   const [user, setUser] = useRecoilState(userState);
   const userData = useRecoilValue<APILoginType>(userDataState);
   const reset = () => {
-    setCookie('accessToken', '', { expires: new Date(Date.now()) });
-    setCookie('refreshToken', '', { expires: new Date(Date.now()) });
+    removeCookie('accessToken');
+    removeCookie('refreshToken');
     window.location.replace('/');
   };
 

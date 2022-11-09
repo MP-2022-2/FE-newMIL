@@ -1,3 +1,9 @@
+export interface UserAuthType {
+  email: string;
+  randomCode?: string;
+  reset?: boolean;
+}
+
 export interface UserType {
   email: string;
   name: string;
@@ -7,13 +13,6 @@ export interface UserType {
   identity?: string;
 }
 
-export interface APILoginType extends UserType {
-  msg: string;
-  status: number;
-  accessToken: string;
-  refreshToken: string;
-}
-
 export interface UserLoginType {
   userId: string;
   password: string;
@@ -21,5 +20,13 @@ export interface UserLoginType {
 }
 
 export interface UserSignUpType extends UserLoginType, UserType {
-  pwcheck: string;
+  pwcheck?: string;
+  verify: string;
+}
+
+export interface APILoginType extends UserType {
+  msg: string;
+  status: number;
+  accessToken: string;
+  refreshToken: string;
 }
