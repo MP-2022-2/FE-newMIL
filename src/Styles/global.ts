@@ -33,6 +33,24 @@ const GlobalStyle = createGlobalStyle`
     color: #333;
   }
 
+  @keyframes push {
+    0% {
+      transform : scale(1);
+    }
+    100% {
+      transform : scale(0.955);
+    }
+  }
+
+  @keyframes pull {
+    0% {
+      transform : scale(1);
+    }
+    100% {
+      transform : scale(1.035);
+    }
+  }
+
   @media ${theme.layout.desktop} {
     h1 {
       ${theme.PC.h1};

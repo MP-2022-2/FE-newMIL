@@ -45,12 +45,9 @@ const SignUpForm = () => {
     setAuth(!auth);
   };
 
-  // 구현할 것
-  // 4. 넘어가고 track post
-
   return (
     <>
-      {!next && (
+      {next && (
         <SignUpFormContainer onSubmit={handleSubmit(onSubmit)}>
           <Title>회원가입</Title>
           <Input
@@ -311,7 +308,7 @@ const SignUpForm = () => {
           )}
         </SignUpFormContainer>
       )}
-      {next && <TrackForm />}
+      {!next && <TrackForm />}
     </>
   );
 };

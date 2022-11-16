@@ -22,9 +22,10 @@ export const TrackContainer = styled.section`
   margin-top: 0.5rem;
 `;
 
-export const Track = styled.div`
+export const Track = styled.button`
   width: 4rem;
   height: 3rem;
   border-radius: 10px;
-  background-color: ${theme.color.ajouSilver};
+  background-color: ${theme.color.white};
+  border: 1px solid ${theme.color.ajouGold};
 `;
