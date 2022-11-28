@@ -15,6 +15,9 @@ const GlobalStyle = createGlobalStyle`
     height : 100%;
   }
   
+  ul, li {
+    list-style-type : none;
+  }
 
   body {
     box-sizing: border-box;

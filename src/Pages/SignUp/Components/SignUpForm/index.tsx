@@ -1,5 +1,5 @@
 import Button from '@/Components/Button';
-import { Input, Timer, TrackForm } from '@/Components/Form';
+import { Input, Timer } from '@/Components/Form';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { UserSignUpType } from '@/@Types/UserType';
 import { SignUpContext } from '@/Pages/SignUp';
@@ -7,6 +7,7 @@ import { useContext, useState } from 'react';
 import { emailFunc } from '@/Utils/Api/EmailApi';
 import { useRecoilState } from 'recoil';
 import { userSignUpState } from '@/Recoil/user';
+import TrackForm from '../TrackForm';
 import { SignUpFormContainer, Title, DivideBar } from './style';
 
 const SignUpForm = () => {
@@ -23,7 +24,7 @@ const SignUpForm = () => {
   const { choose } = useContext(SignUpContext);
   const [auth, setAuth] = useState(false); // 이메일 인증 Switch, true : 인증 번호 확인, false : 인증 메일 발송
   const [isVerified, setIsVerified] = useState(false); // 인증 여부 확인
-  const [next, setNext] = useState(false); // 다음 페이지 Switch
+  const [next, setNext] = useState(true); // 다음 페이지 Switch
   const [user, setUser] = useRecoilState(userSignUpState);
 
   const onSubmit: SubmitHandler<UserSignUpType> = async (data) => {
@@ -47,7 +48,7 @@ const SignUpForm = () => {
 
   return (
     <>
-      {next && (
+      {!next && (
         <SignUpFormContainer onSubmit={handleSubmit(onSubmit)}>
           <Title>회원가입</Title>
           <Input
@@ -308,7 +309,7 @@ const SignUpForm = () => {
           )}
         </SignUpFormContainer>
       )}
-      {!next && <TrackForm />}
+      {next && <TrackForm />}
     </>
   );
 };

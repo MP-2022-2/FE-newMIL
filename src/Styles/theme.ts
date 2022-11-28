@@ -94,8 +94,8 @@ const common = {
 };
 
 const color = {
-  blue: '#4B89DC',
-  lightblue: '#FCFDFF',
+  blue: '#0066B3',
+  lightblue: '#B8D4EA',
   black: '#333333',
   white: '#fefefe',
   gray: '#dfdfdf',

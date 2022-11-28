@@ -1,6 +1,6 @@
-import { LoginForm } from '@/Components/Form';
 import Cookies, { CookieSetOptions } from 'universal-cookie';
 import { Link } from 'react-router-dom';
+import LoginForm from './Components/LoginForm';
 import { LoginWrapper, LoginContainer, Logo } from './style';
 
 const cookies = new Cookies();
