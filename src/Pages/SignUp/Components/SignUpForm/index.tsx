@@ -50,6 +50,7 @@ const SignUpForm = () => {
       company: choose === '졸업생' ? data.company : 'null',
       track: 'VC',
     });
+    setIsShownTrackForm(true);
   };
 
   const onChangeEmailForm = async () => {
