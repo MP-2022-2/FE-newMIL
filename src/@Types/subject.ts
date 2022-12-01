@@ -1,6 +1,8 @@
 export interface SubjectType {
   subject: string;
-  kind: string;
   gpa: number;
+}
+
+export interface SubjectOriginalType extends SubjectType {
   visible: boolean;
 }

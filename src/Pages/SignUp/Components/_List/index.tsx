@@ -1,13 +1,13 @@
 import { ReactComponent as CancelIcon } from 'icons/cancel.svg';
 import { useContext } from 'react';
-import { SubjectType } from '@/@Types/subject';
+import { SubjectOriginalType } from '@/@Types/subject';
 import { ListContainer, ListTag, ChipContainer, ChipTag } from './style';
 import { ListProps } from './types';
-import { TrackContext } from '../TrackForm';
+import { TrackContext } from '../SignUpForm';
 
 const List = (props: ListProps) => {
   const { data, filter, is = 'default' } = props;
-  const { choose, setChooseHandler } = useContext(TrackContext);
+  const { isChosenList, setIsChosenList } = useContext(TrackContext);
 
   const listData = data.filter((val) => {
     if (filter === '') {
@@ -16,10 +16,10 @@ const List = (props: ListProps) => {
     return val.subject.includes(filter);
   });
 
-  const onToggle = (subject: string, isShown: boolean) => {
-    setChooseHandler(
-      choose.map((val: SubjectType) =>
-        val.subject === subject ? { ...val, visible: isShown } : val,
+  const onToggle = (target: string, isShown: boolean) => {
+    setIsChosenList(
+      isChosenList.map((val: SubjectOriginalType) =>
+        val.subject === target ? { ...val, visible: isShown } : val,
       ),
     );
   };

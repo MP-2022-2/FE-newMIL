@@ -6,6 +6,7 @@ import { userFunc } from '@/Utils/Api/UserApi';
 export const userState = atom<APILoginType>({
   key: 'userState',
   default: {
+    nickName: '',
     name: '',
     track: '',
     studentId: 0,
@@ -21,6 +22,7 @@ export const userState = atom<APILoginType>({
 export const userSignUpState = atom<UserSignUpType>({
   key: 'userSignUpState',
   default: {
+    nickName: '',
     email: '',
     userId: '',
     password: '',

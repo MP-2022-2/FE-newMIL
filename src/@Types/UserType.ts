@@ -1,3 +1,5 @@
+import { SubjectType } from './subject';
+
 export interface UserAuthType {
   email: string;
   randomCode?: string;
@@ -10,6 +12,7 @@ export interface UserType {
   studentId: number;
   company: string;
   track: string;
+  nickName: string;
   identity?: string;
 }
 
@@ -29,4 +32,11 @@ export interface APILoginType extends UserType {
   status: number;
   accessToken: string;
   refreshToken: string;
+}
+
+export interface SignUpType extends UserLoginType, UserType {}
+
+export interface TrackType {
+  studentId: number;
+  subjectList: SubjectType[];
 }

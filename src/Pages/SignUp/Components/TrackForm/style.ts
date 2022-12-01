@@ -7,7 +7,7 @@ export const TrackFormContainer = styled.section`
   width: 22rem;
 `;
 
-export const SubLink = styled.p`
+export const SubLink = styled.caption`
   display: block;
   padding: 2rem 0 0.5rem;
   text-decoration: underline;
