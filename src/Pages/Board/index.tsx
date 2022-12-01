@@ -1,9 +1,9 @@
 import Header from '@/Components/Header';
-import Board from '@/Components/Board';
-import Navigation from '@/Components/Board/Navigation';
+import Navigation from '@/Pages/Board/Components/Navigation';
 import GridSection from '@/Components/Section';
 import { useRecoilValue } from 'recoil';
 import { boardState } from '@/Recoil/theme';
+import Board from './Components/BoardCard';
 import { BoardWrapper, BoardContainer, NaviContainer } from './style';
 
 export const BoardList = ['자유', '질문', '재학생', '졸업생'];

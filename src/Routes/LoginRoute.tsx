@@ -13,7 +13,7 @@ const LoginRoutes = () => {
   return (
     <Routes location={location}>
       <Route element={<LoginRoute />}>
-        <Route path="talk" element={<BoardPage />} />
+        <Route path="board" element={<BoardPage />} />
       </Route>
       <Route element={'404 Not Found'} path="*" />
     </Routes>
