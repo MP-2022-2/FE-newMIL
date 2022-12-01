@@ -5,11 +5,10 @@ import { UserSignUpType } from '@/@Types/UserType';
 import { SignUpContext } from '@/Pages/SignUp';
 import { useContext, useState, createContext } from 'react';
 import { emailFunc } from '@/Utils/Api/EmailApi';
-import { trackFunc, signUpFunc } from '@/Utils/Api/SignUpApi';
+import { signUpFunc } from '@/Utils/Api/SignUpApi';
 import { useRecoilState } from 'recoil';
 import { userSignUpState } from '@/Recoil/user';
 import { Subjects } from '@/Utils/Constants/subject';
-import { SubjectType, SubjectOriginalType } from '@/@Types/subject';
 import TrackForm from '../TrackForm';
 import { SignUpFormContainer, Title, DivideBar } from './style';
 
@@ -50,6 +49,11 @@ const SignUpForm = () => {
       company: choose === '졸업생' ? data.company : 'null',
       track: 'VC',
     });
+    setUser({
+      ...user,
+      studentId: data.studentId,
+    });
+    setIsShownTrackForm(true);
   };
 
   const onChangeEmailForm = async () => {
@@ -61,17 +65,6 @@ const SignUpForm = () => {
     );
     resetField('verify');
     setonToggleEmailVerifiedForm(!onToggleEmailVerifiedForm);
-  };
-
-  const onTrackSubmit = async () => {
-    trackFunc({
-      studentId: user.studentId,
-      subjectList: isChosenList
-        .filter((el: SubjectOriginalType) => !el.visible.valueOf())
-        .map((el: SubjectOriginalType) =>
-          el.visible === false ? { subject: el.subject, gpa: el.gpa } : el,
-        ),
-    });
   };
 
   return (
@@ -353,7 +346,7 @@ const SignUpForm = () => {
         </SignUpFormContainer>
       )}
       <TrackContext.Provider value={{ isChosenList, setIsChosenList }}>
-        {isShownTrackForm && <TrackForm onTrackSubmit={onTrackSubmit} />}
+        {isShownTrackForm && <TrackForm Id={user.studentId} />}
       </TrackContext.Provider>
     </>
   );
