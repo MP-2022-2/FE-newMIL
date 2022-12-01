@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import theme from '@/Styles/theme';
-import { IDCheckBoxContainer } from '@/Components/Form/LoginForm/style';
 import { LoginContainer } from '@/Pages/Login/style';
+import { IDCheckBoxContainer } from '../../../Login/Components/LoginForm/style';
 
 export const InfoFormContainer = styled.form`
   ${theme.common.flexCenterColumn};

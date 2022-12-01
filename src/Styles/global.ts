@@ -15,6 +15,9 @@ const GlobalStyle = createGlobalStyle`
     height : 100%;
   }
   
+  ul, li {
+    list-style-type : none;
+  }
 
   body {
     box-sizing: border-box;
@@ -31,6 +34,24 @@ const GlobalStyle = createGlobalStyle`
   a, a:visited {
     text-decoration: none;
     color: #333;
+  }
+
+  @keyframes push {
+    0% {
+      transform : scale(1);
+    }
+    100% {
+      transform : scale(0.955);
+    }
+  }
+
+  @keyframes pull {
+    0% {
+      transform : scale(1);
+    }
+    100% {
+      transform : scale(1.035);
+    }
   }
 
   @media ${theme.layout.desktop} {

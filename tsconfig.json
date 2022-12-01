@@ -22,10 +22,12 @@
     "jsx": "react-jsx",
     "types": ["node"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "icons/*": ["./src/assets/icons/*"]
     }
   },
   "include": [
-    "src"
+    "src",
+    "src/@Types/svg.d.ts"
   ]
 }

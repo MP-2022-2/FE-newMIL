@@ -1,5 +1,5 @@
-import { InfoForm } from '@/Components/Form';
 import { createContext, useState } from 'react';
+import InfoForm from './Components/InfoForm';
 import { SignUpWrapper } from './style';
 
 export const SignUpContext = createContext({

@@ -1,4 +1,7 @@
 {
+  "globals": {
+    "NodeJS": true
+  },
   "env": {
     "browser": true,
     "es2021": true,
@@ -58,7 +61,7 @@
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       },
       "alias": {
-        "map": [["@", "./src"]],
+        "map": [["@", "./src"], ["icons", "./src/assets/icons"]],
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
