@@ -5,6 +5,7 @@ import LoginRoutes from '@/Routes/LoginRoute';
 import LoginPage from '@/Pages/Login';
 import SignUpPage from '@/Pages/SignUp';
 import MainPage from '@/Pages/Main';
+import InterviewPage from '@/Pages/Media/Interview';
 
 axios.defaults.withCredentials = true;
 
@@ -16,9 +17,9 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="cil" element={'CIL'} />
           <Route path="media">
-            <Route path="professor" element={'교수님 소개'} />
+            <Route path="professor" element={'교수님'} />
             <Route path="graduate" element={'졸업 요건'} />
-            <Route path="interview" element={'인터뷰'} />
+            <Route path="interview" element={<InterviewPage />} />
           </Route>
 
           <Route path="user">
