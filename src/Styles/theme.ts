@@ -94,10 +94,11 @@ const common = {
 };
 
 const color = {
-  blue: '#4B89DC',
-  lightblue: '#FCFDFF',
+  blue: '#0066B3',
+  lightblue: '#B8D4EA',
   black: '#333333',
   white: '#fefefe',
+  gray: '#dfdfdf',
   bad: '#FF3E55',
   darkBlue: '#0A2B52',
   ajouBlue: '#0066B3',
@@ -111,6 +112,12 @@ const color = {
 const size = {
   mobile: '786px',
   desktop: '787px',
+};
+
+const Animation = {
+  Btnhover: `
+    
+  `,
 };
 
 const layout: {
@@ -133,6 +140,7 @@ const theme = {
   layout,
   PC,
   Mobile,
+  Animation,
 };
 
 export default theme;

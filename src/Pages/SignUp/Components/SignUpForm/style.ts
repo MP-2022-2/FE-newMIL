@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { LoginFormContainer } from '@/Components/Form/LoginForm/style';
 import theme from '@/Styles/theme';
+import { LoginFormContainer } from '../../../Login/Components/LoginForm/style';
 
 export const SignUpFormContainer = styled(LoginFormContainer)`
   margin: 1rem 0 5rem;

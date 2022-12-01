@@ -1,13 +1,23 @@
 import Button from '@/Components/Button';
-import { Input, Timer, TrackForm } from '@/Components/Form';
+import { Input, Timer } from '@/Components/Form';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { UserSignUpType } from '@/@Types/UserType';
 import { SignUpContext } from '@/Pages/SignUp';
-import { useContext, useState } from 'react';
+import { useContext, useState, createContext } from 'react';
 import { emailFunc } from '@/Utils/Api/EmailApi';
+import { trackFunc, signUpFunc } from '@/Utils/Api/SignUpApi';
 import { useRecoilState } from 'recoil';
 import { userSignUpState } from '@/Recoil/user';
+import { Subjects } from '@/Utils/Constants/subject';
+import { SubjectType, SubjectOriginalType } from '@/@Types/subject';
+import TrackForm from '../TrackForm';
 import { SignUpFormContainer, Title, DivideBar } from './style';
+
+export const TrackContext = createContext({
+  isChosenList: [] as any,
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+  setIsChosenList: (event: any) => {},
+});
 
 const SignUpForm = () => {
   const {
@@ -21,36 +31,53 @@ const SignUpForm = () => {
   } = useForm<UserSignUpType>({ mode: 'onChange' });
 
   const { choose } = useContext(SignUpContext);
-  const [auth, setAuth] = useState(false); // 이메일 인증 Switch, true : 인증 번호 확인, false : 인증 메일 발송
+  const [onToggleEmailVerifiedForm, setonToggleEmailVerifiedForm] = useState(false); // 이메일 인증 Form Switch, true : 인증 번호 확인, false : 인증 메일 발송
   const [isVerified, setIsVerified] = useState(false); // 인증 여부 확인
-  const [next, setNext] = useState(false); // 다음 페이지 Switch
+  const [isShownTrackForm, setIsShownTrackForm] = useState(false); // 다음 Track Form
+  const [isChosenList, setIsChosenList] = useState(Subjects);
   const [user, setUser] = useRecoilState(userSignUpState);
+  const [isVerifiedEmail, setIsVerifiedEmail] = useState('');
 
   const onSubmit: SubmitHandler<UserSignUpType> = async (data) => {
-    setUser({
-      ...user,
-      email: data.email,
+    signUpFunc({
+      nickName: data.nickName,
       userId: data.userId,
+      email: isVerifiedEmail,
       password: data.password,
       name: data.name,
       studentId: data.studentId,
-      company: data.company,
+      identity: choose === '졸업생' ? 'ROLE_GRADUATE' : 'ROLE_STUDENT',
+      company: choose === '졸업생' ? data.company : 'null',
+      track: 'VC',
     });
-    setNext(true);
+    setIsShownTrackForm(true);
   };
 
-  const useEmailAuth = async () => {
-    emailFunc({ email: getValues('email'), randomCode: getValues('verify') }, setIsVerified, auth);
+  const onChangeEmailForm = async () => {
+    await emailFunc(
+      { email: getValues('email'), randomCode: getValues('verify') },
+      setIsVerified,
+      setIsVerifiedEmail,
+      onToggleEmailVerifiedForm,
+    );
     resetField('verify');
-    setAuth(!auth);
+    setonToggleEmailVerifiedForm(!onToggleEmailVerifiedForm);
   };
 
-  // 구현할 것
-  // 4. 넘어가고 track post
+  const onTrackSubmit = async () => {
+    trackFunc({
+      studentId: user.studentId,
+      subjectList: isChosenList
+        .filter((el: SubjectOriginalType) => !el.visible.valueOf())
+        .map((el: SubjectOriginalType) =>
+          el.visible === false ? { subject: el.subject, gpa: el.gpa } : el,
+        ),
+    });
+  };
 
   return (
     <>
-      {!next && (
+      {!isShownTrackForm && (
         <SignUpFormContainer onSubmit={handleSubmit(onSubmit)}>
           <Title>회원가입</Title>
           <Input
@@ -74,17 +101,17 @@ const SignUpForm = () => {
           />
           {!isVerified && (
             <>
-              {!auth && (
+              {!onToggleEmailVerifiedForm && (
                 <Button
                   disabled={!getValues('email') || !!errors.email}
                   id="email"
                   type="button"
-                  onClick={useEmailAuth}
+                  onClick={onChangeEmailForm}
                 >
                   인증메일 발송
                 </Button>
               )}
-              {auth && (
+              {onToggleEmailVerifiedForm && (
                 <>
                   <Input
                     id="verify"
@@ -117,7 +144,7 @@ const SignUpForm = () => {
                     disabled={!!errors.verify || !getValues('verify')}
                     id="verify"
                     type="button"
-                    onClick={useEmailAuth}
+                    onClick={onChangeEmailForm}
                   >
                     인증하기
                   </Button>
@@ -132,6 +159,7 @@ const SignUpForm = () => {
                           reset: true,
                         },
                         setIsVerified,
+                        setIsVerifiedEmail,
                       );
                     }}
                   >
@@ -230,6 +258,20 @@ const SignUpForm = () => {
             })}
           />
           <Input
+            label="닉네임"
+            id="nickName"
+            type="text"
+            placehd="빙구"
+            caption={errors.nickName?.message}
+            autoFocus
+            context={register('nickName', {
+              required: '닉네임을 입력하세요.',
+              onChange: async () => {
+                await trigger('nickName');
+              },
+            })}
+          />
+          <Input
             label="학번"
             id="studentId"
             type="text"
@@ -311,7 +353,9 @@ const SignUpForm = () => {
           )}
         </SignUpFormContainer>
       )}
-      {next && <TrackForm />}
+      <TrackContext.Provider value={{ isChosenList, setIsChosenList }}>
+        {isShownTrackForm && <TrackForm onTrackSubmit={onTrackSubmit} />}
+      </TrackContext.Provider>
     </>
   );
 };
