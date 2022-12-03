@@ -80,6 +80,16 @@ const Mobile = {
 };
 
 const common = {
+  pushAnimation: `
+    transition: 0.15s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.025);
+    }
+    &:active {
+      transform: scale(0.965);
+    }
+  `,
   flexCenter: `
     display: flex;
     justify-contents: center;

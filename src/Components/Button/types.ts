@@ -4,6 +4,7 @@ export interface ButtonHeirarchy {
   secondary?: boolean;
   third?: boolean;
   fourth?: boolean;
+  fifth?: boolean;
 }
 
 export default interface DefaultButtonProps extends ButtonHeirarchy {

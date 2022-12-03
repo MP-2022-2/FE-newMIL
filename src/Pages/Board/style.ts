@@ -15,4 +15,8 @@ export const NaviContainer = styled.nav`
   max-width: ${({ theme }) => theme.layout.maxWidth};
   margin: 0 auto;
   vertical-align: middle;
+
+  a {
+    width: 100%;
+  }
 `;

@@ -8,6 +8,12 @@ export interface GridSectionStyleProps {
   col6?: boolean;
   col8?: boolean;
   col12?: boolean;
+  gap8?: boolean;
+  gap16?: boolean;
+  gap20?: boolean;
+  gap24?: boolean;
+  gap28?: boolean;
+  gap32?: boolean;
   right?: boolean;
   center?: boolean;
 }

@@ -57,4 +57,36 @@ export const SectionContainer = styled.section<GridSectionStyleProps>`
     css`
       max-width: ${calColumnToRem(8)};
     `};
+
+  //gap
+  ${(props) =>
+    props.gap8 &&
+    css`
+      gap: 0.5rem;
+    `}
+  ${(props) =>
+    props.gap16 &&
+    css`
+      gap: 1rem;
+    `};
+  ${(props) =>
+    props.gap20 &&
+    css`
+      gap: 1.25rem;
+    `};
+  ${(props) =>
+    props.gap24 &&
+    css`
+      gap: 1.5rem;
+    `};
+  ${(props) =>
+    props.gap28 &&
+    css`
+      gap: 1.75rem;
+    `};
+  ${(props) =>
+    props.gap32 &&
+    css`
+      gap: 2rem;
+    `};
 `;

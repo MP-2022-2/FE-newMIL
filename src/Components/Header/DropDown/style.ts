@@ -33,6 +33,8 @@ export const ListContent = styled.li`
 `;
 
 export const DropDownContainer = styled(NaviContainer)`
+  z-index: 1000;
+
   a,
   h4 {
     z-index: 2;

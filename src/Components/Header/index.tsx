@@ -1,4 +1,4 @@
-import { ReactElement, useEffect } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import GridSection from '@/Components/Section';
 import HeaderDropDown from '@/Components/Header/DropDown';
 import { UsePc } from '@/Utils/Hooks/useMediaQuery';
@@ -6,8 +6,10 @@ import { userState, userDataState } from '@/Recoil/user';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { removeCookie } from '@/Pages/Login';
 import { APILoginType } from '@/@Types/UserType';
+import { Icon } from '@iconify/react';
+import { Link } from 'react-router-dom';
 import HeaderNavigation from './Navigation';
-import { HeaderContainer, Logo, LoginedInfo } from './style';
+import { HeaderContainer, Logo, LoginedInfo, LogoutButton, LoginedInfoContents } from './style';
 import HeaderMobile from './index.mobile';
 
 const mediaItems = [
@@ -31,6 +33,8 @@ const mediaItems = [
 const Header = (): ReactElement => {
   const [user, setUser] = useRecoilState(userState);
   const userData = useRecoilValue<APILoginType>(userDataState);
+  const [isShownProfile, setIsShownProfile] = useState(false);
+
   const reset = () => {
     removeCookie('accessToken');
     removeCookie('refreshToken');
@@ -40,6 +44,10 @@ const Header = (): ReactElement => {
   useEffect(() => {
     userData && setUser(userData);
   }, [user]);
+
+  const onToggleProfile = () => {
+    setIsShownProfile(!isShownProfile);
+  };
 
   return (
     <>
@@ -52,17 +60,32 @@ const Header = (): ReactElement => {
             <GridSection col3>
               <HeaderNavigation url="/">홈</HeaderNavigation>
               <HeaderDropDown title="미디어학과" items={mediaItems} />
-              <HeaderNavigation url="/talk">게시판</HeaderNavigation>
+              <HeaderNavigation url={`/board/자유`}>게시판</HeaderNavigation>
               <HeaderNavigation url="/cil">CIL</HeaderNavigation>
             </GridSection>
           </GridSection>
           {user.name !== '' && (
-            <GridSection col3 right>
+            <GridSection col3 right gap16>
               <LoginedInfo>
-                <h4>{user.name}</h4>
-                <p>님, 환영합니다!</p>
+                <Icon
+                  onClick={onToggleProfile}
+                  width="36"
+                  height="36"
+                  color="#005696"
+                  icon="healthicons:ui-user-profile"
+                />
+                {isShownProfile && (
+                  <LoginedInfoContents>
+                    <Link to="/mypage">
+                      <h4>{user.name}</h4>
+                    </Link>
+                    <p>{user.studentId}</p>
+                    <LogoutButton third onClick={reset}>
+                      로그아웃
+                    </LogoutButton>
+                  </LoginedInfoContents>
+                )}
               </LoginedInfo>
-              <button onClick={reset}>로그아웃</button>
             </GridSection>
           )}
           {user.name === '' && (

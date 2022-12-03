@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { pixelToRem } from '@/Utils/Libs/layoutFunc';
+import { ButtonContainer } from '@/Components/Button/style';
 
 // 공통 이미지
 export const Logo = styled.img`
@@ -23,11 +24,47 @@ export const HeaderContainer = styled.header`
 
 export const LoginedInfo = styled.div`
   display: flex;
+  z-index: 1000;
 
-  h4,
-  p {
-    line-height: 5rem;
+  svg {
+    ${({ theme }) => theme.common.pushAnimation};
   }
+`;
+
+export const LoginedInfoContents = styled.div`
+  display: block;
+  position: absolute;
+
+  margin-top: 3rem;
+  margin-left: -7rem;
+
+  padding: 1rem 2rem;
+  width: 5rem;
+  border-radius: 0.625rem;
+
+  -webkit-box-shadow: 1px 2.5px 11px -1px #dddddd;
+  -moz-box-shadow: 1px 2.5px 11px -1px #dddddd;
+  box-shadow: 1px 2.5px 11px -1px #dddddd;
+
+  h4 {
+    transition: 0.2s ease-in-out;
+    color: ${({ theme }) => theme.color.ajouBlue};
+    &:hover {
+      color: ${({ theme }) => theme.color.ajouSky};
+    }
+  }
+
+  p {
+    color: ${({ theme }) => theme.color.ajouSilver};
+    font-size: 0.8rem;
+  }
+`;
+
+export const LogoutButton = styled(ButtonContainer)`
+  padding: 0.2rem;
+  font-size: 1rem;
+  width: 5rem;
+  font-weight: 300;
 `;
 
 // 모바일

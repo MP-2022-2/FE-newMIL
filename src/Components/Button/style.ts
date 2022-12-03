@@ -21,24 +21,46 @@ export const ButtonContainer = styled.button<ButtonHeirarchy>`
   border-radius: 5px;
   background-color: ${theme.color.ajouBlue};
 
-  :hover {
+  transition: 0.15s ease-in-out;
+
+  &:hover {
     cursor: pointer;
+    transform: scale(1.025);
   }
 
-  :disabled,
+  &:active {
+    transform: scale(0.965);
+  }
+
+  &:disabled,
   [disalbed] {
     background-color: ${theme.color.disabled};
     cursor: not-allowed;
+
+    &:hover,
+    &:active {
+      transform: scale(1);
+    }
   }
 
   ${(props) =>
     props.secondary &&
     css`
-      background-color: ${theme.color.ajouSilver};
+      background-color: ${theme.color.white};
+      border: 1px solid ${theme.color.ajouBlue};
+      color: ${theme.color.ajouBlue};
     `}
 
   ${(props) =>
     props.third &&
+    css`
+      background-color: ${theme.color.white};
+      border: 1px solid ${theme.color.ajouSilver};
+      color: ${theme.color.ajouSilver};
+    `}
+
+  ${(props) =>
+    props.fourth &&
     css`
       background-color: ${theme.color.white};
       color : ${theme.color.ajouBlue};}
@@ -47,7 +69,7 @@ export const ButtonContainer = styled.button<ButtonHeirarchy>`
     `}
 
   ${(props) =>
-    props.fourth &&
+    props.fifth &&
     css`
       background-color: ${theme.color.white};
       color : ${theme.color.ajouSilver};}
