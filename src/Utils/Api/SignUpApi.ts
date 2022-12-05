@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { TrackType, SignUpType } from '@/@Types/UserType';
 
-export const trackFunc = (data: TrackType) => {
+export const trackApi = (data: TrackType) => {
   axios
     .post(`${process.env.REACT_APP_API_URL}/subject/registration`, data)
     .then((res) => {
@@ -15,7 +15,7 @@ export const trackFunc = (data: TrackType) => {
     });
 };
 
-export const signUpFunc = (data: SignUpType) => {
+export const signUpApi = (data: SignUpType) => {
   axios.post(`${process.env.REACT_APP_API_URL}/user/signup`, data).catch((err) => {
     if (err.response.status === 400) alert('정보가 올바르지 않습니다.');
     if (err.response.status === 409) alert('이미 존재하는 정보입니다.');

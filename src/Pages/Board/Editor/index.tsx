@@ -4,6 +4,8 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Input } from '@/Components/Form';
 import Button from '@/Components/Button';
 import { useState } from 'react';
+import instance from '@/Utils/Api/axios';
+import { useForm } from 'react-hook-form';
 import {
   Label,
   Category,
@@ -17,8 +19,19 @@ import Navigation from '../Components/Navigation';
 import { BoardList } from '../index';
 
 export default function Editor() {
-  const [category, setCategory] = useState('자유');
-  const [isEmpty, setIsEmpty] = useState(true);
+  const [isCategory, setIsCategory] = useState('free');
+  const [isContent, setIsContent] = useState('');
+
+  const { register, getValues, trigger } = useForm({ mode: 'onChange' });
+
+  const postData = async () => {
+    await instance({
+      method: 'post',
+      url: `board/${isCategory}`,
+      data: { BoardType: isCategory, title: getValues('title'), content: isContent },
+    });
+    window.location.replace('board/free');
+  };
 
   return (
     <>
@@ -27,15 +40,23 @@ export default function Editor() {
         <Label>카테고리</Label>
         <CategoryContainer>
           {BoardList.map((item) => (
-            <Category key={item.url} onClick={() => setCategory(item.title)}>
-              <Navigation selected={category === item.title} content={item.title} />
+            <Category key={item.url} onClick={() => setIsCategory(item.url)}>
+              <Navigation selected={isCategory === item.url} content={item.title} />
             </Category>
           ))}
         </CategoryContainer>
       </CategoryWrapper>
       <InputContainer>
         <Label>제목</Label>
-        <Input type="text" id="title" />
+        <Input
+          type="text"
+          id="title"
+          context={register('title', {
+            onChange: () => {
+              trigger('title');
+            },
+          })}
+        />
       </InputContainer>
       <EditorContainer>
         <Label>내용</Label>
@@ -43,20 +64,9 @@ export default function Editor() {
           editor={ClassicEditor}
           config={{}}
           data=""
-          onReady={(editor) => {
-            console.log('Editor is ready to use!', editor);
-          }}
           onChange={(event, editor) => {
             const data = editor.getData();
-            // console.log({ event, editor, data });
-            data.length > 0 && setIsEmpty(false);
-            data.length <= 0 && setIsEmpty(true);
-          }}
-          onBlur={(event, editor) => {
-            console.log('Blur.', editor);
-          }}
-          onFocus={(event, editor) => {
-            console.log('Focus.', editor);
+            setIsContent(data);
           }}
         />
       </EditorContainer>
@@ -64,7 +74,7 @@ export default function Editor() {
         <Button sm fifth url="/board/free">
           취소
         </Button>
-        <Button disabled={isEmpty} sm>
+        <Button type="button" disabled={isContent === ''} onClick={postData} sm>
           작성
         </Button>
       </ButtonContainer>

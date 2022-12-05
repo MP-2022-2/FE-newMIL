@@ -13,7 +13,7 @@ export interface UserType {
   company: string;
   track: string;
   nickName: string;
-  identity?: string;
+  identity: string;
 }
 
 export interface UserLoginType {

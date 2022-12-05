@@ -2,6 +2,8 @@ import Header from '@/Components/Header';
 import Navigation from '@/Pages/Board/Components/Navigation';
 import GridSection from '@/Components/Section';
 import { Link, useParams } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { userState } from '@/Recoil/user';
 import BoardCard from './Components/BoardCard';
 import { BoardWrapper, BoardContainer, NaviContainer } from './style';
 
@@ -14,6 +16,7 @@ export const BoardList = [
 
 const BoardPage = () => {
   const { boardPath } = useParams();
+  const userInfo = useRecoilValue(userState);
 
   return (
     <BoardWrapper>

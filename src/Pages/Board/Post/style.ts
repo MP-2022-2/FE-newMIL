@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import theme from '@/Styles/theme';
+import { IsEmptyMsg } from '../Components/BoardCard/style';
 
 export const PostContainer = styled.div`
   display: block;

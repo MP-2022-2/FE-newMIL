@@ -2,7 +2,7 @@ import axios from 'axios';
 import { UserAuthType } from '@/@Types/UserType';
 import { Dispatch, SetStateAction } from 'react';
 
-export const emailFunc = (
+export const emailApi = (
   data: UserAuthType,
   setIsVerified: Dispatch<SetStateAction<boolean>>,
   setIsVerifiedEmail: Dispatch<SetStateAction<string>>,

@@ -1,13 +1,6 @@
-export interface ArticleContentTypes {
-  msg?: string;
-  status?: number;
-  id: number;
-  title: string;
-  content: string;
-  createdAt: string;
-  nickname: string;
-  like: number;
-  comment: number;
+import { ArticleTypes } from '../Components/BoardCard/types';
+
+export interface ArticleContentTypes extends ArticleTypes {
   commentDtoList: [
     {
       text: string;

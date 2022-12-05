@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { VerifiedGetApi } from '@/Utils/Api/VerifiedGetApi';
+import instance from '@/Utils/Api/axios';
 import { useState, useEffect } from 'react';
 import { BoardContainer, Article, IsEmptyMsg } from './style';
 import { ArticleTypes } from './types';
@@ -18,7 +18,7 @@ export const Board = (props: BoardProps) => {
     try {
       setLoading(true);
       setSuccess(false);
-      await VerifiedGetApi(`board/${target}`).then((res) => setOnSearchPost(res.data.postDtoList));
+      await instance(`board/${target}`).then((res) => setOnSearchPost(res.data.postDtoList));
     } catch (err) {
       setOnSearchPost([]);
     }

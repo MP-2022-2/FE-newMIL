@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Button from '@/Components/Button';
 import { Input } from '@/Components/Form';
-import { loginFunc } from '@/Utils/Api/loginApi';
+import { loginApi } from '@/Utils/Api/loginApi';
 import { UserLoginType } from '@/@Types/UserType';
 import { Link } from 'react-router-dom';
 import { LoginFormContainer, IDCheckBoxContainer, SignUpContainer, SignUpLink } from './style';
@@ -29,7 +29,7 @@ const LoginForm = () => {
       localStorage.removeItem('userId');
       localStorage.removeItem('idCheck');
     }
-    loginFunc({ userId: data.userId, password: data.password });
+    loginApi({ userId: data.userId, password: data.password });
   };
 
   return (
