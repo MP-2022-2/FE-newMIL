@@ -1,5 +1,7 @@
 import Header from '@/Components/Header';
-import { boardFreeFunc } from '@/Utils/Api/BoardApi';
+import { useParams } from 'react-router-dom';
+import { VerifiedGetApi } from '@/Utils/Api/VerifiedGetApi';
+import { useState, useEffect } from 'react';
 import {
   PostContainer,
   PostHeader,
@@ -9,26 +11,40 @@ import {
   PostContents,
   PostComments,
 } from './style';
+import { ArticleContentTypes } from './types';
 
-export const Post = () => (
-  <>
-    <Header />
-    <PostContainer>
-      <PostHeader>
-        <PostHeaderCategory>카테고리</PostHeaderCategory>
-        <PostHeaderTitle>게시판 제목</PostHeaderTitle>
-        <PostHeaderInfo>
-          2020-03-03
-          <br />
-          댓글 24 좋아요 6
-        </PostHeaderInfo>
-      </PostHeader>
-      <PostContents>
-        <p>내용입니다</p>
-      </PostContents>
-      <PostComments>댓글입니다</PostComments>
-    </PostContainer>
-  </>
-);
+export const Post = () => {
+  const { boardPath, idx } = useParams();
+  const [isPost, setIsPost] = useState<ArticleContentTypes>([] as any);
+
+  const getData = () => {
+    VerifiedGetApi(`board/${boardPath}/${idx}`).then((res) => setIsPost(res.data.postDto));
+  };
+
+  useEffect(() => {
+    getData();
+  }, [idx]);
+
+  console.log(isPost);
+
+  return (
+    <>
+      <Header />
+      <PostContainer>
+        <PostHeader>
+          <PostHeaderCategory>{boardPath}</PostHeaderCategory>
+          <PostHeaderTitle>{isPost.title}</PostHeaderTitle>
+          <PostHeaderInfo>
+            {isPost.createdAt}
+            {isPost.comment}
+            {isPost.like}
+          </PostHeaderInfo>
+        </PostHeader>
+        <PostContents>{isPost.content}</PostContents>
+        <PostComments>댓글입니다</PostComments>
+      </PostContainer>
+    </>
+  );
+};
 
 export default Post;

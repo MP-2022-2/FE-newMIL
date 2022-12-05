@@ -7,7 +7,7 @@ export const Article = styled.article`
 
   text-align: left;
 
-  max-width: calc(${theme.layout.maxWidth} / 2);
+  width: 100%;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
   border: 1px solid ${theme.color.ajouSky};
   background-color: #fff;
@@ -43,6 +43,13 @@ export const BoardContainer = styled.section`
 
   a {
     display: block;
-    width: 100%;
+    width: calc(50% - 4rem - ${theme.layout.gutter}px / 2);
   }
+`;
+
+export const IsEmptyMsg = styled.h3`
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;

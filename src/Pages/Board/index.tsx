@@ -28,7 +28,7 @@ const BoardPage = () => {
             ))}
           </GridSection>
         </NaviContainer>
-        <BoardCard />
+        <BoardCard target={boardPath ?? 'free'} />
       </BoardContainer>
     </BoardWrapper>
   );

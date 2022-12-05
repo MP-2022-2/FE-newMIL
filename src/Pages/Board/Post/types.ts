@@ -1,4 +1,4 @@
-export interface ArticleTypes {
+export interface ArticleContentTypes {
   msg?: string;
   status?: number;
   id: number;
@@ -8,4 +8,11 @@ export interface ArticleTypes {
   nickname: string;
   like: number;
   comment: number;
+  commentDtoList: [
+    {
+      text: string;
+      createdAt: string;
+      nickName: string;
+    },
+  ];
 }

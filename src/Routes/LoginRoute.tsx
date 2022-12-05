@@ -19,7 +19,7 @@ const LoginRoutes = () => {
       <Route element={<LoginRoute />}>
         <Route path="board">
           <Route path=":boardPath" element={<BoardPage />} />
-          <Route path=":boardPath/:id" element={<Post />} />
+          <Route path=":boardPath/:idx" element={<Post />} />
           <Route path="edit" element={<Editor />} />
         </Route>
       </Route>
