@@ -1,15 +1,19 @@
 import Header from '@/Components/Header';
 import Navigation from '@/Pages/Board/Components/Navigation';
 import GridSection from '@/Components/Section';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import BoardCard from './Components/BoardCard';
 import { BoardWrapper, BoardContainer, NaviContainer } from './style';
 
-export const BoardList = ['자유', '질문', '재학생', '졸업생'];
+export const BoardList = [
+  { title: '자유', url: 'free' },
+  { title: '질문', url: 'qna' },
+  { title: '재학생', url: 'student' },
+  { title: '졸업생', url: 'graduate' },
+];
 
 const BoardPage = () => {
-  const [selected, setSelected] = useState<string>('자유');
+  const { boardPath } = useParams();
 
   return (
     <BoardWrapper>
@@ -18,8 +22,8 @@ const BoardPage = () => {
         <NaviContainer>
           <GridSection col6 center>
             {BoardList.map((item) => (
-              <Link key={item} to={`/board/${item}`} onClick={() => setSelected(item)}>
-                <Navigation selected={selected === item} content={item} />
+              <Link key={item.url} to={`/board/${item.url}`}>
+                <Navigation selected={boardPath === item.url} content={item.title} />
               </Link>
             ))}
           </GridSection>

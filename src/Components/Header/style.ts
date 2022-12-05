@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { pixelToRem } from '@/Utils/Libs/layoutFunc';
-import { ButtonContainer } from '@/Components/Button/style';
 
 // 공통 이미지
 export const Logo = styled.img`
@@ -46,6 +45,8 @@ export const LoginedInfoContents = styled.div`
   -moz-box-shadow: 1px 2.5px 11px -1px #dddddd;
   box-shadow: 1px 2.5px 11px -1px #dddddd;
 
+  background-color: white;
+
   h4 {
     transition: 0.2s ease-in-out;
     color: ${({ theme }) => theme.color.ajouBlue};
@@ -58,13 +59,6 @@ export const LoginedInfoContents = styled.div`
     color: ${({ theme }) => theme.color.ajouSilver};
     font-size: 0.8rem;
   }
-`;
-
-export const LogoutButton = styled(ButtonContainer)`
-  padding: 0.2rem;
-  font-size: 1rem;
-  width: 5rem;
-  font-weight: 300;
 `;
 
 // 모바일

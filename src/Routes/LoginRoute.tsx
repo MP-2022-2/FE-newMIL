@@ -1,8 +1,9 @@
 import { Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom';
 import useLogin from '@/Utils/Hooks/useLogin';
 import BoardPage from '@/Pages/Board';
-import Post from '@/Pages/Board/Components/Post';
+import Post from '@/Pages/Board/Post';
 import ErrorPage from '@/404';
+import Editor from '@/Pages/Board/Editor';
 
 const LoginRoute = () => {
   const status = useLogin();
@@ -12,14 +13,15 @@ const LoginRoute = () => {
 
 const LoginRoutes = () => {
   const location = useLocation();
+
   return (
     <Routes location={location}>
       <Route element={<LoginRoute />}>
-        <Route path="board/자유" element={<BoardPage />} />
-        <Route path="board/질문" element={<BoardPage />} />
-        <Route path="board/졸업생" element={<BoardPage />} />
-        <Route path="board/재학생" element={<BoardPage />} />
-        <Route path="board/자유/:id" element={<Post />} />
+        <Route path="board">
+          <Route path=":boardPath" element={<BoardPage />} />
+          <Route path=":boardPath/:id" element={<Post />} />
+          <Route path="edit" element={<Editor />} />
+        </Route>
       </Route>
       <Route element={<ErrorPage />} path="*" />
     </Routes>

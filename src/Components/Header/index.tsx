@@ -8,9 +8,11 @@ import { removeCookie } from '@/Pages/Login';
 import { APILoginType } from '@/@Types/UserType';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
+import Button from '@/Components/Button';
 import HeaderNavigation from './Navigation';
-import { HeaderContainer, Logo, LoginedInfo, LogoutButton, LoginedInfoContents } from './style';
+import { HeaderContainer, Logo, LoginedInfo, LoginedInfoContents } from './style';
 import HeaderMobile from './index.mobile';
+import HeaderProps from './types';
 
 const mediaItems = [
   {
@@ -30,7 +32,8 @@ const mediaItems = [
   },
 ];
 
-const Header = (): ReactElement => {
+const Header = (props: HeaderProps): ReactElement => {
+  const { isNotShownEditor = false } = props;
   const [user, setUser] = useRecoilState(userState);
   const userData = useRecoilValue<APILoginType>(userDataState);
   const [isShownProfile, setIsShownProfile] = useState(false);
@@ -60,12 +63,17 @@ const Header = (): ReactElement => {
             <GridSection col3>
               <HeaderNavigation url="/">홈</HeaderNavigation>
               <HeaderDropDown title="미디어학과" items={mediaItems} />
-              <HeaderNavigation url={`/board/자유`}>게시판</HeaderNavigation>
+              <HeaderNavigation url={`/board/free`}>게시판</HeaderNavigation>
               <HeaderNavigation url="/cil">CIL</HeaderNavigation>
             </GridSection>
           </GridSection>
           {user.name !== '' && (
             <GridSection col3 right gap16>
+              {!isNotShownEditor && (
+                <Button sm url="/board/edit">
+                  글쓰기
+                </Button>
+              )}
               <LoginedInfo>
                 <Icon
                   onClick={onToggleProfile}
@@ -80,9 +88,9 @@ const Header = (): ReactElement => {
                       <h4>{user.name}</h4>
                     </Link>
                     <p>{user.studentId}</p>
-                    <LogoutButton third onClick={reset}>
+                    <Button sm third onClick={reset}>
                       로그아웃
-                    </LogoutButton>
+                    </Button>
                   </LoginedInfoContents>
                 )}
               </LoginedInfo>
