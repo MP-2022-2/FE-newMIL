@@ -1,32 +1,31 @@
 import Header from '@/Components/Header';
-import Board from '@/Components/Board';
 import GridSection from '@/Components/Section';
 import { useRecoilValue } from 'recoil';
 import { trackState } from '@/Recoil/theme';
+import VideoComponent from './Components/Video';
 import Navigation from './Components/Track';
-
 import { BoardWrapper, BoardContainer, NaviContainer } from './style';
 
-const TrackList = [
+export const TrackList = [
   {
     name: '게임&인터렉티브 콘텐츠',
-    link: '/pictures/GI.png',
+    link: '/pictures/track/GI.png',
   },
   {
     name: '디지털 엔터테인먼트',
-    link: '/pictures/DE.png',
+    link: '/pictures/track/DE.png',
   },
   {
     name: '미디어 데이터',
-    link: '/pictures/MD.png',
+    link: '/pictures/track/MD.png',
   },
   {
     name: '비주얼 컴퓨팅',
-    link: '/pictures/VC.png',
+    link: '/pictures/track/VC.png',
   },
   {
     name: '콘텐츠 디자인',
-    link: '/pictures/CD.png',
+    link: '/pictures/track/CD.png',
   },
 ];
 
@@ -39,11 +38,17 @@ const InterviewPage = () => {
       <BoardContainer>
         <NaviContainer>
           <GridSection col12 center>
-            {TrackList.map((list) => (
-              <Navigation key={list.name} select={select === list.name} content={list.name} />
+            {TrackList.map((item) => (
+              <Navigation
+                key={item.name}
+                select={select === item.name}
+                content={item.name}
+                icon={item.link}
+              />
             ))}
           </GridSection>
         </NaviContainer>
+        <VideoComponent />
       </BoardContainer>
     </BoardWrapper>
   );

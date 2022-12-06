@@ -2,12 +2,14 @@ import styled from 'styled-components';
 import theme from '@/Styles/theme';
 
 export const NaviContainer = styled.nav`
-  display: block;
+  display: flex;
   width: 100%;
   text-align: center;
   align-self: center;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+  flex-direction: row;
+  justify-content: center;
 
   ${theme.PC.body};
 
@@ -28,4 +30,13 @@ export const NaviContainer = styled.nav`
   :hover {
     cursor: pointer;
   }
+`;
+
+export const IconContainer = styled.img`
+  align-self: center;
+  margin-inline-end: 0.5rem;
+  display: inline;
+  height: 3rem;
+  width: 3rem;
+  align-items: center;
 `;
