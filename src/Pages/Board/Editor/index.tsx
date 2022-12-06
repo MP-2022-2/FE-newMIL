@@ -28,7 +28,7 @@ export default function Editor() {
     await instance({
       method: 'post',
       url: `board/${isCategory}`,
-      data: { BoardType: isCategory, title: getValues('title'), content: isContent },
+      data: { boardType: isCategory.toUpperCase(), title: getValues('title'), content: isContent },
     });
     window.location.replace('board/free');
   };

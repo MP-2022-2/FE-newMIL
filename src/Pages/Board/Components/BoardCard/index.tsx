@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import instance from '@/Utils/Api/axios';
 import { useState, useEffect } from 'react';
+import GridSection from '@/Components/Section';
 import { BoardContainer, Article, IsEmptyMsg } from './style';
 import { ArticleTypes } from './types';
 
@@ -18,7 +19,9 @@ export const Board = (props: BoardProps) => {
     try {
       setLoading(true);
       setSuccess(false);
-      await instance(`board/${target}`).then((res) => setOnSearchPost(res.data.postDtoList));
+      await instance(`board/${target}?size=10&page=0`).then((res) =>
+        setOnSearchPost(res.data.postDtoList),
+      );
     } catch (err) {
       setOnSearchPost([]);
     }
@@ -37,15 +40,17 @@ export const Board = (props: BoardProps) => {
         <>
           {onSearchPost.length <= 0 && <IsEmptyMsg>불러올 수 있는 데이터가 없습니다</IsEmptyMsg>}
           {onSearchPost.map((el: ArticleTypes, idx: number) => (
-            <Link key={idx} to={`${el.id}`}>
-              <Article>
-                <h2>{el.title}</h2>
-                <p>{el.content}</p>
-                <span>{el.createdAt}</span>
-                <span>comments : {el.comment}</span>
-                <span>like : {el.like}</span>
-              </Article>
-            </Link>
+            <GridSection key={idx} col6>
+              <Link to={`${el.id}`}>
+                <Article>
+                  <h2>{el.title}</h2>
+                  <p>{el.content}</p>
+                  <span>{el.createdAt}</span>
+                  <span>comments : {el.comment}</span>
+                  <span>like : {el.like}</span>
+                </Article>
+              </Link>
+            </GridSection>
           ))}
         </>
       )}

@@ -9,10 +9,12 @@ import {
   PostHeaderTitle,
   PostHeaderInfo,
   PostContents,
+  PostContentsContainer,
   PostComments,
 } from './style';
 import { IsEmptyMsg } from '../Components/BoardCard/style';
 import { ArticleContentTypes } from './types';
+import LikeButton from '../Components/LikeButton';
 
 export const Post = () => {
   const { boardPath, idx } = useParams();
@@ -43,7 +45,7 @@ export const Post = () => {
         {isLoading && <>로딩중</>}
         {isSuccess && (
           <>
-            {isPost.content && (
+            {isPost.content ? (
               <>
                 <PostHeader>
                   <PostHeaderCategory>{boardPath}</PostHeaderCategory>
@@ -54,11 +56,15 @@ export const Post = () => {
                     {isPost.like}
                   </PostHeaderInfo>
                 </PostHeader>
-                <PostContents>{isPost.content}</PostContents>
+                <PostContentsContainer>
+                  <PostContents>{isPost.content}</PostContents>
+                  <LikeButton score={isPost.like} />
+                </PostContentsContainer>
                 <PostComments>댓글입니다</PostComments>
               </>
+            ) : (
+              <IsEmptyMsg>불러올 수 있는 데이터가 없습니다</IsEmptyMsg>
             )}
-            {!isPost.content && <IsEmptyMsg>불러올 수 있는 데이터가 없습니다</IsEmptyMsg>}
           </>
         )}
       </PostContainer>

@@ -25,15 +25,17 @@ export const PostHeaderInfo = styled.caption`
 export const PostHeaderTitle = styled.h2``;
 
 // Post Contents
-export const PostContents = styled.section`
+export const PostContentsContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 30rem;
   margin-top: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid ${theme.color.gray};
-
-  p {
-    margin-bottom: 16rem;
-  }
 `;
+
+export const PostContents = styled.p``;
 
 // Post Components
 export const PostComments = styled.section`

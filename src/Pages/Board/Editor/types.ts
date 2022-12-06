@@ -1,5 +1,5 @@
 export interface EditProps {
-  BoardType: string;
+  boardType: string;
   title: string;
   content: string;
 }
