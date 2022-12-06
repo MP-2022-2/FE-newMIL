@@ -30,7 +30,7 @@ export default function Editor() {
       url: `board/${isCategory}`,
       data: { boardType: isCategory.toUpperCase(), title: getValues('title'), content: isContent },
     });
-    window.location.replace('board/free');
+    window.location.replace('/board/free');
   };
 
   return (
