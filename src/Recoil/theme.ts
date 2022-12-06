@@ -9,3 +9,8 @@ export const boardState = atom<string>({
   key: 'boardState',
   default: '자유',
 });
+
+export const trackState = atom<string>({
+  key: 'trackState',
+  default: '전체',
+});
