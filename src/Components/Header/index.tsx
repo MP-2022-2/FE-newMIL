@@ -32,6 +32,10 @@ const mediaItems = [
   },
 ];
 
+/**
+ 언더바 홈페이지의 메인 Header입니다.
+ * @param isNotShownEditor boolean 글쓰기 버튼을 On/Off
+ */
 const Header = (props: HeaderProps): ReactElement => {
   const { isNotShownEditor = false } = props;
   const [user, setUser] = useRecoilState(userState);

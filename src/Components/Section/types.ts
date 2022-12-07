@@ -16,6 +16,7 @@ export interface GridSectionStyleProps {
   gap32?: boolean;
   right?: boolean;
   center?: boolean;
+  alignColumn?: boolean;
 }
 
 export default interface GridSectionProps extends GridSectionStyleProps {

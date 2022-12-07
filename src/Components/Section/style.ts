@@ -21,6 +21,12 @@ export const SectionContainer = styled.section<GridSectionStyleProps>`
       margin: 0 auto;
     `}
 
+  ${(props) =>
+    props.alignColumn &&
+    css`
+      flex-direction: column;
+    `}
+    
   //column
   ${(props) =>
     props.col2 &&

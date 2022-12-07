@@ -37,6 +37,11 @@ const GlobalStyle = createGlobalStyle`
     color: #333;
   }
 
+  caption {
+    display : block;
+    text-align : left;
+  }
+
   @keyframes push {
     0% {
       transform : scale(1);
