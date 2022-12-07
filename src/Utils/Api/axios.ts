@@ -15,7 +15,7 @@ instance.interceptors.response.use(
   (error) => {
     // JWTtoken needs refresh
     if (error.response.status === 401) {
-      window.location.replace('/');
+      window.location.reload();
     }
     return Promise.reject(error);
   },

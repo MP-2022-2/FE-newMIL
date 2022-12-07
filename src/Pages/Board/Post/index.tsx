@@ -2,6 +2,7 @@ import Header from '@/Components/Header';
 import instance from '@/Utils/Api/axios';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Icon } from '@iconify/react';
 import {
   PostContainer,
   PostHeader,
@@ -25,6 +26,14 @@ export const Post = () => {
   const [isPost, setIsPost] = useState([] as unknown as ArticleContentTypes);
   const [isLoading, setLoading] = useState(false);
   const [isSuccess, setSuccess] = useState(true);
+
+  const convertCategory = (data: string | undefined) => {
+    if (data === 'free') return '자유게시판';
+    if (data === 'qna') return '질문게시판';
+    if (data === 'graduate') return '졸업생게시판';
+    if (data === 'student') return '재학생게시판';
+    return '';
+  };
 
   const getData = async () => {
     try {
@@ -52,12 +61,25 @@ export const Post = () => {
             {isPost.content ? (
               <>
                 <PostHeader>
-                  <PostHeaderCategory>{boardPath}</PostHeaderCategory>
+                  <PostHeaderCategory>{convertCategory(boardPath)}</PostHeaderCategory>
                   <PostHeaderTitle>{isPost.title}</PostHeaderTitle>
                   <PostHeaderInfo>
-                    {isPost.createdAt.substring(0, 10)}
-                    {isPost.comment}
-                    {isPost.like}
+                    <div>{isPost.createdAt.substring(0, 10)}</div>
+                    <div>
+                      <span>
+                        <Icon
+                          width="16"
+                          height="16"
+                          color="#005696"
+                          icon="mdi:comment-text-multiple"
+                        />
+                        {isPost.comment}
+                      </span>
+                      <span>
+                        <Icon width="16" height="16" color="#e6b71e" icon="icon-park-solid:like" />
+                        {isPost.like}
+                      </span>
+                    </div>
                   </PostHeaderInfo>
                 </PostHeader>
                 <PostContentsContainer>
@@ -72,7 +94,10 @@ export const Post = () => {
                           <CommentElement key={index}>
                             <caption>{item.nickName}</caption>
                             <p>{item.text}</p>
-                            <caption>{item.createdAt.substring(0, 10)}</caption>
+                            <div>
+                              <caption>{item.createdAt.substring(5, 10)}</caption>
+                              <caption>{item.createdAt.substring(11, 16)}</caption>
+                            </div>
                           </CommentElement>
                         ))}
                       </>

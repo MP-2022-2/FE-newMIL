@@ -62,6 +62,7 @@ export const BoardContainer = styled.section`
   justify-content: center;
   max-width: ${theme.layout.maxWidth};
   margin: 3rem auto;
+  padding-bottom: 3rem;
 
   a {
     display: block;

@@ -41,7 +41,7 @@ const Header = (props: HeaderProps): ReactElement => {
   const reset = () => {
     removeCookie('accessToken');
     removeCookie('refreshToken');
-    window.location.replace('/');
+    window.location.reload();
   };
 
   useEffect(() => {

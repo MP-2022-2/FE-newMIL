@@ -9,3 +9,7 @@ export interface ArticleTypes {
   like: number;
   comment: number;
 }
+
+export interface BoardProps {
+  target: string;
+}
