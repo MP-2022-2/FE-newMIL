@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import theme from '@/Styles/theme';
-import { IsEmptyMsg } from '../Components/BoardCard/style';
 
 export const PostContainer = styled.div`
   display: block;
   margin: 0 auto;
   margin-top: 3rem;
+  padding-bottom: 3rem;
   max-width: ${theme.layout.maxWidth};
+  color: ${theme.color.black};
 `;
 
 // Post Header
@@ -38,6 +39,36 @@ export const PostContentsContainer = styled.section`
 export const PostContents = styled.p``;
 
 // Post Components
+export const CommentArea = styled.section`
+  border-bottom: 1px solid ${theme.color.gray};
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+`;
+
+export const CommentElement = styled.div`
+  caption {
+    display: block;
+    text-align: left;
+    color: ${theme.color.ajouSky};
+    font-weight: 600;
+
+    &:last-child {
+      font-weight: 300;
+      color: ${theme.color.ajouSilver};
+    }
+  }
+
+  p {
+    font-weight: 300;
+  }
+`;
+
 export const PostComments = styled.section`
   margin-top: 1rem;
+`;
+
+export const IsEmptyComment = styled.h4`
+  text-align: center;
+  color: ${theme.color.ajouSky};
+  font-weight: 300;
 `;

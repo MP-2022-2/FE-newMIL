@@ -10,4 +10,15 @@ const instance = axios.create({
   timeout: 2000,
 });
 
+instance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    // JWTtoken needs refresh
+    if (error.response.status === 401) {
+      window.location.replace('/');
+    }
+    return Promise.reject(error);
+  },
+);
+
 export default instance;

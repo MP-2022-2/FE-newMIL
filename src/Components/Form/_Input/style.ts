@@ -1,9 +1,15 @@
 import styled, { css } from 'styled-components';
 import theme from '@/Styles/theme';
 
-const LabelTag = styled.label`
+const LabelTag = styled.label<{ labelGray: boolean }>`
   text-align: left;
   padding-bottom: 0.4rem;
+  ${(props) =>
+    props.labelGray &&
+    css`
+      font-weight: 300;
+      color: ${theme.color.ajouSilver};
+    `}
 `;
 
 const InputTag = styled.input`
@@ -11,6 +17,21 @@ const InputTag = styled.input`
   border-radius: 5px;
   outline: none;
   border: solid 1px #bcbcbc;
+
+  :focus {
+    border-color: #0982f0;
+  }
+
+  + label {
+    margin-top: 1rem;
+  }
+`;
+
+const TextAreaTag = styled.textarea`
+  resize: none;
+  border-radius: 5px;
+  outline: none;
+  padding: 1rem;
 
   :focus {
     border-color: #0982f0;
@@ -36,4 +57,4 @@ const CaptionTag = styled.span<{ visible: string | boolean | undefined }>`
     `}
 `;
 
-export { LabelTag, InputTag, CaptionTag };
+export { LabelTag, InputTag, CaptionTag, TextAreaTag };

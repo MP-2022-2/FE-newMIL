@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import instance from '@/Utils/Api/axios';
 import { useState, useEffect } from 'react';
 import GridSection from '@/Components/Section';
-import { BoardContainer, Article, IsEmptyMsg } from './style';
+import { Icon } from '@iconify/react';
+import { BoardContainer, Article, IsEmptyMsg, ArticleInfo } from './style';
 import { ArticleTypes } from './types';
 
 interface BoardProps {
@@ -44,10 +45,23 @@ export const Board = (props: BoardProps) => {
               <Link to={`${el.id}`}>
                 <Article>
                   <h2>{el.title}</h2>
-                  <p>{el.content}</p>
-                  <span>{el.createdAt}</span>
-                  <span>comments : {el.comment}</span>
-                  <span>like : {el.like}</span>
+                  <p dangerouslySetInnerHTML={{ __html: el.content }} />
+                  <span>{el.createdAt.substring(0, 10)}</span>
+                  <ArticleInfo>
+                    <span>
+                      <Icon
+                        width="16"
+                        height="16"
+                        color="#005696"
+                        icon="mdi:comment-text-multiple"
+                      />
+                      {el.comment}
+                    </span>
+                    <span>
+                      <Icon width="16" height="16" color="#e6b71e" icon="icon-park-solid:like" />
+                      {el.like}
+                    </span>
+                  </ArticleInfo>
                 </Article>
               </Link>
             </GridSection>

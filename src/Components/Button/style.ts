@@ -85,4 +85,13 @@ export const ButtonContainer = styled.button<ButtonHeirarchy>`
       width: 5rem;
       font-weight: 300;
     `}
+
+  ${(props) =>
+    props.md &&
+    css`
+      padding: 0.3rem;
+      font-size: 1rem;
+      width: 8rem;
+      font-weight: 300;
+    `}
 `;

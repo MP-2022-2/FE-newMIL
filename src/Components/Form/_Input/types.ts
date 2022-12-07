@@ -1,6 +1,12 @@
 import { UseFormRegisterReturn } from 'react-hook-form';
 
 export default interface InputProps {
+  textarea?: boolean;
+  cols?: number;
+  rows?: number;
+
+  labelGray?: boolean;
+
   id: string;
   type: string;
   placehd?: string;

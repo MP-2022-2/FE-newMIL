@@ -13,6 +13,7 @@ export const Article = styled.article`
   padding: 2rem;
   border-radius: 10px;
   transition: 0.2s ease-in-out;
+  color: ${theme.color.black};
 
   h2 {
     padding-bottom: 1rem;
@@ -22,6 +23,10 @@ export const Article = styled.article`
     padding-bottom: 4rem;
   }
 
+  span {
+    color: ${theme.color.ajouSilver};
+  }
+
   &:hover {
     cursor: pointer;
     border: 1px solid ${theme.color.ajouBlue};
@@ -29,6 +34,23 @@ export const Article = styled.article`
 
   &:active {
     transform: scale(0.965);
+  }
+`;
+
+export const ArticleInfo = styled.div`
+  display: flex;
+  gap: 0.625rem;
+  padding-top: 0.375rem;
+
+  svg {
+    padding-right: 0.125rem;
+  }
+
+  span {
+    color: ${theme.color.black};
+    font-weight: 500;
+    font-size: 1rem;
+    align-items: baseline;
   }
 `;
 
