@@ -7,7 +7,12 @@ export const Logo = styled.img`
 `;
 
 // 웹
-export const HeaderContainer = styled.header`
+export const HeaderWrapper = styled.header`
+  width: 100%;
+  border-bottom: 1px solid ${({ theme }) => theme.color.gray};
+`;
+
+export const HeaderContainer = styled.div`
   ${({ theme }) => theme.common.flexCenter};
 
   width: 90%;
@@ -41,9 +46,7 @@ export const LoginedInfoContents = styled.div`
   width: 5rem;
   border-radius: 0.625rem;
 
-  -webkit-box-shadow: 1px 2.5px 11px -1px #dddddd;
-  -moz-box-shadow: 1px 2.5px 11px -1px #dddddd;
-  box-shadow: 1px 2.5px 11px -1px #dddddd;
+  ${({ theme }) => theme.common.shadowDefault}
 
   background-color: white;
 

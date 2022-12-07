@@ -7,7 +7,8 @@ export const Article = styled.article`
 
   text-align: left;
 
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+  ${theme.common.shadowDefault}
+
   border: 1px solid ${theme.color.ajouSky};
   background-color: #fff;
   padding: 2rem;

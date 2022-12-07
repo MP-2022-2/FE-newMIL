@@ -10,7 +10,7 @@ import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 import Button from '@/Components/Button';
 import HeaderNavigation from './Navigation';
-import { HeaderContainer, Logo, LoginedInfo, LoginedInfoContents } from './style';
+import { HeaderWrapper, HeaderContainer, Logo, LoginedInfo, LoginedInfoContents } from './style';
 import HeaderMobile from './index.mobile';
 import HeaderProps from './types';
 
@@ -61,55 +61,57 @@ const Header = (props: HeaderProps): ReactElement => {
   return (
     <>
       <UsePc>
-        <HeaderContainer>
-          <GridSection col4>
-            <GridSection>
-              <Logo src="/pictures/MIL.png" />
+        <HeaderWrapper>
+          <HeaderContainer>
+            <GridSection col4>
+              <GridSection>
+                <Logo src="/pictures/MIL.png" />
+              </GridSection>
+              <GridSection col3>
+                <HeaderNavigation url="/">홈</HeaderNavigation>
+                <HeaderDropDown title="미디어학과" items={mediaItems} />
+                <HeaderNavigation url={`/board/free`}>게시판</HeaderNavigation>
+                <HeaderNavigation url="/cil">CIL</HeaderNavigation>
+              </GridSection>
             </GridSection>
-            <GridSection col3>
-              <HeaderNavigation url="/">홈</HeaderNavigation>
-              <HeaderDropDown title="미디어학과" items={mediaItems} />
-              <HeaderNavigation url={`/board/free`}>게시판</HeaderNavigation>
-              <HeaderNavigation url="/cil">CIL</HeaderNavigation>
-            </GridSection>
-          </GridSection>
-          {user.name !== '' && (
-            <GridSection col3 right gap16>
-              {!isNotShownEditor && (
-                <Button sm url="/board/edit">
-                  글쓰기
-                </Button>
-              )}
-              <LoginedInfo>
-                <Icon
-                  onClick={onToggleProfile}
-                  width="36"
-                  height="36"
-                  color="#005696"
-                  icon="healthicons:ui-user-profile"
-                />
-                {isShownProfile && (
-                  <LoginedInfoContents>
-                    <Link to="/mypage">
-                      <h4>{user.name}</h4>
-                    </Link>
-                    <p>{user.studentId}</p>
-                    <Button sm third onClick={reset}>
-                      로그아웃
-                    </Button>
-                  </LoginedInfoContents>
+            {user.name !== '' && (
+              <GridSection col3 right gap16>
+                {!isNotShownEditor && (
+                  <Button sm url="/board/edit">
+                    글쓰기
+                  </Button>
                 )}
-              </LoginedInfo>
-            </GridSection>
-          )}
-          {user.name === '' && (
-            <GridSection right>
-              <HeaderNavigation url="/user/login" regular>
-                로그인
-              </HeaderNavigation>
-            </GridSection>
-          )}
-        </HeaderContainer>
+                <LoginedInfo>
+                  <Icon
+                    onClick={onToggleProfile}
+                    width="36"
+                    height="36"
+                    color="#005696"
+                    icon="healthicons:ui-user-profile"
+                  />
+                  {isShownProfile && (
+                    <LoginedInfoContents>
+                      <Link to="/mypage">
+                        <h4>{user.name}</h4>
+                      </Link>
+                      <p>{user.studentId}</p>
+                      <Button sm third onClick={reset}>
+                        로그아웃
+                      </Button>
+                    </LoginedInfoContents>
+                  )}
+                </LoginedInfo>
+              </GridSection>
+            )}
+            {user.name === '' && (
+              <GridSection right>
+                <HeaderNavigation url="/user/login" regular>
+                  로그인
+                </HeaderNavigation>
+              </GridSection>
+            )}
+          </HeaderContainer>
+        </HeaderWrapper>
       </UsePc>
       <HeaderMobile />
     </>

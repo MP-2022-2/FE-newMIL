@@ -26,11 +26,23 @@ export const PostHeaderInfo = styled.caption`
   text-align: left;
   gap: 0.625rem;
   justify-content: space-between;
+`;
 
+export const PostHeaderCountInfo = styled.div`
   span {
     color: ${theme.color.black};
     font-weight: 500;
     font-size: 1rem;
+    align-items: baseline;
+    padding-right: 0.25rem;
+  }
+`;
+
+export const PostHeaderDateInfo = styled.div`
+  span {
+    color: ${theme.color.ajouSilver};
+    font-weight: 300;
+    font-size: 0.75rem;
     align-items: baseline;
     padding-right: 0.25rem;
   }

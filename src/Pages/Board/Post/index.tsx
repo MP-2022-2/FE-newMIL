@@ -9,6 +9,8 @@ import {
   PostHeaderCategory,
   PostHeaderTitle,
   PostHeaderInfo,
+  PostHeaderDateInfo,
+  PostHeaderCountInfo,
   PostContents,
   PostContentsContainer,
   PostComments,
@@ -66,8 +68,11 @@ export const Post = () => {
                   <PostHeaderCategory>{convertCategory(boardPath)}</PostHeaderCategory>
                   <PostHeaderTitle>{isPost.title}</PostHeaderTitle>
                   <PostHeaderInfo>
-                    <div>{isPost.createdAt.substring(0, 10)}</div>
-                    <div>
+                    <PostHeaderDateInfo>
+                      <span>{new Date(isPost.createdAt).toLocaleDateString()}</span>
+                      <span>{new Date(isPost.createdAt).toTimeString().substring(0, 5)}</span>
+                    </PostHeaderDateInfo>
+                    <PostHeaderCountInfo>
                       <span>
                         <Icon
                           width="16"
@@ -81,7 +86,7 @@ export const Post = () => {
                         <Icon width="16" height="16" color="#e6b71e" icon="icon-park-solid:like" />
                         {isPost.like}
                       </span>
-                    </div>
+                    </PostHeaderCountInfo>
                   </PostHeaderInfo>
                 </PostHeader>
                 <PostContentsContainer>
@@ -102,8 +107,10 @@ export const Post = () => {
                             <caption>{item.nickName}</caption>
                             <p>{item.text}</p>
                             <div>
-                              <caption>{item.createdAt.substring(5, 10)}</caption>
-                              <caption>{item.createdAt.substring(11, 16)}</caption>
+                              <caption>{new Date(item.createdAt).toLocaleDateString()}</caption>
+                              <caption>
+                                {new Date(item.createdAt).toTimeString().substring(0, 5)}
+                              </caption>
                             </div>
                           </CommentElement>
                         ))}

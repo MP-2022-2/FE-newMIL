@@ -80,6 +80,11 @@ const Mobile = {
 };
 
 const common = {
+  shadowDefault: `
+    -webkit-box-shadow: 1px 2.5px 11px -1px #dddddd;
+    -moz-box-shadow: 1px 2.5px 11px -1px #dddddd;
+    box-shadow: 1px 2.5px 11px -1px #dddddd;
+  `,
   pushAnimation: `
     transition: 0.15s ease-in-out;
     &:hover {

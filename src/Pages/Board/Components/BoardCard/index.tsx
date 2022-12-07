@@ -53,7 +53,7 @@ export const Board = (props: BoardProps) => {
             <Article ref={ref}>
               <h2>{el.title}</h2>
               <p dangerouslySetInnerHTML={{ __html: el.content.replace(/<[^>]*>?/g, '') }} />
-              <span>{el.createdAt.substring(0, 10)}</span>
+              <span>{new Date(el.createdAt).toLocaleDateString()}</span>
               <ArticleInfo>
                 <span>
                   <Icon width="16" height="16" color="#005696" icon="mdi:comment-text-multiple" />
