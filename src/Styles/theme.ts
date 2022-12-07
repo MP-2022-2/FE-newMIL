@@ -80,6 +80,21 @@ const Mobile = {
 };
 
 const common = {
+  shadowDefault: `
+    -webkit-box-shadow: 1px 2.5px 11px -1px #dddddd;
+    -moz-box-shadow: 1px 2.5px 11px -1px #dddddd;
+    box-shadow: 1px 2.5px 11px -1px #dddddd;
+  `,
+  pushAnimation: `
+    transition: 0.15s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.025);
+    }
+    &:active {
+      transform: scale(0.965);
+    }
+  `,
   flexCenter: `
     display: flex;
     justify-contents: center;
@@ -112,6 +127,7 @@ const color = {
 const size = {
   mobile: '786px',
   desktop: '787px',
+  full: '1296px',
 };
 
 const Animation = {
@@ -126,12 +142,14 @@ const layout: {
   maxWidth: string;
   mobile: string;
   desktop: string;
+  full: string;
 } = {
   maxWidth: '81rem',
   gutter: 24,
   column: 86,
   mobile: `screen and (max-width: ${size.mobile})`,
   desktop: `screen and (min-width: ${size.desktop})`,
+  full: `screen and (min-width: ${size.full})`,
 };
 
 const theme = {

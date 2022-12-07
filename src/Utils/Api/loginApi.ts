@@ -1,10 +1,9 @@
-import axios from 'axios';
 import { setCookie } from '@/Pages/Login';
+import instance from '@/Utils/Api/axios';
 import { UserLoginType } from '@/@Types/UserType';
 
-export const loginFunc = (data: UserLoginType) => {
-  axios
-    .post(`${process.env.REACT_APP_API_URL}/user/login`, data)
+export const loginApi = (data: UserLoginType) => {
+  instance({ method: 'post', url: 'user/login', data })
     .then((res) => {
       if (res.status === 200) {
         setCookie('accessToken', JSON.stringify(res.data.accessToken), {

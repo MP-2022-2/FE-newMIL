@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useState, useContext } from 'react';
 import useDebounce from '@/Utils/Hooks/useDebounce';
 import { SubjectOriginalType } from '@/@Types/subject';
+import { trackApi } from '@/Utils/Api/SignUpApi';
 import List from '../_List';
 import { DivideBar } from '../SignUpForm/style';
 import {
@@ -17,16 +18,27 @@ import {
 import { TrackContext } from '../SignUpForm';
 
 interface TrackProps {
-  onTrackSubmit: () => void;
+  Id: number;
 }
 
 const TrackForm = (props: TrackProps) => {
-  const { onTrackSubmit } = props;
+  const { Id } = props;
   const { register, watch } = useForm({ mode: 'onChange' });
   const { isChosenList } = useContext(TrackContext);
   const [search, setSearch] = useState('');
 
   const debounceValue = useDebounce(search);
+
+  const onTrackSubmit = async () => {
+    trackApi({
+      studentId: Id,
+      subjectList: isChosenList
+        .filter((el: SubjectOriginalType) => !el.visible.valueOf())
+        .map((el: SubjectOriginalType) =>
+          el.visible === false ? { subject: el.subject, gpa: el.gpa } : el,
+        ),
+    });
+  };
 
   return (
     <TrackFormWrapper>
@@ -51,6 +63,7 @@ const TrackForm = (props: TrackProps) => {
           disabled={
             isChosenList.filter((el: SubjectOriginalType) => !el.visible.valueOf()).length === 0
           }
+          type="button"
           onClick={onTrackSubmit}
         >
           회원가입

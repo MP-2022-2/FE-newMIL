@@ -8,6 +8,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     font-family: "Noto Sans KR", sans-serif;
+    -webkit-tap-highlight-color : transparent;
+
   }
 
   html, body {
@@ -28,7 +30,6 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     outline: none;
     background-color: transparent;
-    -webkit-tap-highlight-color : transparent;
   }
 
   a, a:visited {

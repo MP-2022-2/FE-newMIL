@@ -4,12 +4,11 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { UserSignUpType } from '@/@Types/UserType';
 import { SignUpContext } from '@/Pages/SignUp';
 import { useContext, useState, createContext } from 'react';
-import { emailFunc } from '@/Utils/Api/EmailApi';
-import { trackFunc, signUpFunc } from '@/Utils/Api/SignUpApi';
+import { emailApi } from '@/Utils/Api/EmailApi';
+import { signUpApi } from '@/Utils/Api/SignUpApi';
 import { useRecoilState } from 'recoil';
 import { userSignUpState } from '@/Recoil/user';
 import { Subjects } from '@/Utils/Constants/subject';
-import { SubjectType, SubjectOriginalType } from '@/@Types/subject';
 import TrackForm from '../TrackForm';
 import { SignUpFormContainer, Title, DivideBar } from './style';
 
@@ -39,7 +38,7 @@ const SignUpForm = () => {
   const [isVerifiedEmail, setIsVerifiedEmail] = useState('');
 
   const onSubmit: SubmitHandler<UserSignUpType> = async (data) => {
-    signUpFunc({
+    signUpApi({
       nickName: data.nickName,
       userId: data.userId,
       email: isVerifiedEmail,
@@ -50,11 +49,15 @@ const SignUpForm = () => {
       company: choose === '졸업생' ? data.company : 'null',
       track: 'VC',
     });
+    setUser({
+      ...user,
+      studentId: data.studentId,
+    });
     setIsShownTrackForm(true);
   };
 
   const onChangeEmailForm = async () => {
-    await emailFunc(
+    await emailApi(
       { email: getValues('email'), randomCode: getValues('verify') },
       setIsVerified,
       setIsVerifiedEmail,
@@ -62,17 +65,6 @@ const SignUpForm = () => {
     );
     resetField('verify');
     setonToggleEmailVerifiedForm(!onToggleEmailVerifiedForm);
-  };
-
-  const onTrackSubmit = async () => {
-    trackFunc({
-      studentId: user.studentId,
-      subjectList: isChosenList
-        .filter((el: SubjectOriginalType) => !el.visible.valueOf())
-        .map((el: SubjectOriginalType) =>
-          el.visible === false ? { subject: el.subject, gpa: el.gpa } : el,
-        ),
-    });
   };
 
   return (
@@ -152,7 +144,7 @@ const SignUpForm = () => {
                     third
                     onClick={() => {
                       resetField('verify');
-                      emailFunc(
+                      emailApi(
                         {
                           email: getValues('email'),
                           randomCode: getValues('verify'),
@@ -354,7 +346,7 @@ const SignUpForm = () => {
         </SignUpFormContainer>
       )}
       <TrackContext.Provider value={{ isChosenList, setIsChosenList }}>
-        {isShownTrackForm && <TrackForm onTrackSubmit={onTrackSubmit} />}
+        {isShownTrackForm && <TrackForm Id={user.studentId} />}
       </TrackContext.Provider>
     </>
   );

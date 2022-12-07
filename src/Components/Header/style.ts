@@ -7,7 +7,12 @@ export const Logo = styled.img`
 `;
 
 // 웹
-export const HeaderContainer = styled.header`
+export const HeaderWrapper = styled.header`
+  width: 100%;
+  border-bottom: 1px solid ${({ theme }) => theme.color.gray};
+`;
+
+export const HeaderContainer = styled.div`
   ${({ theme }) => theme.common.flexCenter};
 
   width: 90%;
@@ -23,10 +28,39 @@ export const HeaderContainer = styled.header`
 
 export const LoginedInfo = styled.div`
   display: flex;
+  z-index: 1000;
 
-  h4,
+  svg {
+    ${({ theme }) => theme.common.pushAnimation};
+  }
+`;
+
+export const LoginedInfoContents = styled.div`
+  display: block;
+  position: absolute;
+
+  margin-top: 3rem;
+  margin-left: -7rem;
+
+  padding: 1rem 2rem;
+  width: 5rem;
+  border-radius: 0.625rem;
+
+  ${({ theme }) => theme.common.shadowDefault}
+
+  background-color: white;
+
+  h4 {
+    transition: 0.2s ease-in-out;
+    color: ${({ theme }) => theme.color.ajouBlue};
+    &:hover {
+      color: ${({ theme }) => theme.color.ajouSky};
+    }
+  }
+
   p {
-    line-height: 5rem;
+    color: ${({ theme }) => theme.color.ajouSilver};
+    font-size: 0.8rem;
   }
 `;
 
