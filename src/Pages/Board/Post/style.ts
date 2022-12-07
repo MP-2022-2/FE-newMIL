@@ -49,7 +49,20 @@ export const PostContentsContainer = styled.section`
   border-bottom: 1px solid ${theme.color.gray};
 `;
 
+export const PostSubMenu = styled.section`
+  display: block;
+`;
+
 export const PostContents = styled.p``;
+
+export const GoBackToList = styled.h4`
+  color: ${theme.color.ajouBlue};
+  text-align: right;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 // Post Components
 export const CommentArea = styled.section`

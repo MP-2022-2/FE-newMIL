@@ -4,7 +4,7 @@ import HeaderDropDown from '@/Components/Header/DropDown';
 import { UsePc } from '@/Utils/Hooks/useMediaQuery';
 import { userState, userDataState } from '@/Recoil/user';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import { removeCookie } from '@/Pages/Login';
+import { setCookie } from '@/Pages/Login';
 import { APILoginType } from '@/@Types/UserType';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
@@ -39,9 +39,15 @@ const Header = (props: HeaderProps): ReactElement => {
   const [isShownProfile, setIsShownProfile] = useState(false);
 
   const reset = () => {
-    removeCookie('accessToken');
-    removeCookie('refreshToken');
-    window.location.reload();
+    setCookie('accessToken', '', {
+      path: '/',
+      expires: new Date(Date.now()),
+    });
+    setCookie('refreshToken', '', {
+      path: '/',
+      expires: new Date(Date.now()),
+    });
+    window.location.replace('/');
   };
 
   useEffect(() => {

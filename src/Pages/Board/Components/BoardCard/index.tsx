@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import GridSection from '@/Components/Section';
 import { Icon } from '@iconify/react';
 import { useInView } from 'react-intersection-observer';
-import { BoardContainer, Article, IsEmptyMsg, ArticleInfo } from './style';
+import { BoardContainer, Article, IsEmptyMsg, ArticleInfo, LoadingContainer } from './style';
 import { BoardProps, ArticleTypes } from './types';
 
 export const Board = (props: BoardProps) => {
@@ -18,22 +18,29 @@ export const Board = (props: BoardProps) => {
   const getData = useCallback(async () => {
     try {
       setLoading(true);
-      await instance(`board/${target}?size=2&page=${isPageCount}`).then((res) =>
+      await instance(`board/${target}?size=10&page=${isPageCount}`).then((res) =>
         setOnSearchPost(onSearchPost.concat(res.data.postDtoList)),
       );
     } catch (err) {
       setOnSearchPost([]);
     }
     setLoading(false);
-  }, [isPageCount]);
+  }, [isPageCount, target]);
 
   useEffect(() => {
     getData();
-  }, [target, getData]);
+  }, [getData]);
+
+  useEffect(() => {
+    setOnSearchPost([]);
+    setPageCount(0);
+  }, [target]);
 
   useEffect(() => {
     if (inView && !isLoading) {
-      setPageCount((prevState) => prevState + 1);
+      setTimeout(() => {
+        setPageCount((prevState) => prevState + 1);
+      }, 300);
     }
   }, [inView, isLoading]);
 
@@ -61,7 +68,7 @@ export const Board = (props: BoardProps) => {
           </Link>
         </GridSection>
       ))}
-      {isLoading && <>로딩중</>}
+      {isLoading && <LoadingContainer>로딩중</LoadingContainer>}
     </BoardContainer>
   );
 };

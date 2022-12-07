@@ -1,7 +1,7 @@
 import Header from '@/Components/Header';
 import instance from '@/Utils/Api/axios';
-import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
 import { Icon } from '@iconify/react';
 import {
   PostContainer,
@@ -12,6 +12,8 @@ import {
   PostContents,
   PostContentsContainer,
   PostComments,
+  PostSubMenu,
+  GoBackToList,
   CommentElement,
   CommentArea,
   IsEmptyComment,
@@ -35,7 +37,7 @@ export const Post = () => {
     return '';
   };
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     try {
       setLoading(true);
       setSuccess(false);
@@ -45,11 +47,11 @@ export const Post = () => {
     }
     setLoading(false);
     setSuccess(true);
-  };
+  }, [idx]);
 
   useEffect(() => {
     getData();
-  }, [idx]);
+  }, [idx, getData]);
 
   return (
     <>
@@ -84,7 +86,12 @@ export const Post = () => {
                 </PostHeader>
                 <PostContentsContainer>
                   <PostContents dangerouslySetInnerHTML={{ __html: isPost.content }} />
-                  <LikeButton score={isPost.like} />
+                  <PostSubMenu>
+                    <LikeButton score={isPost.like} />
+                    <Link to="/board/free">
+                      <GoBackToList>목록</GoBackToList>
+                    </Link>
+                  </PostSubMenu>
                 </PostContentsContainer>
                 <PostComments>
                   <CommentArea>

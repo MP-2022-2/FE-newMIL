@@ -80,3 +80,9 @@ export const IsEmptyMsg = styled.h3`
   left: 50%;
   transform: translate(-50%, -50%);
 `;
+
+export const LoadingContainer = styled.div`
+  display: block;
+  width: 100%;
+  text-align: center;
+`;
