@@ -1,14 +1,18 @@
-import { ReactElement, useEffect } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import GridSection from '@/Components/Section';
 import HeaderDropDown from '@/Components/Header/DropDown';
 import { UsePc } from '@/Utils/Hooks/useMediaQuery';
 import { userState, userDataState } from '@/Recoil/user';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import { removeCookie } from '@/Pages/Login';
+import { setCookie } from '@/Pages/Login';
 import { APILoginType } from '@/@Types/UserType';
+import { Icon } from '@iconify/react';
+import { Link } from 'react-router-dom';
+import Button from '@/Components/Button';
 import HeaderNavigation from './Navigation';
-import { HeaderContainer, Logo, LoginedInfo } from './style';
+import { HeaderContainer, Logo, LoginedInfo, LoginedInfoContents } from './style';
 import HeaderMobile from './index.mobile';
+import HeaderProps from './types';
 
 const mediaItems = [
   {
@@ -28,18 +32,31 @@ const mediaItems = [
   },
 ];
 
-const Header = (): ReactElement => {
+const Header = (props: HeaderProps): ReactElement => {
+  const { isNotShownEditor = false } = props;
   const [user, setUser] = useRecoilState(userState);
   const userData = useRecoilValue<APILoginType>(userDataState);
+  const [isShownProfile, setIsShownProfile] = useState(false);
+
   const reset = () => {
-    removeCookie('accessToken');
-    removeCookie('refreshToken');
+    setCookie('accessToken', '', {
+      path: '/',
+      expires: new Date(Date.now()),
+    });
+    setCookie('refreshToken', '', {
+      path: '/',
+      expires: new Date(Date.now()),
+    });
     window.location.replace('/');
   };
 
   useEffect(() => {
     userData && setUser(userData);
   }, [user]);
+
+  const onToggleProfile = () => {
+    setIsShownProfile(!isShownProfile);
+  };
 
   return (
     <>
@@ -52,17 +69,37 @@ const Header = (): ReactElement => {
             <GridSection col3>
               <HeaderNavigation url="/">홈</HeaderNavigation>
               <HeaderDropDown title="미디어학과" items={mediaItems} />
-              <HeaderNavigation url="/talk">게시판</HeaderNavigation>
+              <HeaderNavigation url={`/board/free`}>게시판</HeaderNavigation>
               <HeaderNavigation url="/cil">CIL</HeaderNavigation>
             </GridSection>
           </GridSection>
           {user.name !== '' && (
-            <GridSection col3 right>
+            <GridSection col3 right gap16>
+              {!isNotShownEditor && (
+                <Button sm url="/board/edit">
+                  글쓰기
+                </Button>
+              )}
               <LoginedInfo>
-                <h4>{user.name}</h4>
-                <p>님, 환영합니다!</p>
+                <Icon
+                  onClick={onToggleProfile}
+                  width="36"
+                  height="36"
+                  color="#005696"
+                  icon="healthicons:ui-user-profile"
+                />
+                {isShownProfile && (
+                  <LoginedInfoContents>
+                    <Link to="/mypage">
+                      <h4>{user.name}</h4>
+                    </Link>
+                    <p>{user.studentId}</p>
+                    <Button sm third onClick={reset}>
+                      로그아웃
+                    </Button>
+                  </LoginedInfoContents>
+                )}
               </LoginedInfo>
-              <button onClick={reset}>로그아웃</button>
             </GridSection>
           )}
           {user.name === '' && (

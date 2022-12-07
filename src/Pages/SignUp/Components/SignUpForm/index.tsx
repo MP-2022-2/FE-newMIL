@@ -4,8 +4,8 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { UserSignUpType } from '@/@Types/UserType';
 import { SignUpContext } from '@/Pages/SignUp';
 import { useContext, useState, createContext } from 'react';
-import { emailFunc } from '@/Utils/Api/EmailApi';
-import { signUpFunc } from '@/Utils/Api/SignUpApi';
+import { emailApi } from '@/Utils/Api/EmailApi';
+import { signUpApi } from '@/Utils/Api/SignUpApi';
 import { useRecoilState } from 'recoil';
 import { userSignUpState } from '@/Recoil/user';
 import { Subjects } from '@/Utils/Constants/subject';
@@ -38,7 +38,7 @@ const SignUpForm = () => {
   const [isVerifiedEmail, setIsVerifiedEmail] = useState('');
 
   const onSubmit: SubmitHandler<UserSignUpType> = async (data) => {
-    signUpFunc({
+    signUpApi({
       nickName: data.nickName,
       userId: data.userId,
       email: isVerifiedEmail,
@@ -57,7 +57,7 @@ const SignUpForm = () => {
   };
 
   const onChangeEmailForm = async () => {
-    await emailFunc(
+    await emailApi(
       { email: getValues('email'), randomCode: getValues('verify') },
       setIsVerified,
       setIsVerifiedEmail,
@@ -144,7 +144,7 @@ const SignUpForm = () => {
                     third
                     onClick={() => {
                       resetField('verify');
-                      emailFunc(
+                      emailApi(
                         {
                           email: getValues('email'),
                           randomCode: getValues('verify'),

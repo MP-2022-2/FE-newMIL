@@ -1,15 +1,19 @@
 import Header from '@/Components/Header';
-import Board from '@/Components/Board';
-import Navigation from '@/Components/Board/Navigation';
+import Navigation from '@/Pages/Board/Components/Navigation';
 import GridSection from '@/Components/Section';
-import { useRecoilValue } from 'recoil';
-import { boardState } from '@/Recoil/theme';
+import { Link, useParams } from 'react-router-dom';
+import BoardCard from './Components/BoardCard';
 import { BoardWrapper, BoardContainer, NaviContainer } from './style';
 
-export const BoardList = ['자유', '질문', '재학생', '졸업생'];
+export const BoardList = [
+  { title: '자유', url: 'free' },
+  { title: '질문', url: 'qna' },
+  { title: '재학생', url: 'student' },
+  { title: '졸업생', url: 'graduate' },
+];
 
 const BoardPage = () => {
-  const select = useRecoilValue<string>(boardState);
+  const { boardPath } = useParams();
 
   return (
     <BoardWrapper>
@@ -18,11 +22,13 @@ const BoardPage = () => {
         <NaviContainer>
           <GridSection col6 center>
             {BoardList.map((item) => (
-              <Navigation key={item} select={select === item} content={item} />
+              <Link key={item.url} to={`/board/${item.url}`}>
+                <Navigation selected={boardPath === item.url} content={item.title} />
+              </Link>
             ))}
           </GridSection>
         </NaviContainer>
-        <Board />
+        <BoardCard target={boardPath ?? 'free'} />
       </BoardContainer>
     </BoardWrapper>
   );

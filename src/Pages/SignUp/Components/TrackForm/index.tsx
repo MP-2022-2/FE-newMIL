@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useState, useContext } from 'react';
 import useDebounce from '@/Utils/Hooks/useDebounce';
 import { SubjectOriginalType } from '@/@Types/subject';
-import { trackFunc } from '@/Utils/Api/SignUpApi';
+import { trackApi } from '@/Utils/Api/SignUpApi';
 import List from '../_List';
 import { DivideBar } from '../SignUpForm/style';
 import {
@@ -30,7 +30,7 @@ const TrackForm = (props: TrackProps) => {
   const debounceValue = useDebounce(search);
 
   const onTrackSubmit = async () => {
-    trackFunc({
+    trackApi({
       studentId: Id,
       subjectList: isChosenList
         .filter((el: SubjectOriginalType) => !el.visible.valueOf())
