@@ -1,8 +1,4 @@
-import Header from '@/Components/Header';
-import Board from '@/Components/Board';
 import GridSection from '@/Components/Section';
-import { useRecoilValue } from 'recoil';
-import { trackState } from '@/Recoil/theme';
 import { VideoProps, VideoTypes } from './types';
 import { VideoWrapper, VideoContainer, VideoThumbnail, VideoBox } from './style';
 
