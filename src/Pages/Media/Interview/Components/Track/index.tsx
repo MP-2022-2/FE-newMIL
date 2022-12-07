@@ -4,11 +4,10 @@ import { NavigationProps } from './types';
 import { NaviContainer, IconContainer } from './style';
 
 export const Navigation = (props: NavigationProps) => {
-  const { content, select } = props;
+  const { content, id, select } = props;
   const setContent = useSetRecoilState<string>(trackState);
-  console.log(props.icon);
   return (
-    <NaviContainer title={select ? 'selected' : ''} onClick={() => setContent(content)}>
+    <NaviContainer title={select ? 'selected' : ''} onClick={() => setContent(id)}>
       <IconContainer src={props.icon} />
       {content}
     </NaviContainer>

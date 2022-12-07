@@ -1,5 +1,5 @@
 export interface VideoProps {
-  src: string;
+  id: string;
 }
 
 export interface VideoTypes {

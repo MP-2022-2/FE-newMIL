@@ -30,8 +30,8 @@ export const VideoContainer = styled.article`
   }
 
   h2 {
+    height: 9rem;
     padding-right: 1.5rem;
-    padding-bottom: 7rem;
   }
   span {
     padding-right: 1.5rem;
