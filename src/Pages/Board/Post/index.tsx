@@ -3,6 +3,7 @@ import instance from '@/Utils/Api/axios';
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect, useCallback } from 'react';
 import { Icon } from '@iconify/react';
+import Button from '@/Components/Button';
 import {
   PostContainer,
   PostHeader,
@@ -15,10 +16,10 @@ import {
   PostContentsContainer,
   PostComments,
   PostSubMenu,
-  GoBackToList,
   CommentElement,
   CommentArea,
   IsEmptyComment,
+  GoBackToList,
 } from './style';
 import { IsEmptyMsg } from '../Components/BoardCard/style';
 import { ArticleContentTypes } from './types';
@@ -30,6 +31,7 @@ export const Post = () => {
   const [isPost, setIsPost] = useState([] as unknown as ArticleContentTypes);
   const [isLoading, setLoading] = useState(false);
   const [isSuccess, setSuccess] = useState(true);
+  const [isLiked, setLiked] = useState(false);
 
   const convertCategory = (data: string | undefined) => {
     if (data === 'free') return '자유게시판';
@@ -43,7 +45,10 @@ export const Post = () => {
     try {
       setLoading(true);
       setSuccess(false);
-      await instance(`board/${boardPath}/${idx}`).then((res) => setIsPost(res.data.postDto));
+      await instance(`board/${boardPath}/${idx}`).then((res) => {
+        setIsPost(res.data.postDto);
+        setLiked(res.data.isLikedPost);
+      });
     } catch (err) {
       setIsPost([] as unknown as ArticleContentTypes);
     }
@@ -69,8 +74,11 @@ export const Post = () => {
                   <PostHeaderTitle>{isPost.title}</PostHeaderTitle>
                   <PostHeaderInfo>
                     <PostHeaderDateInfo>
-                      <span>{new Date(isPost.createdAt).toLocaleDateString()}</span>
-                      <span>{new Date(isPost.createdAt).toTimeString().substring(0, 5)}</span>
+                      <span>{isPost.nickname}</span>
+                      <div>
+                        <span>{new Date(isPost.createdAt).toLocaleDateString()}</span>
+                        <span>{new Date(isPost.createdAt).toTimeString().substring(0, 5)}</span>
+                      </div>
                     </PostHeaderDateInfo>
                     <PostHeaderCountInfo>
                       <span>
@@ -82,20 +90,18 @@ export const Post = () => {
                         />
                         {isPost.comment}
                       </span>
-                      <span>
-                        <Icon width="16" height="16" color="#e6b71e" icon="icon-park-solid:like" />
-                        {isPost.like}
-                      </span>
                     </PostHeaderCountInfo>
                   </PostHeaderInfo>
                 </PostHeader>
                 <PostContentsContainer>
                   <PostContents dangerouslySetInnerHTML={{ __html: isPost.content }} />
                   <PostSubMenu>
-                    <LikeButton score={isPost.like} />
-                    <Link to="/board/free">
-                      <GoBackToList>목록</GoBackToList>
-                    </Link>
+                    <LikeButton score={isPost.like} status={isLiked} />
+                    <GoBackToList>
+                      <Button secondary sm url="/board/free">
+                        목록
+                      </Button>
+                    </GoBackToList>
                   </PostSubMenu>
                 </PostContentsContainer>
                 <PostComments>

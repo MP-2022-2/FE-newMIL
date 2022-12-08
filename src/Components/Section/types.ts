@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 
 export interface GridSectionStyleProps {
   col2?: boolean;
@@ -16,6 +16,8 @@ export interface GridSectionStyleProps {
   gap32?: boolean;
   right?: boolean;
   center?: boolean;
+  alignColumn?: boolean;
+  ref?: (node?: Element | null | undefined) => void;
 }
 
 export default interface GridSectionProps extends GridSectionStyleProps {

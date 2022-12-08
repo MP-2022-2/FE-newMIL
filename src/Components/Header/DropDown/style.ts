@@ -3,22 +3,24 @@ import { NaviContainer } from '../Navigation/style';
 
 export const Title = styled.h4`
   z-index: 2;
-
-  :hover {
+  display: flex;
+  align-items: center;
+  &:hover {
     cursor: pointer;
   }
 `;
 
 export const ListContent = styled.li`
-  background-color: ${({ theme }) => theme.color.darkBlue};
-  margin-bottom: 0.2rem;
+  background-color: ${({ theme }) => theme.color.ajouBlue};
+  margin-bottom: 0.375rem;
   list-style-type: none;
 
+  border-radius: 0.625rem;
   height: 2.5rem;
-  line-height: 2.5rem;
 
   > h4 {
     color: ${({ theme }) => theme.color.white};
+    line-height: 2.375rem;
 
     :before {
       height: 0px;

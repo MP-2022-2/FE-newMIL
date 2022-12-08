@@ -37,12 +37,17 @@ const GlobalStyle = createGlobalStyle`
     color: #333;
   }
 
+  caption {
+    display : block;
+    text-align : left;
+  }
+
   @keyframes push {
     0% {
       transform : scale(1);
     }
     100% {
-      transform : scale(0.955);
+      transform : scale(0.975);
     }
   }
 
@@ -51,7 +56,7 @@ const GlobalStyle = createGlobalStyle`
       transform : scale(1);
     }
     100% {
-      transform : scale(1.035);
+      transform : scale(1.015);
     }
   }
 
@@ -82,6 +87,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   @media ${theme.layout.mobile} {
+    
     h1 {
       ${theme.Mobile.h1};
     }

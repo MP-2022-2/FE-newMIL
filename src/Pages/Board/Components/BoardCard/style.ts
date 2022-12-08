@@ -26,6 +26,10 @@ export const Article = styled.article`
 
   span {
     color: ${theme.color.ajouSilver};
+
+    + span {
+      padding-left: 0.5rem;
+    }
   }
 
   &:hover {
@@ -72,6 +76,10 @@ export const BoardContainer = styled.section`
 
   @media ${theme.layout.full} {
     justify-content: space-between;
+  }
+
+  @media ${theme.layout.mobile} {
+    ${theme.common.mobileLayout}
   }
 `;
 

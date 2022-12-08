@@ -32,8 +32,13 @@ const mediaItems = [
   },
 ];
 
+/**
+ 언더바 홈페이지의 메인 Header입니다.
+ * @param isNotShownEditor boolean 글쓰기 버튼 On/Off
+ * @param isNotShownProfile 프로필 On/Off
+ */
 const Header = (props: HeaderProps): ReactElement => {
-  const { isNotShownEditor = false } = props;
+  const { isNotShownEditor = false, isNotShownProfileIcon = false } = props;
   const [user, setUser] = useRecoilState(userState);
   const userData = useRecoilValue<APILoginType>(userDataState);
   const [isShownProfile, setIsShownProfile] = useState(false);
@@ -63,12 +68,13 @@ const Header = (props: HeaderProps): ReactElement => {
       <UsePc>
         <HeaderWrapper>
           <HeaderContainer>
-            <GridSection col4>
+            <GridSection col3>
               <GridSection>
-                <Logo src="/pictures/MIL.png" />
+                <Link to="/">
+                  <Logo src="/pictures/MIL.png" />
+                </Link>
               </GridSection>
-              <GridSection col3>
-                <HeaderNavigation url="/">홈</HeaderNavigation>
+              <GridSection col2>
                 <HeaderDropDown title="미디어학과" items={mediaItems} />
                 <HeaderNavigation url={`/board/free`}>게시판</HeaderNavigation>
                 <HeaderNavigation url="/cil">CIL</HeaderNavigation>
@@ -81,26 +87,32 @@ const Header = (props: HeaderProps): ReactElement => {
                     글쓰기
                   </Button>
                 )}
-                <LoginedInfo>
-                  <Icon
-                    onClick={onToggleProfile}
-                    width="36"
-                    height="36"
-                    color="#005696"
-                    icon="healthicons:ui-user-profile"
-                  />
-                  {isShownProfile && (
-                    <LoginedInfoContents>
-                      <Link to="/mypage">
-                        <h4>{user.name}</h4>
-                      </Link>
-                      <p>{user.studentId}</p>
-                      <Button sm third onClick={reset}>
-                        로그아웃
-                      </Button>
-                    </LoginedInfoContents>
-                  )}
-                </LoginedInfo>
+                {!isNotShownProfileIcon ? (
+                  <LoginedInfo>
+                    <Icon
+                      onClick={onToggleProfile}
+                      width="36"
+                      height="36"
+                      color="#005696"
+                      icon="healthicons:ui-user-profile"
+                    />
+                    {isShownProfile && (
+                      <LoginedInfoContents>
+                        <Link to="/mypage">
+                          <h4>{user.name}</h4>
+                        </Link>
+                        <p>{user.studentId}</p>
+                        <Button sm third onClick={reset}>
+                          로그아웃
+                        </Button>
+                      </LoginedInfoContents>
+                    )}
+                  </LoginedInfo>
+                ) : (
+                  <Button third sm onClick={reset}>
+                    로그아웃
+                  </Button>
+                )}
               </GridSection>
             )}
             {user.name === '' && (

@@ -141,7 +141,7 @@ const SignUpForm = () => {
                     인증하기
                   </Button>
                   <Button
-                    third
+                    fourth
                     onClick={() => {
                       resetField('verify');
                       emailApi(
@@ -346,7 +346,7 @@ const SignUpForm = () => {
         </SignUpFormContainer>
       )}
       <TrackContext.Provider value={{ isChosenList, setIsChosenList }}>
-        {isShownTrackForm && <TrackForm Id={user.studentId} />}
+        {isShownTrackForm && <TrackForm studentId={user.studentId} />}
       </TrackContext.Provider>
     </>
   );
