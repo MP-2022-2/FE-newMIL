@@ -26,7 +26,7 @@ export const SectionContainer = styled.section<GridSectionStyleProps>`
     css`
       flex-direction: column;
     `}
-    
+
   //column
   ${(props) =>
     props.col2 &&
@@ -95,4 +95,9 @@ export const SectionContainer = styled.section<GridSectionStyleProps>`
     css`
       gap: 2rem;
     `};
+
+  @media ${({ theme }) => theme.layout.mobile} {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
 `;

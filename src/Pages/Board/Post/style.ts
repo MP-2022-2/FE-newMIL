@@ -3,11 +3,16 @@ import theme from '@/Styles/theme';
 
 export const PostContainer = styled.div`
   display: block;
+  width: 90%;
   margin: 0 auto;
   margin-top: 3rem;
   padding-bottom: 3rem;
   max-width: ${theme.layout.maxWidth};
   color: ${theme.color.black};
+
+  @media ${theme.layout.mobile} {
+    ${theme.common.mobileLayout};
+  }
 `;
 
 // Post Header

@@ -73,6 +73,10 @@ export const BoardContainer = styled.section`
   @media ${theme.layout.full} {
     justify-content: space-between;
   }
+
+  @media ${theme.layout.mobile} {
+    ${theme.common.mobileLayout};
+  }
 `;
 
 export const IsEmptyMsg = styled.h3`

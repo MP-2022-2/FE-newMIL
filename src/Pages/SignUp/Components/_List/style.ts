@@ -1,13 +1,19 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from '@/Styles/theme';
 
 // default
-export const ListContainer = styled.ul`
+export const ListContainer = styled.ul<{ sm: boolean }>`
   display: block;
   padding: 0 0.4rem;
   height: 18.5rem;
   overflow-x: hidden;
   overflow-y: scroll;
+
+  ${(props) =>
+    props.sm &&
+    css`
+      height: 11.5rem;
+    `}
 
   &::-webkit-scrollbar {
     width: 0.5rem;
@@ -27,7 +33,7 @@ export const ListContainer = styled.ul`
 
 export const ListTag = styled.li`
   padding: 0.8rem 0.6rem;
-  margin-bottom: 0.6rem;
+  margin: 0.6rem 0;
   background-color: ${theme.color.white};
   border: 1px solid ${theme.color.ajouSky};
   border-radius: 10px;

@@ -1,6 +1,14 @@
 import Header from '@/Components/Header';
 import GridSection from '@/Components/Section';
+import SearchBar from '@/Components/SearchBar';
+import { useForm } from 'react-hook-form';
+import List from '@/Pages/SignUp/Components/_List';
+import { Subjects } from '@/Utils/Constants/subject';
+import useDebounce from '@/Utils/Hooks/useDebounce';
+import { useState } from 'react';
+import { SubjectOriginalType } from '@/@Types/subject';
 import {
+  MyPageWrapper,
   MyPageContainer,
   ProfileContainer,
   Profile,
@@ -8,19 +16,23 @@ import {
   SubjectContainer,
   Label,
   TrackContainer,
-  GpaContainer,
   BoardAdministrationContainer,
-  MyPostContainer,
-  MyCommentContainer,
   SubjectWrapper,
   BoardAdministrationWrapper,
 } from './style';
+import BoardList from './Components/BoardList';
+import GPA from './Components/GPA';
 
 export default function MyPage() {
+  const { register } = useForm({ mode: 'onChange' });
+  const [search, setSearch] = useState('');
+
+  const debounceValue = useDebounce(search);
+
   return (
-    <MyPageContainer>
+    <MyPageWrapper>
       <Header />
-      <GridSection col12 center alignColumn>
+      <MyPageContainer>
         <ProfileContainer>
           <Profile />
           <ProfileInfoContainer>
@@ -32,18 +44,25 @@ export default function MyPage() {
         <SubjectWrapper>
           <Label>수강 과목</Label>
           <SubjectContainer>
-            <TrackContainer></TrackContainer>
-            <GpaContainer></GpaContainer>
+            <GridSection col8>
+              <TrackContainer>
+                <SearchBar context={register('trackSearch')} />
+                <List sm data={Subjects} filter={debounceValue} />
+              </TrackContainer>
+            </GridSection>
+            <GridSection col4>
+              <GPA max={128} current={64} />
+            </GridSection>
           </SubjectContainer>
         </SubjectWrapper>
         <BoardAdministrationWrapper>
           <Label>게시판 관리</Label>
           <BoardAdministrationContainer>
-            <MyPostContainer></MyPostContainer>
-            <MyCommentContainer></MyCommentContainer>
+            <BoardList />
+            <BoardList />
           </BoardAdministrationContainer>
         </BoardAdministrationWrapper>
-      </GridSection>
-    </MyPageContainer>
+      </MyPageContainer>
+    </MyPageWrapper>
   );
 }

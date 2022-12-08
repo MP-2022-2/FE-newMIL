@@ -1,14 +1,25 @@
 import styled from 'styled-components';
 import theme from '@/Styles/theme';
 
-export const Label = styled.label``;
+export const Label = styled.h3`
+  text-align: left;
+`;
 
-export const MyPageContainer = styled.div``;
+export const MyPageWrapper = styled.section``;
+export const MyPageContainer = styled.div`
+  width: 90%;
+  max-width: ${theme.layout.maxWidth};
+  margin: 0 auto;
+
+  @media ${theme.layout.mobile} {
+    ${theme.common.mobileLayout};
+  }
+`;
 
 // Profile
 export const ProfileContainer = styled.section`
-  width: 100%;
   border-bottom: 1px solid ${theme.color.gray};
+  padding: 2rem 0;
 `;
 
 export const Profile = styled.div``;
@@ -18,18 +29,30 @@ export const ProfileInfoContainer = styled.div`
 `;
 
 // Subject
-export const SubjectWrapper = styled.section``;
+export const SubjectWrapper = styled.section`
+  padding: 2rem 0;
+`;
 
-export const SubjectContainer = styled.section``;
+export const SubjectContainer = styled.section`
+  display: flex;
+  padding: 1rem 0;
+  width: 100%;
+  justify-content: space-between;
 
-export const TrackContainer = styled.div``;
+  @media ${theme.layout.mobile} {
+    flex-wrap: wrap;
+  }
+`;
 
-export const GpaContainer = styled.div``;
+export const TrackContainer = styled.div`
+  width: 100%;
+`;
 
-export const BoardAdministrationWrapper = styled.section``;
+// Board
+export const BoardAdministrationWrapper = styled.section`
+  padding: 1rem 0;
+`;
 
-export const BoardAdministrationContainer = styled.section``;
-
-export const MyPostContainer = styled.div``;
-
-export const MyCommentContainer = styled.div``;
+export const BoardAdministrationContainer = styled.section`
+  display: flex;
+`;
