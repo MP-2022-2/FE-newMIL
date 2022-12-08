@@ -141,7 +141,7 @@ const SignUpForm = () => {
                     인증하기
                   </Button>
                   <Button
-                    third
+                    fourth
                     onClick={() => {
                       resetField('verify');
                       emailApi(

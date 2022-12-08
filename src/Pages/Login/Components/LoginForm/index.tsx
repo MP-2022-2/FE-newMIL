@@ -79,7 +79,7 @@ const LoginForm = () => {
         로그인
       </Button>
       <SignUpContainer>
-        <p>아직 MIL 가입을 안하셨나요?</p>
+        <p>아직 가입을 안하셨나요?</p>
         <Link to="/user/signup">
           <SignUpLink>회원가입</SignUpLink>
         </Link>

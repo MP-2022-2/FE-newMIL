@@ -8,9 +8,8 @@ export const GPAContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  margin: 2rem 0;
-
   border-radius: 0.625rem;
+  margin: 2rem 0;
   border: 1px solid ${theme.color.gray};
 
   #progress {

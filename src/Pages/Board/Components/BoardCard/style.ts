@@ -75,7 +75,7 @@ export const BoardContainer = styled.section`
   }
 
   @media ${theme.layout.mobile} {
-    ${theme.common.mobileLayout};
+    ${theme.common.mobileLayout}
   }
 `;
 

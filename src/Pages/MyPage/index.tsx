@@ -5,14 +5,22 @@ import { useForm } from 'react-hook-form';
 import List from '@/Pages/SignUp/Components/_List';
 import { Subjects } from '@/Utils/Constants/subject';
 import useDebounce from '@/Utils/Hooks/useDebounce';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { SubjectOriginalType } from '@/@Types/subject';
+import { userState } from '@/Recoil/user';
+import { useRecoilValue } from 'recoil';
+import instance from '@/Utils/Api/axios';
 import {
   MyPageWrapper,
   MyPageContainer,
   ProfileContainer,
   Profile,
   ProfileInfoContainer,
+  InfoName,
+  InfoNickName,
+  InfoRole,
+  InfoStudentId,
+  Span,
   SubjectContainer,
   Label,
   TrackContainer,
@@ -24,21 +32,32 @@ import BoardList from './Components/BoardList';
 import GPA from './Components/GPA';
 
 export default function MyPage() {
-  const { register } = useForm({ mode: 'onChange' });
+  const { register, watch } = useForm({ mode: 'onChange' });
   const [search, setSearch] = useState('');
+  const [IsTrackList, setTrackList] = useState([] as unknown as SubjectOriginalType);
+  const userData = useRecoilValue(userState);
 
   const debounceValue = useDebounce(search);
 
+  //   const getTrack = useCallback(() => {
+  //     try {
+  //       instance(`subject/registration/mypage`).then((res) => setTrackList(res));
+  //     } catch (err) {}
+  //   }, [idx]);
+
   return (
     <MyPageWrapper>
-      <Header />
+      <Header isNotShownProfileIcon />
       <MyPageContainer>
         <ProfileContainer>
           <Profile />
           <ProfileInfoContainer>
-            <h2>홍길동</h2>
-            <caption>재학생</caption>
-            <p>201999999</p>
+            <Span>
+              <InfoName>{userData.name}</InfoName>
+              <InfoNickName>{userData.nickName}</InfoNickName>
+            </Span>
+            <InfoRole>{userData.identity}</InfoRole>
+            <InfoStudentId>{userData.studentId}</InfoStudentId>
           </ProfileInfoContainer>
         </ProfileContainer>
         <SubjectWrapper>
@@ -46,7 +65,13 @@ export default function MyPage() {
           <SubjectContainer>
             <GridSection col8>
               <TrackContainer>
-                <SearchBar context={register('trackSearch')} />
+                <SearchBar
+                  context={register('trackSearch', {
+                    onChange: () => {
+                      setSearch(watch('trackSearch'));
+                    },
+                  })}
+                />
                 <List sm data={Subjects} filter={debounceValue} />
               </TrackContainer>
             </GridSection>
@@ -56,10 +81,9 @@ export default function MyPage() {
           </SubjectContainer>
         </SubjectWrapper>
         <BoardAdministrationWrapper>
-          <Label>게시판 관리</Label>
           <BoardAdministrationContainer>
-            <BoardList />
-            <BoardList />
+            <BoardList label="내가 쓴 게시물" onSearchData="" />
+            <BoardList label="내가 쓴 댓글" onSearchData="" />
           </BoardAdministrationContainer>
         </BoardAdministrationWrapper>
       </MyPageContainer>

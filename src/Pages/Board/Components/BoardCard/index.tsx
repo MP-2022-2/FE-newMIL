@@ -18,7 +18,7 @@ export const Board = (props: BoardProps) => {
   const getData = useCallback(async () => {
     try {
       setLoading(true);
-      await instance(`board/${target}?size=10&page=${isPageCount}`).then((res) =>
+      await instance(`board/${target}?size=10&page=${isPageCount}&sort=id,DESC`).then((res) =>
         setOnSearchPost(onSearchPost.concat(res.data.postDtoList)),
       );
     } catch (err) {
@@ -52,7 +52,7 @@ export const Board = (props: BoardProps) => {
           <Link to={`${el.id}`}>
             <Article ref={ref}>
               <h2>{el.title}</h2>
-              <p dangerouslySetInnerHTML={{ __html: el.content.replace(/<[^>]*>?/g, '') }} />
+              <p dangerouslySetInnerHTML={{ __html: el.content.replace(/<[^>]*>?/g, ' ') }} />
               <span>{new Date(el.createdAt).toLocaleDateString()}</span>
               <ArticleInfo>
                 <span>

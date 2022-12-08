@@ -28,7 +28,7 @@ const List = (props: ListProps) => {
     <>
       {is === 'default' && (
         <ListContainer sm={sm}>
-          {listData.map((item, index) => (
+          {listData.sort().map((item, index) => (
             <ListTag
               key={index}
               onClick={() => {

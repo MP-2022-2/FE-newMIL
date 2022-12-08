@@ -1,1 +1,4 @@
-export interface BoardListProps {}
+export interface BoardListProps {
+  label: string;
+  onSearchData: string;
+}

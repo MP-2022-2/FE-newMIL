@@ -25,6 +25,7 @@ export const ListContainer = styled.ul<{ sm: boolean }>`
     border: 2px solid transparent;
   }
   &::-webkit-scrollbar-track {
+    margin-top: 0.4rem;
     background-color: ${theme.color.ajouSky};
     border-radius: 0.5rem;
     box-shadow: inset 0px 0px 5px white;

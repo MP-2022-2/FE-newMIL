@@ -3,6 +3,7 @@ import instance from '@/Utils/Api/axios';
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect, useCallback } from 'react';
 import { Icon } from '@iconify/react';
+import Button from '@/Components/Button';
 import {
   PostContainer,
   PostHeader,
@@ -15,10 +16,10 @@ import {
   PostContentsContainer,
   PostComments,
   PostSubMenu,
-  GoBackToList,
   CommentElement,
   CommentArea,
   IsEmptyComment,
+  GoBackToList,
 } from './style';
 import { IsEmptyMsg } from '../Components/BoardCard/style';
 import { ArticleContentTypes } from './types';
@@ -93,9 +94,11 @@ export const Post = () => {
                   <PostContents dangerouslySetInnerHTML={{ __html: isPost.content }} />
                   <PostSubMenu>
                     <LikeButton score={isPost.like} />
-                    <Link to="/board/free">
-                      <GoBackToList>목록</GoBackToList>
-                    </Link>
+                    <GoBackToList>
+                      <Button secondary sm url="/board/free">
+                        목록
+                      </Button>
+                    </GoBackToList>
                   </PostSubMenu>
                 </PostContentsContainer>
                 <PostComments>
