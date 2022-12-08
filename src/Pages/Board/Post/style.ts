@@ -34,11 +34,12 @@ export const PostHeaderInfo = styled.caption`
 `;
 
 export const PostHeaderCountInfo = styled.div`
+  display: flex;
+  align-items: flex-end;
   span {
     color: ${theme.color.black};
     font-weight: 500;
     font-size: 1rem;
-    align-items: baseline;
     padding-right: 0.25rem;
   }
 `;

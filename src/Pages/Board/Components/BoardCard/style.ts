@@ -26,6 +26,10 @@ export const Article = styled.article`
 
   span {
     color: ${theme.color.ajouSilver};
+
+    + span {
+      padding-left: 0.5rem;
+    }
   }
 
   &:hover {
