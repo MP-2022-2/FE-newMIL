@@ -1,6 +1,6 @@
-import { VideoTypes } from '@/@Types/video';
+import { VideoType } from '@/@Types/video';
 
-export const VideoContents: VideoTypes[] = [
+export const VideoContents: VideoType[] = [
   {
     name: '이정영',
     job: 'UX 디자이너',

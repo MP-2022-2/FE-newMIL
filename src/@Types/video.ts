@@ -1,4 +1,4 @@
-export interface VideoTypes {
+export interface VideoType {
   name: string;
   job: string;
   date: string;

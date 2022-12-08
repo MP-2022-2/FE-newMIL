@@ -1,15 +1,19 @@
 import Header from '@/Components/Header';
 import GridSection from '@/Components/Section';
 import TitleComponent from '@/Components/Title';
-import { ProfessorWrapper } from './style';
+import { PageWrapper, PageContainer } from './style';
+import Professor from './Components';
 
 const ProfessorPage = () => (
-  <ProfessorWrapper>
+  <PageWrapper>
     <Header />
-    <GridSection col12 center>
-      <TitleComponent titleContent="교수님 소개" />
-    </GridSection>
-  </ProfessorWrapper>
+    <PageContainer>
+      <GridSection col12>
+        <TitleComponent titleContent="교수님 소개" />
+      </GridSection>
+      <Professor />
+    </PageContainer>
+  </PageWrapper>
 );
 
 export default ProfessorPage;

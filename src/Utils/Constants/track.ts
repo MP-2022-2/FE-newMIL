@@ -1,6 +1,6 @@
-import { TrackTypes } from '@/@Types/track';
+import { TrackType } from '@/@Types/track';
 
-export const TrackList: TrackTypes[] = [
+export const TrackList: TrackType[] = [
   {
     id: 'GI',
     name: '게임&인터렉티브 콘텐츠',

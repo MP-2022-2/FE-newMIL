@@ -2,10 +2,9 @@ import styled from 'styled-components';
 
 export const TitleWrapper = styled.div`
   display: block;
+  width: 100%;
   height: 2.5rem;
   margin-top: 4rem;
-`;
-
-export const TitleText = styled.h1`
-  display: block;
+  text-align: left;
+  max-width: ${({ theme }) => theme.layout.maxWidth};
 `;
