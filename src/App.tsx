@@ -7,6 +7,7 @@ import SignUpPage from '@/Pages/SignUp';
 import MainPage from '@/Pages/Main';
 import InterviewPage from '@/Pages/Media/Interview';
 import ProfessorPage from '@/Pages/Media/Professor';
+import GraduatePage from '@/Pages/Media/Graduate';
 
 axios.defaults.withCredentials = true;
 
@@ -19,7 +20,7 @@ function App() {
           <Route path="cil" element={'CIL'} />
           <Route path="media">
             <Route path="professor" element={<ProfessorPage />} />
-            <Route path="graduate" element={'졸업 요건'} />
+            <Route path="graduate" element={<GraduatePage />} />
             <Route path="interview" element={<InterviewPage />} />
           </Route>
 
