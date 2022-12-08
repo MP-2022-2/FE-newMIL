@@ -7,4 +7,5 @@ export const TitleWrapper = styled.div`
   margin-top: 4rem;
   text-align: left;
   max-width: ${({ theme }) => theme.layout.maxWidth};
+  border: 1px solid;
 `;

@@ -48,6 +48,11 @@ export const SectionContainer = styled.section<GridSectionStyleProps>`
       max-width: ${calColumnToRem(6)};
     `}
     ${(props) =>
+    props.col7 &&
+    css`
+      max-width: ${calColumnToRem(7)};
+    `}
+    ${(props) =>
     props.col12 &&
     css`
       max-width: ${calColumnToRem(12)};

@@ -6,6 +6,7 @@ export interface GridSectionStyleProps {
   col4?: boolean;
   col5?: boolean;
   col6?: boolean;
+  col7?: boolean;
   col8?: boolean;
   col12?: boolean;
   gap8?: boolean;

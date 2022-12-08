@@ -8,6 +8,12 @@ const GraduatePage = () => (
     <Header />
     <PageContainer>
       <GridSection col12>
+        <GridSection col7>
+          <div>
+            <TitleComponent titleContent="졸업요건" />
+            <TitleComponent titleContent="졸업요건" />
+          </div>
+        </GridSection>
         <TitleComponent titleContent="졸업요건" />
       </GridSection>
     </PageContainer>
