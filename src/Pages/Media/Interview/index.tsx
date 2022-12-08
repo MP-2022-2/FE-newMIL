@@ -46,7 +46,7 @@ const InterviewPage = () => {
           <GridSection col12 center>
             {TrackList.map((item) => (
               <Navigation
-                id={item.id}
+                isSelectedTrack={item.id}
                 key={item.name}
                 select={select === item.id}
                 content={item.name}

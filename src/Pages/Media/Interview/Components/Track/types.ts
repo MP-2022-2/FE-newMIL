@@ -1,7 +1,7 @@
 import { SetterOrUpdater } from 'recoil';
 
 export interface NavigationProps {
-  id: string;
+  isSelectedTrack: string;
   icon: string;
   content: string;
   select?: boolean;
