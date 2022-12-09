@@ -6,7 +6,7 @@ import { ListProps } from './types';
 import { TrackContext } from '../SignUpForm';
 
 const List = (props: ListProps) => {
-  const { data, filter, is = 'default' } = props;
+  const { data, filter, sm = false, is = 'default' } = props;
   const { isChosenList, setIsChosenList } = useContext(TrackContext);
 
   const listData = data.filter((val) => {
@@ -27,8 +27,8 @@ const List = (props: ListProps) => {
   return (
     <>
       {is === 'default' && (
-        <ListContainer>
-          {listData.map((item, index) => (
+        <ListContainer sm={sm}>
+          {listData.sort().map((item, index) => (
             <ListTag
               key={index}
               onClick={() => {

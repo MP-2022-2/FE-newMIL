@@ -1,5 +1,6 @@
 import { ReactElement, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Icon } from '@iconify/react';
 import { DropDownContainer, Title, Dim, DropDownList, ListContent } from './style';
 import DropDownProps from './types';
 
@@ -8,7 +9,16 @@ const DropDown = ({ title, items }: DropDownProps): ReactElement => {
 
   return (
     <DropDownContainer onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-      <Title>{title}</Title>
+      <Title>
+        {title}
+        <Icon
+          width="24"
+          height="24"
+          color="#333333"
+          icon="material-symbols:keyboard-arrow-down-rounded"
+        />
+      </Title>
+
       {open && (
         <DropDownList>
           {items.map((item) => (

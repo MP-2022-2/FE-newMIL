@@ -18,11 +18,11 @@ import {
 import { TrackContext } from '../SignUpForm';
 
 interface TrackProps {
-  Id: number;
+  studentId: number;
 }
 
 const TrackForm = (props: TrackProps) => {
-  const { Id } = props;
+  const { studentId } = props;
   const { register, watch } = useForm({ mode: 'onChange' });
   const { isChosenList } = useContext(TrackContext);
   const [search, setSearch] = useState('');
@@ -31,7 +31,7 @@ const TrackForm = (props: TrackProps) => {
 
   const onTrackSubmit = async () => {
     trackApi({
-      studentId: Id,
+      studentId,
       subjectList: isChosenList
         .filter((el: SubjectOriginalType) => !el.visible.valueOf())
         .map((el: SubjectOriginalType) =>

@@ -43,7 +43,6 @@ export const userDataState = selector({
     if (accessToken === undefined) return false; // 추후에 refreshToken 여부에 따른 추가 로직 구현
 
     const res = await instance({ url: 'user/mine' });
-
     return res.data;
   },
   set: ({ set }, newValue) => {

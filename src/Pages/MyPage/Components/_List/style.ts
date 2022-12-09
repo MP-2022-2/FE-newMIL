@@ -32,13 +32,15 @@ export const ListContainer = styled.ul<{ sm: boolean }>`
   }
 `;
 
-export const ListTag = styled.li`
+export const ListTag = styled.li<{ isMajor: boolean }>`
   padding: 0.8rem 0.6rem;
   margin: 0.6rem 0;
   background-color: ${theme.color.white};
   border: 1px solid ${theme.color.ajouSky};
   border-radius: 10px;
   transition: ease-in-out 0.1s;
+  display: flex;
+  justify-content: space-between;
 
   b {
     color: ${theme.color.ajouYellow};
@@ -54,51 +56,25 @@ export const ListTag = styled.li`
   &:active {
     animation: push 0.2s ease-in-out forwards;
   }
-`;
 
-// chip
-export const ChipContainer = styled.ul`
-  display: flex;
-  margin: 0.5rem 0;
-  gap: 0.4rem;
-  flex-direction: column;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  height: 31rem;
+  ${(props) =>
+    props.isMajor
+      ? css`
+          &:before {
+            content: '전공';
+            color: ${theme.color.ajouBlue};
+            font-weight: 600;
+          }
 
-  &::-webkit-scrollbar {
-    width: 0.1rem;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: ${theme.color.ajouBlue};
-    border-radius: 0.1rem;
-    background-clip: padding-box;
-    border: 2px solid transparent;
-  }
-  &::-webkit-scrollbar-track {
-    background-color: ${theme.color.ajouSky};
-    border-radius: 0.1rem;
-    box-shadow: inset 0px 0px 5px white;
-  }
-`;
-
-export const ChipTag = styled.li`
-  display: flex;
-  gap: 1rem;
-  padding: 0.4rem;
-  color: #333;
-  margin: 0.2rem 0.4rem;
-  background-color: ${theme.color.lightblue};
-  border: 1px solid ${theme.color.ajouBlue};
-  border-radius: 5px;
-  justify-content: space-between;
-
-  &:hover {
-    animation: pull 0.1s ease-out forwards;
-    cursor: pointer;
-  }
-
-  &:active {
-    animation: push 0.2s ease-in-out forwards;
-  }
+          :hover:before {
+            color: ${theme.color.ajouYellow};
+          }
+        `
+      : css`
+          &:before {
+            content: '교양';
+            color: ${theme.color.ajouSilver};
+            font-weight: 600;
+          }
+        `}
 `;

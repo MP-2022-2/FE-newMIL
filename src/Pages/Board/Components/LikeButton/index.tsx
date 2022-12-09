@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import instance from '@/Utils/Api/axios';
 import { useParams } from 'react-router-dom';
 import { LikeButtonContainer, LikeButtonWrapper, LikedScore, HeartIcon } from './style';
 
-export default function LikeButton({ score }: { score: number }) {
-  const [isLiked, setLiked] = useState(false);
+export default function LikeButton({ score, status }: { score: number; status: boolean }) {
+  const [isLiked, setLiked] = useState(status);
+  const [hasScore, setScore] = useState(score);
   const { boardPath, idx } = useParams();
 
   const postData = async () => {
@@ -12,12 +13,13 @@ export default function LikeButton({ score }: { score: number }) {
       method: 'post',
       url: `board/${boardPath}/${idx}/postlike`,
     });
+    isLiked ? setScore(hasScore - 1) : setScore(hasScore + 1);
     setLiked(!isLiked);
   };
 
   return (
     <LikeButtonWrapper>
-      <LikedScore isLiked={isLiked}>{score}</LikedScore>
+      <LikedScore isLiked={isLiked}>{hasScore}</LikedScore>
       <LikeButtonContainer>
         <HeartIcon isLiked={isLiked} onClick={postData}>
           <svg>

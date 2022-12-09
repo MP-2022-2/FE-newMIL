@@ -4,6 +4,7 @@ import BoardPage from '@/Pages/Board';
 import Post from '@/Pages/Board/Post';
 import ErrorPage from '@/404';
 import Editor from '@/Pages/Board/Editor';
+import MyPage from '@/Pages/MyPage';
 
 const LoginRoute = () => {
   const status = useLogin();
@@ -22,6 +23,7 @@ const LoginRoutes = () => {
           <Route path=":boardPath/:idx" element={<Post />} />
           <Route path="edit" element={<Editor />} />
         </Route>
+        <Route path="mypage" element={<MyPage />} />
       </Route>
       <Route element={<ErrorPage />} path="*" />
     </Routes>

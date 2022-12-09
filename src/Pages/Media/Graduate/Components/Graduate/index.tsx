@@ -15,7 +15,6 @@ import {
 const Graduate = () => {
   const [selectedYear, setSelectedYear] = useState(YoramInfo[0].yoramPreview);
   const handleChange = (e: any) => {
-    console.log(e.target.value);
     setSelectedYear(e.target.value);
   };
 
