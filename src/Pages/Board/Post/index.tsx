@@ -22,13 +22,13 @@ import {
   GoBackToList,
 } from './style';
 import { IsEmptyMsg } from '../Components/BoardCard/style';
-import { ArticleContentTypes } from './types';
+import { CommentTypes } from './types';
 import LikeButton from '../Components/LikeButton';
 import InputComment from '../Components/InputComment';
 
 export const Post = () => {
   const { boardPath, idx } = useParams();
-  const [isPost, setIsPost] = useState([] as unknown as ArticleContentTypes);
+  const [isPost, setIsPost] = useState([] as unknown as CommentTypes);
   const [isLoading, setLoading] = useState(false);
   const [isSuccess, setSuccess] = useState(true);
   const [isLiked, setLiked] = useState(false);
@@ -50,7 +50,7 @@ export const Post = () => {
         setLiked(res.data.isLikedPost);
       });
     } catch (err) {
-      setIsPost([] as unknown as ArticleContentTypes);
+      setIsPost([] as unknown as CommentTypes);
     }
     setLoading(false);
     setSuccess(true);

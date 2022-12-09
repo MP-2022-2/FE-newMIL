@@ -109,8 +109,16 @@ export default function MyPage() {
         </SubjectWrapper>
         <BoardAdministrationWrapper>
           <BoardAdministrationContainer>
-            <BoardList label="내가 쓴 게시물" onSearchData="" />
-            <BoardList label="내가 쓴 댓글" onSearchData="" />
+            <BoardList
+              label="내가 쓴 게시물"
+              onSearchData="user/mine/my-post"
+              isLoading={isLoading}
+            />
+            <BoardList
+              label="내가 쓴 댓글"
+              onSearchData="user/mine/my-comment"
+              isLoading={isLoading}
+            />
           </BoardAdministrationContainer>
         </BoardAdministrationWrapper>
       </MyPageContainer>

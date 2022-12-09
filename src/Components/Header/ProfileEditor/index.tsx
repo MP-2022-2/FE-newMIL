@@ -14,12 +14,17 @@ export default function ProfileEditor({ onClick }: { onClick: () => void }) {
   const { register, getValues } = useForm({ mode: 'onChange' });
   const userData = useRecoilValue(userState);
 
-  const postEditProfile = () => {
+  const postEditProfile = async () => {
     try {
-      instance({
+      await instance({
         url: 'user/mine/newinfo',
         method: 'put',
         data: { track: 'NONE', company: getValues('company') },
+      });
+      await instance({
+        url: 'user/mine/nick-name',
+        method: 'put',
+        data: { nickName: getValues('nickname') },
       });
     } catch (err) {
       console.log(err);
@@ -65,15 +70,6 @@ export default function ProfileEditor({ onClick }: { onClick: () => void }) {
           })}
         />
         <Input
-          label="닉네임"
-          id="nickname"
-          type="text"
-          context={register('nickname', {
-            disabled: onDisabled,
-            value: userData.nickName,
-          })}
-        />
-        <Input
           label="이메일"
           id="email"
           type="text"
@@ -82,13 +78,20 @@ export default function ProfileEditor({ onClick }: { onClick: () => void }) {
             value: userData.email,
           })}
         />
+        <Input
+          label="닉네임"
+          id="nickname"
+          type="text"
+          context={register('nickname', {
+            value: userData.nickName,
+          })}
+        />
         {userData.identity === 'ROLE_GRADUATE' && (
           <Input
             label="회사"
             id="company"
             type="text"
             context={register('company', {
-              disabled: onDisabled,
               value: userData.company,
             })}
           />
