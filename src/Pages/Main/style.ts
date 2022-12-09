@@ -4,6 +4,10 @@ import theme from '@/Styles/theme';
 export const MainContainer = styled.section`
   ${theme.common.flexCenterColumn};
   text-align: center;
+
+  @media ${theme.layout.mobile} {
+    ${theme.common.mobileLayout}
+  }
 `;
 
 export const BannerText = styled.div`
@@ -54,6 +58,11 @@ export const SubMenuContainer = styled.div`
   width: 100%;
   justify-content: space-between;
   max-width: ${theme.layout.maxWidth};
+
+  @media ${theme.layout.mobile} {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
 `;
 
 export const SubMenu = styled.div`
@@ -73,7 +82,12 @@ export const NoticeContainer = styled.div`
   justify-content: space-between;
   max-width: ${theme.layout.maxWidth};
 
-  margin: 3rem 0;
+  margin: 2rem 0;
+
+  @media ${theme.layout.mobile} {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
 `;
 
 export const Notice = styled.div`

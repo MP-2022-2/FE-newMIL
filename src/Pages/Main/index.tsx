@@ -19,8 +19,6 @@ import {
 
 export default function MainPage() {
   const animationStudy = useAnimation(talkComputer, true, 20, 20);
-  const FadeIn = useScrollFade();
-  const FadeIn2 = useScrollFade('up', 1.5, 1);
 
   return (
     <>
@@ -30,13 +28,13 @@ export default function MainPage() {
           <BannerBackground />
           <BannerAnimation {...animationStudy} />
           <BannerText>
-            <h3 {...FadeIn}>우리 과만의 커넥팅 라이브러리</h3>
-            <h1 {...FadeIn2}>언더바</h1>
+            <h3 {...useScrollFade('up', 1.5, 0)}>우리 과만의 커넥팅 라이브러리</h3>
+            <h1 {...useScrollFade('up', 1.5, 0.5)}>언더바</h1>
           </BannerText>
         </BannerContainer>
         <SubMenuWrapper>
-          <h2>우리들만의 발자취를 따라가 봐요</h2>
-          <SubMenuContainer>
+          <h2 {...useScrollFade('up', 1.5, 0.85)}>우리들만의 발자취를 따라가 봐요</h2>
+          <SubMenuContainer {...useScrollFade('up', 1.5, 0)}>
             <GridSection col4>
               <SubMenu>최신글</SubMenu>
             </GridSection>
@@ -49,8 +47,8 @@ export default function MainPage() {
           </SubMenuContainer>
         </SubMenuWrapper>
         <NoticeWrapper>
-          <h2>공지사항</h2>
-          <NoticeContainer>
+          <h2 {...useScrollFade('up', 1.5, 0)}>공지사항</h2>
+          <NoticeContainer {...useScrollFade('up', 1.5, 0)}>
             <GridSection col3>
               <Notice>공지사항</Notice>
             </GridSection>

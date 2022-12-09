@@ -95,6 +95,7 @@ const GlobalStyle = createGlobalStyle`
 
   @media ${theme.layout.mobile} {
     
+    
     h1 {
       ${theme.Mobile.h1};
     }
