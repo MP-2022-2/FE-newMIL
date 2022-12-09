@@ -21,6 +21,12 @@ export const SectionContainer = styled.section<GridSectionStyleProps>`
       margin: 0 auto;
     `}
 
+    ${(props) =>
+    props.wrap &&
+    css`
+      flex-wrap: wrap;
+    `}
+
   //column
   ${(props) =>
     props.col2 &&
@@ -51,6 +57,11 @@ export const SectionContainer = styled.section<GridSectionStyleProps>`
     props.col7 &&
     css`
       max-width: ${calColumnToRem(7)};
+    `}
+    ${(props) =>
+    props.col9 &&
+    css`
+      max-width: ${calColumnToRem(9)};
     `}
     ${(props) =>
     props.col12 &&
