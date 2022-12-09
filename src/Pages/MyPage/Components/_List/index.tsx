@@ -1,7 +1,6 @@
 import { Subjects } from '@/Utils/Constants/subject';
 import { Icon } from '@iconify/react';
 import instance from '@/Utils/Api/axios';
-import { useEffect } from 'react';
 import { ListContainer, ListTag } from './style';
 import { ListProps, DataProps, SubjectProps } from './types';
 
@@ -18,6 +17,20 @@ const List = (props: ListProps) => {
         url: `subject/registration/${isMajor ? 'major' : 'non-major'}`,
         method: 'post',
         data: { subjectList: [list] },
+      });
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const deleteSubject = async (isMajor: boolean, list: string) => {
+    try {
+      setLoading(true);
+      await instance({
+        url: `subject/removal/${isMajor ? 'major' : 'non-major'}`,
+        method: 'delete',
+        data: { subject: list },
       });
       setLoading(false);
     } catch (err) {
@@ -57,7 +70,13 @@ const List = (props: ListProps) => {
       {filter === '' &&
         isMajorList &&
         isMajorList.map((item, index) => (
-          <ListTag key={index} isMajor={true} onClick={() => {}}>
+          <ListTag
+            key={index}
+            isMajor={true}
+            onClick={() => {
+              deleteSubject(true, item.subject);
+            }}
+          >
             {item.subject}
             <Icon width="24" height="24" color="#343434" icon="iconoir:cancel" />
           </ListTag>
@@ -65,7 +84,13 @@ const List = (props: ListProps) => {
       {filter === '' &&
         isNonMajorList &&
         isNonMajorList.map((item, index) => (
-          <ListTag key={index} isMajor={false} onClick={() => {}}>
+          <ListTag
+            key={index}
+            isMajor={false}
+            onClick={() => {
+              deleteSubject(false, item.subject);
+            }}
+          >
             {item.subject}
             <Icon width="24" height="24" color="#343434" icon="iconoir:cancel" />
           </ListTag>

@@ -30,6 +30,8 @@ import BoardList from './Components/BoardList';
 import GPA from './Components/GPA';
 import { MyPageTrackType } from './types';
 
+import { BoardListTypes } from './Components/BoardList/types';
+
 const switchingRole = (role: string) => {
   if (role === 'ROLE_STUDENT') return '재학생';
   if (role === 'ROLE_GRADUATE') return '졸업생';
@@ -40,7 +42,9 @@ const switchingRole = (role: string) => {
 export default function MyPage() {
   const { register, watch, setValue } = useForm({ mode: 'onChange' });
   const [search, setSearch] = useState('');
-  const [IsTrackList, setTrackList] = useState({} as MyPageTrackType);
+  const [isTrackList, setTrackList] = useState({} as MyPageTrackType);
+  const [isMyPostList, setMyPostList] = useState<BoardListTypes[]>([]);
+  const [isMyCommentList, setMyCommentList] = useState<BoardListTypes[]>([]);
   const userData = useRecoilValue(userState);
   const [isLoading, setLoading] = useState(false);
 
@@ -54,10 +58,38 @@ export default function MyPage() {
     }
   }, [userData]);
 
+  const getPageData = useCallback(async () => {
+    try {
+      await instance(`user/mine/my-post?size=5&page=0&sort=id,DESC`).then((res) =>
+        setMyPostList(res.data.postDtoList),
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  }, [isLoading]);
+
+  const getCommentData = useCallback(async () => {
+    try {
+      await instance(`user/mine/my-comment?size=5&page=0&sort=id,DESC`).then((res) =>
+        setMyCommentList(res.data.commentDtoList),
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  }, [isLoading]);
+
   useEffect(() => {
     if (isLoading) return;
     getTrack();
   }, [getTrack, isLoading]);
+
+  useEffect(() => {
+    getCommentData();
+  }, [getCommentData]);
+
+  useEffect(() => {
+    getPageData();
+  }, [getPageData]);
 
   useEffect(() => {
     setValue('trackSearch', '');
@@ -94,8 +126,8 @@ export default function MyPage() {
                 />
                 <List
                   sm
-                  isMajorList={IsTrackList.majorSubjectList}
-                  isNonMajorList={IsTrackList.nonMajorSubjectList}
+                  isMajorList={isTrackList.majorSubjectList}
+                  isNonMajorList={isTrackList.nonMajorSubjectList}
                   filter={debounceValue}
                   isLoading={isLoading}
                   setLoading={setLoading}
@@ -103,22 +135,14 @@ export default function MyPage() {
               </TrackContainer>
             </GridSection>
             <GridSection col4>
-              <GPA max={128} current={IsTrackList.majorTotal + IsTrackList.nonMajorTotal ?? '0'} />
+              <GPA max={128} current={isTrackList.majorTotal + isTrackList.nonMajorTotal ?? '0'} />
             </GridSection>
           </SubjectContainer>
         </SubjectWrapper>
         <BoardAdministrationWrapper>
           <BoardAdministrationContainer>
-            <BoardList
-              label="내가 쓴 게시물"
-              onSearchData="user/mine/my-post"
-              isLoading={isLoading}
-            />
-            <BoardList
-              label="내가 쓴 댓글"
-              onSearchData="user/mine/my-comment"
-              isLoading={isLoading}
-            />
+            <BoardList label="내가 쓴 게시물" isKindOf="post" data={isMyPostList} />
+            <BoardList label="내가 쓴 댓글" isKindOf="comment" data={isMyCommentList} />
           </BoardAdministrationContainer>
         </BoardAdministrationWrapper>
       </MyPageContainer>

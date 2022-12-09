@@ -1,11 +1,5 @@
 import { ArticleTypes } from '@/Pages/Board/Components/BoardCard/types';
 
-export interface BoardListProps {
-  label: string;
-  onSearchData: string;
-  isLoading: boolean;
-}
-
 export interface CommentTypes {
   text: string;
   createAt: string;
@@ -16,4 +10,10 @@ export interface CommentTypes {
 export interface BoardListTypes extends ArticleTypes, CommentTypes {
   id: number;
   boardType: string;
+}
+
+export interface BoardListProps {
+  label: string;
+  data: BoardListTypes[];
+  isKindOf: string;
 }
