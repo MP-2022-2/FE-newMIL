@@ -44,7 +44,6 @@ export const Article = styled.article`
 
 export const ArticleInfo = styled.div`
   display: flex;
-  gap: 0.625rem;
   padding-top: 0.375rem;
 
   svg {

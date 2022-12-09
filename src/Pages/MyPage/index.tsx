@@ -5,8 +5,7 @@ import { useForm } from 'react-hook-form';
 import List from '@/Pages/SignUp/Components/_List';
 import { Subjects } from '@/Utils/Constants/subject';
 import useDebounce from '@/Utils/Hooks/useDebounce';
-import { useState, useCallback } from 'react';
-import { SubjectOriginalType } from '@/@Types/subject';
+import { useState, useCallback, useEffect } from 'react';
 import { userState } from '@/Recoil/user';
 import { useRecoilValue } from 'recoil';
 import instance from '@/Utils/Api/axios';
@@ -30,24 +29,38 @@ import {
 } from './style';
 import BoardList from './Components/BoardList';
 import GPA from './Components/GPA';
+import { MyPageTrackType } from './types';
+
+const switchingRole = (role: string) => {
+  if (role === 'ROLE_STUDENT') return '재학생';
+  if (role === 'ROLE_GRADUATE') return '졸업생';
+  if (role === 'ROLE_ADMIN') return '관리자';
+  return '';
+};
 
 export default function MyPage() {
   const { register, watch } = useForm({ mode: 'onChange' });
   const [search, setSearch] = useState('');
-  const [IsTrackList, setTrackList] = useState([] as unknown as SubjectOriginalType);
+  const [IsTrackList, setTrackList] = useState([] as unknown as MyPageTrackType);
   const userData = useRecoilValue(userState);
 
   const debounceValue = useDebounce(search);
 
-  //   const getTrack = useCallback(() => {
-  //     try {
-  //       instance(`subject/registration/mypage`).then((res) => setTrackList(res));
-  //     } catch (err) {}
-  //   }, [idx]);
+  const getTrack = useCallback(() => {
+    try {
+      instance('subject/mypage').then((res) => setTrackList(res.data));
+    } catch (err) {
+      console.log(err);
+    }
+  }, [userData]);
+
+  useEffect(() => {
+    getTrack();
+  }, [getTrack]);
 
   return (
     <MyPageWrapper>
-      <Header isNotShownProfileIcon />
+      <Header isShownProfileEditor isNotShownEditor isNotShownProfileIcon />
       <MyPageContainer>
         <ProfileContainer>
           <Profile />
@@ -56,12 +69,13 @@ export default function MyPage() {
               <InfoName>{userData.name}</InfoName>
               <InfoNickName>{userData.nickName}</InfoNickName>
             </Span>
-            <InfoRole>{userData.identity}</InfoRole>
+            <InfoRole>{switchingRole(userData.identity)}</InfoRole>
             <InfoStudentId>{userData.studentId}</InfoStudentId>
           </ProfileInfoContainer>
         </ProfileContainer>
         <SubjectWrapper>
           <Label>수강 과목</Label>
+          <caption>수강했던 과목을 입력해주세요.</caption>
           <SubjectContainer>
             <GridSection col8>
               <TrackContainer>
