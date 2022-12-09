@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import TitleComponent from '@/Components/Title';
 import { YoramInfo } from '@/Utils/Constants/yoram';
-import GridSection from '@/Components/Section';
 import {
   TitleAndSelectWrapper,
   YearSelectWrapper,
@@ -13,7 +12,7 @@ import {
   TotalGradeContentWrapper,
 } from './style';
 
-const GraduateNavi = () => {
+const Graduate = () => {
   const [selectedYear, setSelectedYear] = useState(YoramInfo[0].yoramPreview);
   const handleChange = (e: any) => {
     console.log(e.target.value);
@@ -50,4 +49,4 @@ const GraduateNavi = () => {
   );
 };
 
-export default GraduateNavi;
+export default Graduate;

@@ -27,6 +27,12 @@ export const SectionContainer = styled.section<GridSectionStyleProps>`
       flex-wrap: wrap;
     `}
 
+    ${(props) =>
+    props.flexStart &&
+    css`
+      align-items: flex-start;
+    `}
+
   //column
   ${(props) =>
     props.col2 &&

@@ -1,19 +1,19 @@
 import Header from '@/Components/Header';
 import GridSection from '@/Components/Section';
-import TitleComponent from '@/Components/Title';
-import GraduateNavi from './Components/Graduate';
+import Graduate from './Components/Graduate';
+import Yoram from './Components/Yoram';
 import { PageWrapper, PageContainer } from './style';
 
 const GraduatePage = () => (
   <PageWrapper>
     <Header />
     <PageContainer>
-      <GridSection col12 wrap>
+      <GridSection col12 wrap flexStart>
         <GridSection col9 wrap>
-          <GraduateNavi />
+          <Graduate />
         </GridSection>
         <GridSection col3>
-          <TitleComponent titleContent="요람" />
+          <Yoram />
         </GridSection>
       </GridSection>
     </PageContainer>

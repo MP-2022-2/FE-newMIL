@@ -19,6 +19,7 @@ export interface GridSectionStyleProps {
   right?: boolean;
   center?: boolean;
   wrap?: boolean;
+  flexStart?: boolean;
 }
 
 export default interface GridSectionProps extends GridSectionStyleProps {

@@ -6,6 +6,5 @@ export const PageWrapper = styled.div`
 `;
 
 export const PageContainer = styled.section`
-  display: block;
   ${theme.common.flexCenterColumn};
 `;
