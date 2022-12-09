@@ -20,6 +20,11 @@ export const DownloadComponent = styled.div`
   margin-bottom: 1rem;
   align-items: center;
   padding: 0.75rem;
+
+  h3 {
+    margin-right: auto;
+  }
+
   :hover {
     cursor: pointer;
     background: #d9d9d9;
