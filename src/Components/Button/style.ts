@@ -89,7 +89,7 @@ export const ButtonContainer = styled.button<ButtonHeirarchy>`
   ${(props) =>
     props.md &&
     css`
-      padding: 0.3rem;
+      padding: 0.25rem;
       font-size: 1rem;
       width: 8rem;
       font-weight: 300;
