@@ -30,7 +30,7 @@ const SignUpForm = () => {
   } = useForm<UserSignUpType>({ mode: 'onChange' });
 
   const { choose } = useContext(SignUpContext);
-  const [onToggleEmailVerifiedForm, setonToggleEmailVerifiedForm] = useState(false); // 이메일 인증 Form Switch, true : 인증 번호 확인, false : 인증 메일 발송
+  const [onToggleEmailVerifiedForm, setOnToggleEmailVerifiedForm] = useState(false); // 이메일 인증 Form Switch, true : 인증 번호 확인, false : 인증 메일 발송
   const [isVerified, setIsVerified] = useState(false); // 인증 여부 확인
   const [isShownTrackForm, setIsShownTrackForm] = useState(false); // 다음 Track Form
   const [isChosenList, setIsChosenList] = useState(Subjects);
@@ -47,7 +47,7 @@ const SignUpForm = () => {
       studentId: data.studentId,
       identity: choose === '졸업생' ? 'ROLE_GRADUATE' : 'ROLE_STUDENT',
       company: choose === '졸업생' ? data.company : 'null',
-      track: 'VC',
+      track: 'NONE',
     });
     setUser({
       ...user,
@@ -64,7 +64,7 @@ const SignUpForm = () => {
       onToggleEmailVerifiedForm,
     );
     resetField('verify');
-    setonToggleEmailVerifiedForm(!onToggleEmailVerifiedForm);
+    setOnToggleEmailVerifiedForm(!onToggleEmailVerifiedForm);
   };
 
   return (

@@ -1,6 +1,6 @@
 import { ArticleTypes } from '../Components/BoardCard/types';
 
-export interface ArticleContentTypes extends ArticleTypes {
+export interface CommentTypes extends ArticleTypes {
   commentDtoList: [
     {
       text: string;

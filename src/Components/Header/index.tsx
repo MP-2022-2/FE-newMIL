@@ -14,6 +14,8 @@ import { HeaderWrapper, HeaderContainer, Logo, LoginedInfo, LoginedInfoContents 
 import HeaderMobile from './index.mobile';
 import HeaderProps from './types';
 
+import ProfileEditor from './ProfileEditor';
+
 const mediaItems = [
   {
     id: 1,
@@ -36,12 +38,18 @@ const mediaItems = [
  언더바 홈페이지의 메인 Header입니다.
  * @param isNotShownEditor boolean 글쓰기 버튼 On/Off
  * @param isNotShownProfile 프로필 On/Off
+ * @param isShownProfileEditor 프로필 에디터 On/Off
  */
 const Header = (props: HeaderProps): ReactElement => {
-  const { isNotShownEditor = false, isNotShownProfileIcon = false } = props;
+  const {
+    isShownProfileEditor = false,
+    isNotShownEditor = false,
+    isNotShownProfileIcon = false,
+  } = props;
   const [user, setUser] = useRecoilState(userState);
   const userData = useRecoilValue<APILoginType>(userDataState);
   const [isShownProfile, setIsShownProfile] = useState(false);
+  const [onClickProfileEditor, setOnClickProfileEditor] = useState(false);
 
   const reset = () => {
     setCookie('accessToken', '', {
@@ -58,6 +66,14 @@ const Header = (props: HeaderProps): ReactElement => {
   useEffect(() => {
     userData && setUser(userData);
   }, [user]);
+
+  useEffect(() => {
+    if (!onClickProfileEditor) {
+      document.body.style.overflow = 'scroll';
+      document.body.style.touchAction = 'auto';
+      document.body.style.minHeight = '0%';
+    }
+  }, [onClickProfileEditor]);
 
   const onToggleProfile = () => {
     setIsShownProfile(!isShownProfile);
@@ -82,6 +98,11 @@ const Header = (props: HeaderProps): ReactElement => {
             </GridSection>
             {user.name !== '' && (
               <GridSection col3 right gap16>
+                {isShownProfileEditor && (
+                  <Button md onClick={() => setOnClickProfileEditor(!onClickProfileEditor)}>
+                    프로필 수정
+                  </Button>
+                )}
                 {!isNotShownEditor && (
                   <Button sm url="/board/edit">
                     글쓰기
@@ -123,6 +144,7 @@ const Header = (props: HeaderProps): ReactElement => {
               </GridSection>
             )}
           </HeaderContainer>
+          {onClickProfileEditor && <ProfileEditor onClick={() => setOnClickProfileEditor(false)} />}
         </HeaderWrapper>
       </UsePc>
       <HeaderMobile />

@@ -60,6 +60,10 @@ export const InfoStudentId = styled.p`
 // Subject
 export const SubjectWrapper = styled.section`
   padding: 2rem 0;
+
+  caption {
+    color: ${theme.color.ajouSilver};
+  }
 `;
 
 export const SubjectContainer = styled.section`
