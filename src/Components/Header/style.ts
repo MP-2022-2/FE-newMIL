@@ -36,13 +36,14 @@ export const LoginedInfo = styled.div`
 `;
 
 export const LoginedInfoContents = styled.div`
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: absolute;
 
   margin-top: 3rem;
   margin-left: -7rem;
 
-  padding: 1rem 2rem;
+  padding: 1rem 2rem 1.5rem;
   width: 5rem;
   border-radius: 0.625rem;
 
@@ -53,9 +54,6 @@ export const LoginedInfoContents = styled.div`
   h4 {
     transition: 0.2s ease-in-out;
     color: ${({ theme }) => theme.color.ajouBlue};
-    &:hover {
-      color: ${({ theme }) => theme.color.ajouSky};
-    }
   }
 
   p {

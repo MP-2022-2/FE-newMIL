@@ -120,6 +120,7 @@ export const SectionContainer = styled.section<GridSectionStyleProps>`
       gap: 2rem;
     `};
 
+  // Mobile
   @media ${({ theme }) => theme.layout.mobile} {
     flex-wrap: wrap;
     max-width: 100%;

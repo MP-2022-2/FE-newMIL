@@ -110,7 +110,7 @@ const common = {
   mobileLayout: `
     max-width: calc(100% - 2rem);
     flex-wrap: wrap;
-    margin: 0 auto;
+    margin: 1rem auto;
   }`,
 };
 

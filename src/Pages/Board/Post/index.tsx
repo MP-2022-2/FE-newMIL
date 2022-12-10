@@ -97,11 +97,6 @@ export const Post = () => {
                   <PostContents dangerouslySetInnerHTML={{ __html: isPost.content }} />
                   <PostSubMenu>
                     <LikeButton score={isPost.like} status={isLiked} />
-                    <GoBackToList>
-                      <Button secondary sm url="/board/free">
-                        목록
-                      </Button>
-                    </GoBackToList>
                   </PostSubMenu>
                 </PostContentsContainer>
                 <PostComments>

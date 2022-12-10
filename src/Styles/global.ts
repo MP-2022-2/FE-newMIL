@@ -14,6 +14,14 @@ const GlobalStyle = createGlobalStyle`
   html, body {
     width : 100%;
     height : 100%;
+
+    // no scroll
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display : none;
+    }
   }
 
   // scroll hidden

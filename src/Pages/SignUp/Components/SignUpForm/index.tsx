@@ -36,6 +36,7 @@ const SignUpForm = () => {
   const [isChosenList, setIsChosenList] = useState(Subjects);
   const [user, setUser] = useRecoilState(userSignUpState);
   const [isVerifiedEmail, setIsVerifiedEmail] = useState('');
+  const [hasCountReset, setCountReset] = useState(false);
 
   const onSubmit: SubmitHandler<UserSignUpType> = async (data) => {
     signUpApi({
@@ -131,7 +132,7 @@ const SignUpForm = () => {
                       },
                     })}
                   />
-                  <Timer mm="3" ss="0" />
+                  <Timer mm="3" ss="0" onReset={hasCountReset} setReset={setCountReset} />
                   <Button
                     disabled={!!errors.verify || !getValues('verify')}
                     id="verify"
@@ -153,6 +154,7 @@ const SignUpForm = () => {
                         setIsVerified,
                         setIsVerifiedEmail,
                       );
+                      setCountReset(true);
                     }}
                   >
                     아주메일 재전송

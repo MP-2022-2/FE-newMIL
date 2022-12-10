@@ -4,12 +4,9 @@ import theme from '@/Styles/theme';
 export const MainContainer = styled.section`
   ${theme.common.flexCenterColumn};
   text-align: center;
-
-  @media ${theme.layout.mobile} {
-    ${theme.common.mobileLayout}
-  }
 `;
 
+// Banner
 export const BannerText = styled.div`
   display: flex;
   flex-direction: column;
@@ -34,6 +31,7 @@ export const BannerBackground = styled.div`
   position: absolute;
   opacity: 0.25;
   background-image: url('/pictures/main/landscape.png');
+  background-size: cover;
   height: 35rem;
   width: 100%;
 `;
@@ -42,15 +40,20 @@ export const BannerAnimation = styled.div`
   margin: 0 auto;
 `;
 
+// Submenu
 export const SubMenuWrapper = styled.section`
   display: block;
   margin: 0 auto;
-  width: 100%;
+  width: 90%;
   max-width: ${theme.layout.maxWidth};
 
-  h2 {
-    padding: 5rem 0 2rem;
+  @media ${theme.layout.mobile} {
+    ${theme.common.mobileLayout}
   }
+`;
+
+export const SubMenuLabel = styled.h2`
+  padding: 5rem 0 2rem;
 `;
 
 export const SubMenuContainer = styled.div`
@@ -65,17 +68,11 @@ export const SubMenuContainer = styled.div`
   }
 `;
 
-export const SubMenu = styled.div`
-  display: block;
-  height: 12rem;
+export const SubMenuLinkWrapper = styled.div`
   width: 100%;
-
-  border-radius: 0.625rem;
-  border: 1px solid ${theme.color.ajouSky};
-  ${theme.common.shadowDefault};
-  ${theme.common.pushAnimation};
 `;
 
+// Notice
 export const NoticeContainer = styled.div`
   display: flex;
   width: 100%;

@@ -4,6 +4,7 @@ import useScrollFade from '@/Utils/Hooks/useScrollFade';
 import talkComputer from '@/assets/animation/talk-computer.json';
 import GridSection from '@/Components/Section';
 import Footer from '@/Components/Footer';
+import { Link } from 'react-router-dom';
 import {
   MainContainer,
   BannerText,
@@ -11,12 +12,14 @@ import {
   BannerAnimation,
   BannerBackground,
   SubMenuWrapper,
+  SubMenuLinkWrapper,
+  SubMenuLabel,
   SubMenuContainer,
   NoticeContainer,
   NoticeWrapper,
-  SubMenu,
   Notice,
 } from './style';
+import SubMenuList from './Components/SubMenuList';
 
 export default function MainPage() {
   const animationStudy = useAnimation(talkComputer, true, 20, 20);
@@ -34,21 +37,23 @@ export default function MainPage() {
           </BannerText>
         </BannerContainer>
         <SubMenuWrapper>
-          <h2 {...useScrollFade('up', 1.5, 0.85)}>우리들만의 발자취를 따라가 봐요</h2>
+          <SubMenuLabel {...useScrollFade('up', 1.5, 0.85)}>
+            우리들만의 발자취를 따라가 봐요
+          </SubMenuLabel>
           <SubMenuContainer {...useScrollFade('up', 1.5, 0)}>
             <GridSection col4>
-              <SubMenu>최신글</SubMenu>
+              <SubMenuList title="최신글" />
             </GridSection>
+            <GridSection col4>인기글</GridSection>
             <GridSection col4>
-              <SubMenu>인기글</SubMenu>
-            </GridSection>
-            <GridSection col4>
-              <SubMenu>수강 현황</SubMenu>
+              <SubMenuLinkWrapper>
+                <Link to="/mypage">수강 현황</Link>
+              </SubMenuLinkWrapper>
             </GridSection>
           </SubMenuContainer>
         </SubMenuWrapper>
         <NoticeWrapper>
-          <h2 {...useScrollFade('up', 1.5, 0)}>공지사항</h2>
+          <SubMenuLabel {...useScrollFade('up', 1.5, 0)}>공지사항</SubMenuLabel>
           <NoticeContainer {...useScrollFade('up', 1.5, 0)}>
             <GridSection col3>
               <Notice>공지사항</Notice>

@@ -49,7 +49,6 @@ export const Board = (props: BoardProps) => {
 
   return (
     <BoardContainer>
-      {onFetchPost.length <= 0 && <IsEmptyMsg>불러올 수 있는 데이터가 없습니다</IsEmptyMsg>}
       {onFetchPost.map((el: ArticleTypes, idx: number) => (
         <GridSection key={idx} col6 ref={ref}>
           <Link to={`${el.id}`}>
@@ -74,6 +73,7 @@ export const Board = (props: BoardProps) => {
           </Link>
         </GridSection>
       ))}
+      {onFetchPost.length <= 0 && <IsEmptyMsg>불러올 수 있는 데이터가 없습니다</IsEmptyMsg>}
       {isLoading && <LoadingContainer>로딩중</LoadingContainer>}
     </BoardContainer>
   );
