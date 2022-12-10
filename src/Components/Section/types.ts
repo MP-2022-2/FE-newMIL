@@ -14,9 +14,13 @@ export interface GridSectionStyleProps {
   gap24?: boolean;
   gap28?: boolean;
   gap32?: boolean;
+  left?: boolean;
   right?: boolean;
   center?: boolean;
   alignColumn?: boolean;
+  baseline?: boolean;
+  flexStart?: boolean;
+  flexEnd?: boolean;
   ref?: (node?: Element | null | undefined) => void;
 }
 

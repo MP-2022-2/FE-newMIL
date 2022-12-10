@@ -5,6 +5,14 @@ import { LoginFormContainer } from '../../../Login/Components/LoginForm/style';
 export const TrackFormContainer = styled.section`
   display: block;
   width: 22rem;
+
+  @media ${theme.layout.mobile} {
+    max-width: 90%;
+    flex-direction: column;
+
+    max-width: 50vw;
+    width: 50vw;
+  }
 `;
 
 export const SubLink = styled.caption`
@@ -36,11 +44,29 @@ export const TrackFormWrapper = styled(LoginFormContainer)`
   width: 40rem;
   justify-content: space-between;
   flex-direction: row;
+
+  @media ${theme.layout.mobile} {
+    max-width: 90%;
+    flex-direction: column;
+
+    max-width: 50vw;
+    width: 50vw;
+    margin-bottom: 7rem;
+  }
 `;
 
 export const SelectContainer = styled.aside`
   width: 16rem;
   margin-left: 2rem;
+
+  @media ${theme.layout.mobile} {
+    max-width: 90%;
+    flex-direction: column;
+
+    max-width: 50vw;
+    width: 50vw;
+    margin: 1rem 0;
+  }
 `;
 
 export const TrackContainer = styled.div`

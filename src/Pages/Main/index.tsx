@@ -3,6 +3,7 @@ import useAnimation from '@/Utils/Hooks/useAnimation';
 import useScrollFade from '@/Utils/Hooks/useScrollFade';
 import talkComputer from '@/assets/animation/talk-computer.json';
 import GridSection from '@/Components/Section';
+import Footer from '@/Components/Footer';
 import {
   MainContainer,
   BannerText,
@@ -64,6 +65,7 @@ export default function MainPage() {
           </NoticeContainer>
         </NoticeWrapper>
       </MainContainer>
+      <Footer />
     </>
   );
 }

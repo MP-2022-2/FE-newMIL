@@ -16,6 +16,30 @@ export const SectionContainer = styled.section<GridSectionStyleProps>`
     `}
 
   ${(props) =>
+    props.left &&
+    css`
+      justify-content: left;
+    `}
+
+  ${(props) =>
+    props.baseline &&
+    css`
+      align-items: baseline;
+    `}
+
+    ${(props) =>
+    props.flexStart &&
+    css`
+      align-items: flex-start;
+    `}
+
+    ${(props) =>
+    props.flexEnd &&
+    css`
+      align-items: flex-end;
+    `}
+
+  ${(props) =>
     props.center &&
     css`
       margin: 0 auto;

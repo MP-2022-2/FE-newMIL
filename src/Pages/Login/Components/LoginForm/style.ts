@@ -3,12 +3,12 @@ import theme from '@/Styles/theme';
 
 export const LoginFormContainer = styled.form`
   display: flex;
-  flex-direction: column;
   width: 22rem;
+  flex-direction: column;
   margin: 0 auto;
   margin-top: 3rem;
   background-color: white;
-  padding: 3rem 5rem 8rem;
+  padding: 3rem 4rem 5rem;
   border-radius: 10px;
 
   button {
@@ -16,7 +16,8 @@ export const LoginFormContainer = styled.form`
   }
 
   @media ${theme.layout.mobile} {
-    padding: 2rem 4rem 6rem;
+    max-width: 90%;
+    width: 50vw;
   }
 `;
 
