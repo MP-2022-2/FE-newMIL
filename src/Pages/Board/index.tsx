@@ -7,7 +7,7 @@ import { BoardWrapper, BoardContainer, NaviContainer } from './style';
 
 export const BoardList = [
   { title: '자유', url: 'free' },
-  { title: '질문', url: 'qna' },
+  { title: '질문', url: 'question' },
   { title: '재학생', url: 'student' },
   { title: '졸업생', url: 'graduate' },
 ];

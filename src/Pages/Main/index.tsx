@@ -36,6 +36,7 @@ export default function MainPage() {
             <h1 {...useScrollFade('up', 1.5, 0.5)}>언더바</h1>
           </BannerText>
         </BannerContainer>
+
         <SubMenuWrapper>
           <SubMenuLabel {...useScrollFade('up', 1.5, 0.85)}>
             우리들만의 발자취를 따라가 봐요

@@ -19,7 +19,6 @@ import {
   CommentElement,
   CommentArea,
   IsEmptyComment,
-  GoBackToList,
 } from './style';
 import { IsEmptyMsg } from '../Components/BoardCard/style';
 import { CommentTypes } from './types';
