@@ -68,7 +68,7 @@ export default function MainPage() {
             </GridSection>
           </SubMenuContainer>
         </SubMenuWrapper>
-        <NoticeWrapper>
+        {/* <NoticeWrapper>
           <SubMenuLabel {...useScrollFade('up', 1.5, 0)}>공지사항</SubMenuLabel>
           <NoticeContainer {...useScrollFade('up', 1.5, 0)}>
             <GridSection col3>
@@ -84,7 +84,7 @@ export default function MainPage() {
               <Notice>공지사항</Notice>
             </GridSection>
           </NoticeContainer>
-        </NoticeWrapper>
+        </NoticeWrapper> */}
       </MainContainer>
       <Footer />
     </>

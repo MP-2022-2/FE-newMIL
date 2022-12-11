@@ -46,6 +46,7 @@ export const SubMenuWrapper = styled.section`
   margin: 0 auto;
   width: 90%;
   max-width: ${theme.layout.maxWidth};
+  padding-bottom: 10rem;
 
   @media ${theme.layout.mobile} {
     ${theme.common.mobileLayout}
