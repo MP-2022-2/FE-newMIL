@@ -18,6 +18,7 @@ export interface GridSectionStyleProps {
   right?: boolean;
   center?: boolean;
   alignColumn?: boolean;
+  mobile?: boolean;
   baseline?: boolean;
   flexStart?: boolean;
   flexEnd?: boolean;

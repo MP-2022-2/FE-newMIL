@@ -32,7 +32,7 @@ import { MyPageTrackType } from './types';
 
 import { BoardListTypes } from './Components/BoardList/types';
 
-const switchingRole = (role: string) => {
+export const switchingRole = (role: string) => {
   if (role === 'ROLE_STUDENT') return '재학생';
   if (role === 'ROLE_GRADUATE') return '졸업생';
   if (role === 'ROLE_ADMIN') return '관리자';

@@ -124,5 +124,11 @@ export const SectionContainer = styled.section<GridSectionStyleProps>`
   @media ${({ theme }) => theme.layout.mobile} {
     flex-wrap: wrap;
     max-width: 100%;
+
+    ${(props) =>
+      props.mobile &&
+      css`
+        ${({ theme }) => theme.common.mobileLayout}
+      `}
   }
 `;

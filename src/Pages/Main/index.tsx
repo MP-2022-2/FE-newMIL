@@ -15,7 +15,6 @@ import {
   BannerAnimation,
   BannerBackground,
   SubMenuWrapper,
-  SubMenuLinkWrapper,
   SubMenuLabel,
   SubMenuContainer,
   NoticeContainer,
@@ -23,12 +22,13 @@ import {
   Notice,
 } from './style';
 import SubMenuList from './Components/SubMenuList';
+import UserInfo from './Components/UserInfo';
+import { getCookie } from '../Login';
 
 export default function MainPage() {
-  const animationStudy = useAnimation(talkComputer, true, 20, 20);
   const [hasNewPost, setHasNewPost] = useState([] as unknown as CommentTypes[]);
 
-  const getData = useCallback(async () => {
+  const getNewPostData = async () => {
     try {
       await instance('/main/top5').then((res) => {
         setHasNewPost(res.data.postDtoList);
@@ -36,10 +36,10 @@ export default function MainPage() {
     } catch (err) {
       console.log(err);
     }
-  }, [hasNewPost]);
+  };
 
   useEffect(() => {
-    getData();
+    if (getCookie('accessToken') !== undefined) getNewPostData();
   }, []);
 
   return (
@@ -48,11 +48,12 @@ export default function MainPage() {
       <MainContainer>
         <BannerContainer>
           <BannerBackground />
-          <BannerAnimation {...animationStudy} />
+          <BannerAnimation {...useAnimation(talkComputer, true, 20, 20)} />
           <BannerText>
             <h3 {...useScrollFade('up', 1.5, 0)}>우리 과만의 커넥팅 라이브러리</h3>
             <h1 {...useScrollFade('up', 1.5, 0.5)}>언더바</h1>
           </BannerText>
+          <UserInfo />
         </BannerContainer>
         <SubMenuWrapper>
           <SubMenuLabel {...useScrollFade('up', 1.5, 0.85)}>

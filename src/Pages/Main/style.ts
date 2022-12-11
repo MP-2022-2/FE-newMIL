@@ -22,7 +22,7 @@ export const BannerContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 35rem;
+  height: 40rem;
   width: 100%;
   background-color: ${theme.color.ajouBlue};
 `;
@@ -32,7 +32,7 @@ export const BannerBackground = styled.div`
   opacity: 0.25;
   background-image: url('/pictures/main/landscape.png');
   background-size: cover;
-  height: 35rem;
+  height: 40rem;
   width: 100%;
 `;
 
