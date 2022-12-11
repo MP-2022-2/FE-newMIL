@@ -6,7 +6,9 @@ export interface GridSectionStyleProps {
   col4?: boolean;
   col5?: boolean;
   col6?: boolean;
+  col7?: boolean;
   col8?: boolean;
+  col9?: boolean;
   col12?: boolean;
   gap8?: boolean;
   gap16?: boolean;
@@ -17,6 +19,7 @@ export interface GridSectionStyleProps {
   left?: boolean;
   right?: boolean;
   center?: boolean;
+  wrap?: boolean;
   alignColumn?: boolean;
   mobile?: boolean;
   baseline?: boolean;

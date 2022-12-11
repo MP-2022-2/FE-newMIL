@@ -52,5 +52,4 @@ export const VideoBox = styled.div`
   height: 15.25rem;
   border-radius: 10px 0px 0px 10px;
   overflow: hidden;
-  border-width: 10px solid;
 `;
