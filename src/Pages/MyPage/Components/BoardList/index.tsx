@@ -11,21 +11,19 @@ export default function BoardList(props: BoardListProps) {
       <Label>{label}</Label>
       <GridSection col6>
         <BoardListContainer>
-          <>
-            {data.map((item, index) => (
-              <Link
-                key={index}
-                to={`/board/${item.boardType.toLowerCase()}/${
-                  isKindOf === 'post' ? item.id : item.postId
-                }`}
-              >
-                <List>
-                  {isKindOf === 'post' ? <b>{item.title}</b> : <b>{item.text}</b>}
-                  {new Date(item.createdAt).toLocaleDateString()}
-                </List>
-              </Link>
-            ))}
-          </>
+          {data.map((item, index) => (
+            <Link
+              key={index}
+              to={`/board/${item.boardType.toLowerCase()}/${
+                isKindOf === 'post' ? item.id : item.postId
+              }`}
+            >
+              <List>
+                {isKindOf === 'post' ? <b>{item.title}</b> : <b>{item.text}</b>}
+                {new Date(item.createdAt).toLocaleDateString()}
+              </List>
+            </Link>
+          ))}
         </BoardListContainer>
       </GridSection>
     </GridSection>
