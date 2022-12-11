@@ -27,10 +27,8 @@ export const ProfessorComponent = styled.article`
   text-align: left;
 
   width: 100%;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
-  border: 1px solid #232323;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.12);
   background-color: #ededed;
-  margin-bottom: 0.75rem;
   border-radius: 10px;
 
   object-fit: cover;
