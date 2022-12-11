@@ -31,8 +31,9 @@ const Professor = () => (
                 </ProfileBox>
               </GridSection>
               <ProfileText>
-                <h3>{item.professorName} 교수님</h3>
-                <span>{item.email}</span>
+                <h2>{item.professorName} 교수님</h2>
+                <p>{item.email}</p>
+                <p>{item.officeRoom}</p>
               </ProfileText>
             </GridSection>
           </Link>
