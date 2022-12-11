@@ -7,6 +7,10 @@ export const InfoFormContainer = styled.form`
   ${theme.common.flexCenterColumn};
   max-width: ${theme.layout.maxWidth};
   margin: 0 auto;
+
+  @media ${theme.layout.mobile} {
+    ${theme.common.mobileLayout}
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -30,6 +34,10 @@ export const CheckBoxContainer = styled(IDCheckBoxContainer)`
 export const SignUpContainer = styled(LoginContainer)`
   max-width: ${theme.layout.maxWidth};
   margin: 0 auto;
+
+  @media ${theme.layout.mobile} {
+    ${theme.common.mobileLayout}
+  }
 `;
 
 export const InfoContainer = styled.article`

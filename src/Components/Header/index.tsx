@@ -67,14 +67,6 @@ const Header = (props: HeaderProps): ReactElement => {
     userData && setUser(userData);
   }, [user]);
 
-  useEffect(() => {
-    if (!onClickProfileEditor) {
-      document.body.style.overflow = 'scroll';
-      document.body.style.touchAction = 'auto';
-      document.body.style.minHeight = '0%';
-    }
-  }, [onClickProfileEditor]);
-
   const onToggleProfile = () => {
     setIsShownProfile(!isShownProfile);
   };
@@ -93,7 +85,9 @@ const Header = (props: HeaderProps): ReactElement => {
               <GridSection col2>
                 <HeaderDropDown title="미디어학과" items={mediaItems} />
                 <HeaderNavigation url={`/board/free`}>게시판</HeaderNavigation>
-                <HeaderNavigation url="/cil">CIL</HeaderNavigation>
+                <HeaderNavigation url="/" onClick={() => alert('서비스 준비 중이에요!')}>
+                  CIL
+                </HeaderNavigation>
               </GridSection>
             </GridSection>
             {user.name !== '' && (
@@ -119,10 +113,11 @@ const Header = (props: HeaderProps): ReactElement => {
                     />
                     {isShownProfile && (
                       <LoginedInfoContents>
-                        <Link to="/mypage">
-                          <h4>{user.name}</h4>
-                        </Link>
+                        <h4>{user.name}</h4>
                         <p>{user.studentId}</p>
+                        <Button sm secondary url="/mypage">
+                          내 정보
+                        </Button>
                         <Button sm third onClick={reset}>
                           로그아웃
                         </Button>

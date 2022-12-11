@@ -7,11 +7,6 @@ export const NaviContainer = styled.nav`
   text-align: center;
   align-self: center;
 
-  ${theme.PC.h3};
-
-  height: 3rem;
-  line-height: 3rem;
-
   background: rgba(255, 255, 255, 0.24);
 
   transition: 0.2s ease-out;
@@ -23,6 +18,11 @@ export const NaviContainer = styled.nav`
   &[title='selected'] {
     color: ${theme.color.black};
     border-bottom: 3px solid ${theme.color.ajouBlue};
+  }
+
+  h3 {
+    height: 3rem;
+    line-height: 3rem;
   }
 
   &:hover {

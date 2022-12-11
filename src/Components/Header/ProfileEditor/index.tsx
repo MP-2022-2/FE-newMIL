@@ -1,5 +1,3 @@
-import { Icon } from '@iconify/react';
-import theme from '@/Styles/theme';
 import { useEffect, useState } from 'react';
 import Input from '@/Components/Form/_Input';
 import { useRecoilValue } from 'recoil';
@@ -37,20 +35,19 @@ export default function ProfileEditor({ onClick }: { onClick: () => void }) {
     document.body.style.overflow = 'hidden';
     document.body.style.touchAction = 'none';
     setTimeout(() => setDisabled(true), 100);
-  });
+
+    return () => {
+      document.body.style.overflow = 'scroll';
+      document.body.style.touchAction = 'auto';
+      document.body.style.minHeight = '0%';
+    };
+  }, []);
 
   return (
     <ProfileEditorContainer>
       <EditorModal>
         <h2>프로필 수정</h2>
-        <Icon
-          className="icon-cancel"
-          width="24"
-          height="24"
-          color={theme.color.ajouBlue}
-          icon="mdi:cancel-bold"
-          onClick={onClick}
-        />
+
         <Input
           label="이름"
           id="name"
@@ -97,6 +94,9 @@ export default function ProfileEditor({ onClick }: { onClick: () => void }) {
           />
         )}
         <Button onClick={postEditProfile}>확인</Button>
+        <Button third onClick={onClick}>
+          취소
+        </Button>
       </EditorModal>
       <Dim onClick={onClick} />
     </ProfileEditorContainer>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import instance from '@/Utils/Api/axios';
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import GridSection from '@/Components/Section';
 import { Icon } from '@iconify/react';
 import { useInView } from 'react-intersection-observer';
@@ -20,9 +20,15 @@ export const Board = (props: BoardProps) => {
     try {
       setLoading(true);
       await instance(`board/${target}?size=10&page=${isPageCount}&sort=id,DESC`).then((res) => {
-        res.data.postDtoList.length > 0
-          ? setOnFetchPost(onFetchPost.concat(res.data.postDtoList))
-          : setHasLastPage(true);
+        if (isPageCount === 0) {
+          res.data.postDtoList.length > 0
+            ? setOnFetchPost(res.data.postDtoList)
+            : setHasLastPage(true);
+        } else {
+          res.data.postDtoList.length > 0
+            ? setOnFetchPost(onFetchPost.concat(res.data.postDtoList))
+            : setHasLastPage(true);
+        }
       });
     } catch (err) {
       setOnFetchPost([]);
@@ -41,20 +47,17 @@ export const Board = (props: BoardProps) => {
 
   useEffect(() => {
     if (inView && !isLoading && !hasLastPage) {
-      setTimeout(() => {
-        setPageCount((prevState) => prevState + 1);
-      }, 300);
+      setPageCount((prevState) => prevState + 1);
     }
   }, [inView, isLoading]);
 
   return (
     <BoardContainer>
-      {onFetchPost.length <= 0 && <IsEmptyMsg>불러올 수 있는 데이터가 없습니다</IsEmptyMsg>}
       {onFetchPost.map((el: ArticleTypes, idx: number) => (
-        <GridSection key={idx} col6 ref={ref}>
+        <GridSection key={idx} col6>
           <Link to={`${el.id}`}>
             <Article>
-              <h2>{el.title}</h2>
+              <h2 ref={ref}>{el.title}</h2>
               <p dangerouslySetInnerHTML={{ __html: el.content.replace(/<[^>]*>?/g, ' ') }} />
               <div>
                 <span>{new Date(el.createdAt).toLocaleDateString()}</span>
@@ -74,6 +77,7 @@ export const Board = (props: BoardProps) => {
           </Link>
         </GridSection>
       ))}
+      {onFetchPost.length <= 0 && <IsEmptyMsg>불러올 수 있는 데이터가 없습니다</IsEmptyMsg>}
       {isLoading && <LoadingContainer>로딩중</LoadingContainer>}
     </BoardContainer>
   );

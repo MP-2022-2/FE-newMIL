@@ -11,7 +11,7 @@ export const Title = styled.h4`
 `;
 
 export const ListContent = styled.li`
-  background-color: ${({ theme }) => theme.color.ajouBlue};
+  background-color: ${({ theme }) => theme.color.darkBlue};
   margin-bottom: 0.375rem;
   list-style-type: none;
 

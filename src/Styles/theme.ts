@@ -85,6 +85,12 @@ const common = {
     -moz-box-shadow: 1px 2.5px 11px -1px #dddddd;
     box-shadow: 1px 2.5px 11px -1px #dddddd;
   `,
+  componentBox: `
+    border-radius: 0.625rem;
+    border: 1px solid #88B2DF;
+    padding : 2rem;
+    width : 100%;
+  `,
   pushAnimation: `
     transition: 0.15s ease-in-out;
     &:hover {
@@ -110,7 +116,7 @@ const common = {
   mobileLayout: `
     max-width: calc(100% - 2rem);
     flex-wrap: wrap;
-    margin: 2rem auto;
+    margin: 0rem auto;
   }`,
 };
 

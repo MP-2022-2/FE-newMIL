@@ -87,6 +87,10 @@ export const IsEmptyMsg = styled.h3`
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  @media ${theme.layout.mobile} {
+    top: 50%;
+  }
 `;
 
 export const LoadingContainer = styled.div`

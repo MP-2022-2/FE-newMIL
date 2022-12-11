@@ -14,9 +14,14 @@ export const NaviContainer = styled.nav`
   width: 90%;
   max-width: ${({ theme }) => theme.layout.maxWidth};
   margin: 0 auto;
+  margin-bottom: 2rem;
   vertical-align: middle;
 
   a {
     width: 100%;
+  }
+
+  @media ${({ theme }) => theme.layout.mobile} {
+    flex-direction: row;
   }
 `;

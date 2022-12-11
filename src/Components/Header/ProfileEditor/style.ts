@@ -29,18 +29,14 @@ export const EditorModal = styled.section`
   }
 
   button {
-    margin-top: 3rem;
+    margin-top: 2rem;
+    + button {
+      margin-top: 1rem;
+    }
   }
 
   svg:hover {
     cursor: pointer;
-  }
-
-  .icon-cancel {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-50%, 50%);
   }
 `;
 

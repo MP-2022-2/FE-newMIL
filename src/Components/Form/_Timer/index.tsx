@@ -3,12 +3,20 @@ import { TimerContainer, Content } from './style';
 import { TimerProps } from './types';
 
 const Timer = (props: TimerProps) => {
-  const { mm, ss } = props;
+  const { mm, ss, onReset = false, setReset } = props;
   const [minutes, setMinutes] = useState(Number(mm));
   const [seconds, setSeconds] = useState(Number(ss));
   const [end, setEnd] = useState(false);
 
   useEffect(() => {
+    if (onReset) {
+      setEnd(false);
+      setMinutes(Number(mm));
+      setSeconds(Number(ss));
+      setReset(false);
+      console.log('e');
+    }
+
     const countdown = setInterval(() => {
       if (seconds > 0) {
         setSeconds(seconds - 1);
@@ -23,6 +31,7 @@ const Timer = (props: TimerProps) => {
         }
       }
     }, 1000);
+
     return () => clearInterval(countdown);
   }, [minutes, seconds]);
 

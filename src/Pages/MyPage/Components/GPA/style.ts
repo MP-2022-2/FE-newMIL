@@ -9,8 +9,8 @@ export const GPAContainer = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 0.625rem;
-  margin: 2rem 0;
   border: 1px solid ${theme.color.gray};
+  margin: 2rem 0;
 
   #progress {
     appearance: none;
