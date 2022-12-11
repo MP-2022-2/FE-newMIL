@@ -1,0 +1,56 @@
+name: AWS EC2 Deploy
+
+on:
+  push:
+    branches: [hotfix, main, develop]
+
+env:
+  S3_BUCKET_NAME: fe-newmil-s3
+  PROJECT_NAME: FE-newMIL
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.15.1
+          cache: npm
+
+      - name: Npm install
+        run: npm install --quiet
+        shell: bash
+
+      - name: setting env file
+        run: |
+          echo "REACT_APP_API_URL=$REACT_APP_API_URL" >> .env.production
+          echo "REACT_APP_MODE=production" >> .env.production
+        env:
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+        shell: bash
+
+      - name: Build
+        run: CI=false npm run build:prod
+        shell: bash
+
+      - name: Make Zip file
+        run: zip -qq -r ./$GITHUB_SHA.zip .
+        shell: bash
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Upload to S3
+        run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://$S3_BUCKET_NAME/$PROJECT_NAME/$GITHUB_SHA.zip
+
+      - name: Code Deploy
+        run: aws deploy create-deployment --application-name fe-newmil-cd --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name fe-newmil-dev --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$PROJECT_NAME/$GITHUB_SHA.zip

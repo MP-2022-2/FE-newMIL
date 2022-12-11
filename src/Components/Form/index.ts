@@ -1,5 +1,4 @@
-import LoginForm from './LoginForm';
-import SignUpForm from './SignUpForm';
+import Input from './_Input';
+import Timer from './_Timer';
 
-export { LoginForm, SignUpForm };
-export default LoginForm;
+export { Input, Timer };

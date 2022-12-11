@@ -1,8 +1,4 @@
 import styled from 'styled-components';
+import { LoginWrapper } from '@/Pages/Login/style';
 
-export const SignUpContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-`;
+export const SignUpWrapper = styled(LoginWrapper)``;
