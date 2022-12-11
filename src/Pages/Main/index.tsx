@@ -20,6 +20,7 @@ import {
   NoticeContainer,
   NoticeWrapper,
   Notice,
+  OnBlur,
 } from './style';
 import SubMenuList from './Components/SubMenuList';
 import UserInfo from './Components/UserInfo';
@@ -60,6 +61,7 @@ export default function MainPage() {
             우리들만의 발자취를 따라가 봐요
           </SubMenuLabel>
           <SubMenuContainer {...useScrollFade('up', 1.5, 0)}>
+            {hasNewPost.length === 0 && <OnBlur />}
             <GridSection col6>
               <SubMenuList title="🔔 최신글" showDate hasData={hasNewPost} />
             </GridSection>

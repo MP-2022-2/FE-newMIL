@@ -73,6 +73,18 @@ export const SubMenuLinkWrapper = styled.div`
   width: 100%;
 `;
 
+export const OnBlur = styled.div`
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  position: absolute;
+
+  background: rgba(254, 254, 254, 0.45);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(254, 254, 254, 0.225);
+`;
+
 // Notice
 export const NoticeContainer = styled.div`
   display: flex;
@@ -90,7 +102,7 @@ export const NoticeContainer = styled.div`
 
 export const Notice = styled.div`
   width: 100%;
-  height: 10rem;
+  height: 100%;
   border-radius: 0.625rem;
   border: 1px solid ${theme.color.ajouSky};
   ${theme.common.shadowDefault};
