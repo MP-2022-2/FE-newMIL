@@ -1,5 +1,6 @@
 import { CommentTypes } from '@/Pages/Board/Post/types';
 import { Icon } from '@iconify/react';
+import { Link } from 'react-router-dom';
 import {
   SubMenuListContainer,
   TitleContainer,
@@ -18,7 +19,9 @@ export default function SubMenuList(props: SubMenuListProps) {
     <SubMenuListContainer>
       <TitleContainer>
         <h3>{title}</h3>
-        <Icon width="24" height="24" color="#333333" icon="ic:round-keyboard-arrow-right" />
+        <Link to="/board/free">
+          <Icon width="24" height="24" color="#333333" icon="ic:round-keyboard-arrow-right" />
+        </Link>
       </TitleContainer>
       <ListContainer>
         {hasData.length <= 0 && (
