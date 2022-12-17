@@ -85,9 +85,7 @@ const Header = (props: HeaderProps): ReactElement => {
               <GridSection col2>
                 <HeaderDropDown title="미디어학과" items={mediaItems} />
                 <HeaderNavigation url={`/board/free`}>게시판</HeaderNavigation>
-                <HeaderNavigation url="/" onClick={() => alert('서비스 준비 중이에요!')}>
-                  CIL
-                </HeaderNavigation>
+                <HeaderNavigation url="/cil">CIL</HeaderNavigation>
               </GridSection>
             </GridSection>
             {user.name !== '' && (

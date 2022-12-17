@@ -19,7 +19,7 @@ export const Board = (props: BoardProps) => {
   const getData = useCallback(async () => {
     try {
       setLoading(true);
-      await instance(`board/${target}?size=10&page=${isPageCount}&sort=id,DESC`).then((res) => {
+      await instance(`board/${target}?size=2&page=${isPageCount}&sort=id,DESC`).then((res) => {
         if (isPageCount === 0) {
           res.data.postDtoList.length > 0
             ? setOnFetchPost(res.data.postDtoList)
@@ -32,8 +32,9 @@ export const Board = (props: BoardProps) => {
       });
     } catch (err) {
       setOnFetchPost([]);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }, [isPageCount, target]);
 
   useEffect(() => {
@@ -41,6 +42,7 @@ export const Board = (props: BoardProps) => {
   }, [getData]);
 
   useEffect(() => {
+    setHasLastPage(false);
     setOnFetchPost([]);
     setPageCount(0);
   }, [target]);

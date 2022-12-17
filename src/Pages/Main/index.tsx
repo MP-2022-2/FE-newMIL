@@ -4,10 +4,10 @@ import useScrollFade from '@/Utils/Hooks/useScrollFade';
 import talkComputer from '@/assets/animation/talk-computer.json';
 import GridSection from '@/Components/Section';
 import Footer from '@/Components/Footer';
-import { Link } from 'react-router-dom';
-import { useCallback, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import instance from '@/Utils/Api/axios';
-import { CommentTypes } from '@/Pages/Board/Post/types';
+import { ArticlePostTypes } from '@/Pages/Board/Post/types';
+import useLogin from '@/Utils/Hooks/useLogin';
 import {
   MainContainer,
   BannerText,
@@ -27,7 +27,8 @@ import UserInfo from './Components/UserInfo';
 import { getCookie } from '../Login';
 
 export default function MainPage() {
-  const [hasNewPost, setHasNewPost] = useState([] as unknown as CommentTypes[]);
+  const [hasNewPost, setHasNewPost] = useState([] as unknown as ArticlePostTypes[]);
+  const login = useLogin();
 
   const getNewPostData = async () => {
     try {
@@ -61,7 +62,7 @@ export default function MainPage() {
             우리들만의 발자취를 따라가 봐요
           </SubMenuLabel>
           <SubMenuContainer {...useScrollFade('up', 1.5, 0)}>
-            {hasNewPost.length === 0 && <OnBlur />}
+            {!login && <OnBlur />}
             <GridSection col6>
               <SubMenuList title="🔔 최신글" showDate hasData={hasNewPost} />
             </GridSection>

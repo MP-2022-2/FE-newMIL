@@ -1,4 +1,4 @@
-import { CommentTypes } from '@/Pages/Board/Post/types';
+import { ArticlePostTypes } from '@/Pages/Board/Post/types';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 import {
@@ -29,7 +29,7 @@ export default function SubMenuList(props: SubMenuListProps) {
             <div>데이터가 없어요!</div>
           </IsEmpty>
         )}
-        {hasData.map((item: CommentTypes, index: number) => (
+        {hasData.map((item: ArticlePostTypes, index: number) => (
           <List key={index}>
             <ListTitle>{item.title}</ListTitle>
             {showDate && <ListElement>{new Date(item.createdAt).toLocaleDateString()}</ListElement>}

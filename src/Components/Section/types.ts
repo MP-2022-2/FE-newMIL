@@ -1,6 +1,9 @@
 import React, { ReactElement, ReactNode } from 'react';
 
 export interface GridSectionStyleProps {
+  div?: boolean;
+  hasHeader?: boolean;
+  hasFooter?: boolean;
   col2?: boolean;
   col3?: boolean;
   col4?: boolean;
@@ -25,6 +28,7 @@ export interface GridSectionStyleProps {
   baseline?: boolean;
   flexStart?: boolean;
   flexEnd?: boolean;
+  marginSide?: boolean;
   ref?: (node?: Element | null | undefined) => void;
 }
 

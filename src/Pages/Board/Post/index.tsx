@@ -1,9 +1,8 @@
 import Header from '@/Components/Header';
 import instance from '@/Utils/Api/axios';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState, useEffect, useCallback } from 'react';
 import { Icon } from '@iconify/react';
-import Button from '@/Components/Button';
 import {
   PostContainer,
   PostHeader,
@@ -21,13 +20,13 @@ import {
   IsEmptyComment,
 } from './style';
 import { IsEmptyMsg } from '../Components/BoardCard/style';
-import { CommentTypes } from './types';
+import { ArticlePostTypes } from './types';
 import LikeButton from '../Components/LikeButton';
 import InputComment from '../Components/InputComment';
 
 export const Post = () => {
   const { boardPath, idx } = useParams();
-  const [isPost, setIsPost] = useState([] as unknown as CommentTypes);
+  const [isPost, setIsPost] = useState([] as unknown as ArticlePostTypes);
   const [isLoading, setLoading] = useState(false);
   const [isSuccess, setSuccess] = useState(true);
   const [isLiked, setLiked] = useState(false);
@@ -49,7 +48,7 @@ export const Post = () => {
         setLiked(res.data.isLikedPost);
       });
     } catch (err) {
-      setIsPost([] as unknown as CommentTypes);
+      setIsPost([] as unknown as ArticlePostTypes);
     }
     setLoading(false);
     setSuccess(true);

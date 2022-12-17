@@ -117,6 +117,10 @@ const common = {
     max-width: calc(100% - 2rem);
     flex-wrap: wrap;
     margin: 0rem auto;
+
+    @media screen and (max-width: 786px) {
+      margin-top : 1rem;
+    }
   }`,
 };
 
