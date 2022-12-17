@@ -9,7 +9,7 @@ import MyPage from '@/Pages/MyPage';
 const LoginRoute = () => {
   const status = useLogin();
 
-  return status ? <Outlet /> : <Navigate to="/user/login" />;
+  return status ? <Outlet /> : <Navigate to="/user/login" replace />;
 };
 
 const LoginRoutes = () => {

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import lottie from 'lottie-web';
 
 const useAnimation = (
@@ -10,7 +10,7 @@ const useAnimation = (
 ) => {
   const DOM = useRef<any>();
 
-  useEffect(() => {
+  const isAnimation = useCallback(() => {
     lottie.loadAnimation({
       container: DOM.current,
       renderer: 'svg',
@@ -19,7 +19,11 @@ const useAnimation = (
       animationData: data,
     });
     lottie.setSpeed(speed);
-  }, []);
+  }, [DOM]);
+
+  useEffect(() => {
+    isAnimation();
+  }, [isAnimation]);
 
   return {
     ref: DOM,

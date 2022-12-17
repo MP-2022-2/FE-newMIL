@@ -9,6 +9,7 @@ import InterviewPage from '@/Pages/Media/Interview';
 import ProfessorPage from '@/Pages/Media/Professor';
 import GraduatePage from '@/Pages/Media/Graduate';
 import ProfessorDetailPage from '@/Pages/Media/Professor/SubPage';
+import CilPage from '@/Pages/Cil';
 
 axios.defaults.withCredentials = true;
 
@@ -18,7 +19,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="cil" element={'CIL'} />
+          <Route path="cil" element={<CilPage />} />
           <Route path="media">
             <Route path="professor" element={<ProfessorPage />} />
             <Route

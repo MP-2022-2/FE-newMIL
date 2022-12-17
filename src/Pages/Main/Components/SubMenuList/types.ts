@@ -1,12 +1,12 @@
-import { CommentTypes } from '@/Pages/Board/Post/types';
+import { ArticlePostTypes } from '@/Pages/Board/Post/types';
 
-export interface SubMenuTypes extends CommentTypes {
+export interface SubMenuTypes extends ArticlePostTypes {
   boardType: string;
 }
 
 export interface SubMenuListProps {
   title: string;
-  hasData: CommentTypes[];
+  hasData: ArticlePostTypes[];
   showDate?: boolean;
   showLiked?: boolean;
 }

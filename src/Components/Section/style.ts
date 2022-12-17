@@ -61,6 +61,11 @@ export const SectionContainer = styled.section<GridSectionStyleProps>`
     css`
       flex-direction: column;
     `}
+  ${(props) =>
+    props.marginSide &&
+    css`
+      width: 90%;
+    `};
 
   //column
   ${(props) =>
