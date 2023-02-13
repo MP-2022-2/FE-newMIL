@@ -10,11 +10,16 @@ import ProfessorPage from '@/Pages/Media/Professor';
 import GraduatePage from '@/Pages/Media/Graduate';
 import ProfessorDetailPage from '@/Pages/Media/Professor/SubPage';
 
+import { Toast, ToastPortal } from '@/Components/Toast';
+
 axios.defaults.withCredentials = true;
 
 function App() {
   return (
     <>
+      <ToastPortal>
+        <Toast message="내용입니다" type="Success" />
+      </ToastPortal>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainPage />} />
