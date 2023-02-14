@@ -1,5 +1,5 @@
 import Header from '@/Components/Header';
-import instance from '@/Utils/Store/Api/axios';
+import instance from '@/Utils/Stores/Api/axios';
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect, useCallback } from 'react';
 import { Icon } from '@iconify/react';

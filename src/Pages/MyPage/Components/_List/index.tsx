@@ -1,6 +1,6 @@
 import { Subjects } from '@/Utils/Constants/subject';
 import { Icon } from '@iconify/react';
-import instance from '@/Utils/Store/Api/axios';
+import instance from '@/Utils/Stores/Api/axios';
 import { ListContainer, ListTag } from './style';
 import { ListProps, DataProps, SubjectProps } from './types';
 

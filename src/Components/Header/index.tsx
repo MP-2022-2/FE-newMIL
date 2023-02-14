@@ -2,13 +2,14 @@ import { ReactElement, useEffect, useState } from 'react';
 import GridSection from '@/Components/Section';
 import HeaderDropDown from '@/Components/Header/DropDown';
 import { UsePc } from '@/Utils/Hooks/useMediaQuery';
-import { userState, userDataState } from '@/Utils/Store/Recoil/user';
+import { userState, userDataState } from '@/Utils/Stores/Recoil/user';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { setCookie } from '@/Pages/Login';
 import { APILoginType } from '@/@Types/UserType';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 import Button from '@/Components/Button';
+import useToastMessage from '@/Utils/Hooks/useToastMessage';
 import HeaderNavigation from './Navigation';
 import { HeaderWrapper, HeaderContainer, Logo, LoginedInfo, LoginedInfoContents } from './style';
 import HeaderMobile from './index.mobile';
@@ -51,6 +52,8 @@ const Header = (props: HeaderProps): ReactElement => {
   const [isShownProfile, setIsShownProfile] = useState(false);
   const [onClickProfileEditor, setOnClickProfileEditor] = useState(false);
 
+  const { openToastMessage } = useToastMessage();
+
   const reset = () => {
     setCookie('accessToken', '', {
       path: '/',
@@ -60,7 +63,10 @@ const Header = (props: HeaderProps): ReactElement => {
       path: '/',
       expires: new Date(Date.now()),
     });
-    window.location.replace('/');
+    openToastMessage('로그아웃 되었습니다', 'success');
+    setTimeout(() => {
+      window.location.replace('/');
+    }, 500);
   };
 
   useEffect(() => {
@@ -85,7 +91,10 @@ const Header = (props: HeaderProps): ReactElement => {
               <GridSection col2>
                 <HeaderDropDown title="미디어학과" items={mediaItems} />
                 <HeaderNavigation url={`/board/free`}>게시판</HeaderNavigation>
-                <HeaderNavigation url="/" onClick={() => alert('서비스 준비 중이에요!')}>
+                <HeaderNavigation
+                  url="/"
+                  onClick={() => openToastMessage('서비스 준비 중이에요!', 'warn')}
+                >
                   CIL
                 </HeaderNavigation>
               </GridSection>

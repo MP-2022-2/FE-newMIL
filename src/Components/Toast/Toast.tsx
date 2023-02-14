@@ -1,8 +1,9 @@
 import { Icon } from '@iconify/react';
 import theme from '@/Styles/theme';
-import { useRecoilState } from 'recoil';
-import { setToastState } from '@/Utils/Store/Recoil/toast';
+import { useRecoilValue } from 'recoil';
 import { useState, useCallback, useEffect, useRef } from 'react';
+import { setToastState } from '@/Utils/Stores/Recoil/toast';
+import useToastMessage from '@/Utils/Hooks/useToastMessage';
 import { ToastFunction } from './types';
 import { ToastContainer } from './style';
 
@@ -13,7 +14,8 @@ const color = [
 ];
 
 export const ToastMessage: ToastFunction = () => {
-  const [toast, setToast] = useRecoilState(setToastState);
+  const { closeToastMessage } = useToastMessage();
+  const toast = useRecoilValue(setToastState);
   const toastId = useRef<null | ReturnType<typeof setTimeout>>(null);
   const [animationState, setAnimationState] = useState<string>('fadeIn');
   const isType = color.filter((e) => e.type === toast.type);
@@ -22,7 +24,7 @@ export const ToastMessage: ToastFunction = () => {
     if (toastId.current) clearTimeout(toastId.current);
     setAnimationState('fadeOut');
     setTimeout(() => {
-      setToast({ ...toast, message: '' });
+      closeToastMessage();
       setAnimationState('fadeIn');
     }, 350);
   }, [toast.message, toast.type]);
@@ -39,7 +41,11 @@ export const ToastMessage: ToastFunction = () => {
   return (
     <>
       {toast.message && (
-        <ToastContainer animation={animationState} color={isType[0].color}>
+        <ToastContainer
+          onClick={() => removeToast()}
+          animation={animationState}
+          color={isType[0].color}
+        >
           <Icon icon={isType[0].icon} width="36" height="36" color={isType[0].color} />
           <caption>{toast.message}</caption>
         </ToastContainer>

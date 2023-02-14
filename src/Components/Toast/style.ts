@@ -20,8 +20,12 @@ export const ToastContainer = styled.div<{ animation: string; color: string }>`
   box-shadow: -0.5px 1.5px 15px -2px ${(props) => props.color};
 
   animation: 0.35s ${(props) => props.animation} ease-in-out forwards;
+  transition: 0.35s ease-in-out;
 
   @keyframes fadeIn {
+    from {
+      transform: translateY(-2rem);
+    }
     to {
       opacity: 1;
     }

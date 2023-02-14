@@ -1,6 +1,5 @@
 import Cookies, { CookieSetOptions } from 'universal-cookie';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
 import LoginForm from './Components/LoginForm';
 import { LoginWrapper, LoginContainer, Logo } from './style';
 

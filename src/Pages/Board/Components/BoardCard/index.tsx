@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import instance from '@/Utils/Store/Api/axios';
+import instance from '@/Utils/Stores/Api/axios';
 import { useState, useEffect, useCallback } from 'react';
 import GridSection from '@/Components/Section';
 import { Icon } from '@iconify/react';

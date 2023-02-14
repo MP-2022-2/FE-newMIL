@@ -5,7 +5,7 @@ const toastState = atom<ToastProps>({
   key: 'toastState',
   default: {
     message: '',
-    timeout: 2000,
+    timeout: 1500,
     type: 'error',
   },
 });
