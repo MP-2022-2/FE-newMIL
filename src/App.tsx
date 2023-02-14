@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <ToastPortal>
-        <Toast message="본격적으로 완료되었습니다." type="success" />
+        <Toast />
       </ToastPortal>
       <BrowserRouter>
         <Routes>

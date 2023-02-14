@@ -1,0 +1,21 @@
+import { ToastTypes } from '@/Components/Toast/types';
+import { useRecoilState } from 'recoil';
+import { setToastState } from '@/Recoil/toast';
+import { useCallback } from 'react';
+
+interface UseToastMessageReturn {
+  openToastMessage: (message: string, type?: ToastTypes) => void;
+}
+
+export default function useToastMessage(timeout?: number): UseToastMessageReturn {
+  const [toast, setToast] = useRecoilState(setToastState);
+
+  const openToastMessage = useCallback(
+    (message: string, type?: ToastTypes) => {
+      setToast({ message, timeout: timeout ?? 2000, type: type ?? 'error' });
+    },
+    [toast.message, toast.type],
+  );
+
+  return { openToastMessage };
+}

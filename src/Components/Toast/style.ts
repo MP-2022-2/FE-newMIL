@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { ToastProps } from './types';
 
-export const ToastContainer = styled.div<{ color: string }>`
+export const ToastContainer = styled.div<{ animation: string; color: string }>`
   display: flex;
   align-items: center;
   gap: 1rem;
 
+  opacity: 0;
   margin: 0 auto;
   padding: 0.4rem 2rem 0.4rem 1.75rem;
 
@@ -18,4 +18,21 @@ export const ToastContainer = styled.div<{ color: string }>`
   -webkit-box-shadow: -0.5px 1.5px 15px -2px ${(props) => props.color};
   -moz-box-shadow: -0.5px 1.5px 15px -2px ${(props) => props.color};
   box-shadow: -0.5px 1.5px 15px -2px ${(props) => props.color};
+
+  animation: 0.35s ${(props) => props.animation} ease-in-out forwards;
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
 `;
