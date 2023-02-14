@@ -127,6 +127,7 @@ const color = {
   white: '#fefefe',
   gray: '#dfdfdf',
   bad: '#FF3E55',
+  good: '#39e75f',
   darkBlue: '#0A2B52',
   ajouBlue: '#0066B3',
   ajouGold: '#BB8732',

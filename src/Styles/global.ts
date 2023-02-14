@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
     width : 100%;
     position : fixed;
     top : 1rem;
+    z-index : 9999;
   }
   ////////////////////////////////
 

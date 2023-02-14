@@ -1,9 +1,12 @@
 import React from 'react';
 
-type ToastTypes = 'error' | 'warn' | 'Success';
+type ToastTypes = 'error' | 'warn' | 'success';
 
-export interface ToastProps {
+export interface ToastStyleProps {
   type: ToastTypes;
+}
+
+export interface ToastProps extends ToastStyleProps {
   message: string;
   timeout?: number | 2000;
 }
