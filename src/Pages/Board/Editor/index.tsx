@@ -4,7 +4,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Input } from '@/Components/Form';
 import Button from '@/Components/Button';
 import { useState } from 'react';
-import instance from '@/Utils/Api/axios';
+import instance from '@/Utils/Store/Api/axios';
 import { useForm } from 'react-hook-form';
 import {
   Label,

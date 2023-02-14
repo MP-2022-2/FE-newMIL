@@ -6,7 +6,7 @@ import GridSection from '@/Components/Section';
 import Footer from '@/Components/Footer';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import instance from '@/Utils/Api/axios';
+import instance from '@/Utils/Store/Api/axios';
 import { CommentTypes } from '@/Pages/Board/Post/types';
 import {
   MainContainer,

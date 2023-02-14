@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useState, useContext } from 'react';
 import useDebounce from '@/Utils/Hooks/useDebounce';
 import { SubjectOriginalType } from '@/@Types/subject';
-import { trackApi } from '@/Utils/Api/SignUpApi';
+import { trackApi } from '@/Utils/Store/Api/SignUpApi';
 import List from '../_List';
 import { DivideBar } from '../SignUpForm/style';
 import {

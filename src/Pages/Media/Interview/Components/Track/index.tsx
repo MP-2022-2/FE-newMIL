@@ -1,4 +1,4 @@
-import { trackState } from '@/Recoil/theme';
+import { trackState } from '@/Utils/Store/Recoil/theme';
 import { useSetRecoilState } from 'recoil';
 import { NavigationProps } from './types';
 import { NaviContainer, IconContainer } from './style';

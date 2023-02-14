@@ -1,5 +1,5 @@
 import { setCookie } from '@/Pages/Login';
-import instance from '@/Utils/Api/axios';
+import instance from '@/Utils/Store/Api/axios';
 import { UserLoginType } from '@/@Types/UserType';
 
 export const loginApi = (data: UserLoginType) => {
@@ -17,7 +17,5 @@ export const loginApi = (data: UserLoginType) => {
       }
       window.location.replace('/');
     })
-    .catch((err) => {
-      if (err.response.status === 400) alert('정보가 올바르지 않습니다.');
-    });
+    .catch((err) => console.log(err));
 };

@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react';
 import theme from '@/Styles/theme';
 import { useRecoilState } from 'recoil';
-import { setToastState } from '@/Recoil/toast';
+import { setToastState } from '@/Utils/Store/Recoil/toast';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { ToastFunction } from './types';
 import { ToastContainer } from './style';

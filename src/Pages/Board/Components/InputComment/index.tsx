@@ -1,9 +1,9 @@
-import instance from '@/Utils/Api/axios';
+import instance from '@/Utils/Store/Api/axios';
 import { useParams } from 'react-router-dom';
 import Input from '@/Components/Form/_Input';
 import { useForm } from 'react-hook-form';
 import Button from '@/Components/Button';
-import { userState } from '@/Recoil/user';
+import { userState } from '@/Utils/Store/Recoil/user';
 import { useRecoilValue } from 'recoil';
 import { CommentContainer } from './style';
 

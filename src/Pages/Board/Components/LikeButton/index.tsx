@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import instance from '@/Utils/Api/axios';
+import instance from '@/Utils/Store/Api/axios';
 import { useParams } from 'react-router-dom';
 import { LikeButtonContainer, LikeButtonWrapper, LikedScore, HeartIcon } from './style';
 

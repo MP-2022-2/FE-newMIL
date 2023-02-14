@@ -2,7 +2,7 @@ import { ReactElement, useEffect, useState } from 'react';
 import GridSection from '@/Components/Section';
 import HeaderDropDown from '@/Components/Header/DropDown';
 import { UsePc } from '@/Utils/Hooks/useMediaQuery';
-import { userState, userDataState } from '@/Recoil/user';
+import { userState, userDataState } from '@/Utils/Store/Recoil/user';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { setCookie } from '@/Pages/Login';
 import { APILoginType } from '@/@Types/UserType';
