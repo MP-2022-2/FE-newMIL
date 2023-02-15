@@ -1,12 +1,11 @@
 import { Icon } from '@iconify/react';
-import theme from '@/Styles/theme';
 import { useRecoilValue } from 'recoil';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { setToastState } from '@/Utils/Stores/Recoil/toast';
 import useToastMessage from '@/Utils/Hooks/useToastMessage';
+import { toastConfig } from '@/Utils/Stores/config';
 import { ToastFunction } from './types';
 import { ToastContainer } from './style';
-import { toastConfig } from '@/Utils/Stores/config';
 
 export const ToastMessage: ToastFunction = () => {
   const { closeToastMessage } = useToastMessage();

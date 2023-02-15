@@ -2,14 +2,14 @@ import Button from '@/Components/Button';
 import { Input, Timer } from '@/Components/Form';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { UserSignUpType } from '@/@Types/UserType';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { emailApi } from '@/Utils/Stores/Api/EmailApi';
 import { signUpApi } from '@/Utils/Stores/Api/SignUpApi';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { userSignUpState } from '@/Utils/Stores/Recoil/user';
-import { Subjects } from '@/Utils/Constants/subject';
 import useToastMessage from '@/Utils/Hooks/useToastMessage';
 import { useParams } from 'react-router-dom';
+import { personalInfoState } from '@/Utils/Stores/Recoil/theme';
 import { SignUpFormContainer, Title, DivideBar, Wrapper } from './style';
 
 export type SignUpToggleType = 'certified' | 'verified';
@@ -33,6 +33,7 @@ const SignUpPage = () => {
   const [isVerifiedEmail, setIsVerifiedEmail] = useState<string>('');
   const [hasCountReset, setCountReset] = useState<boolean>(false);
   const [user, setUser] = useRecoilState(userSignUpState);
+  const checked = useRecoilValue(personalInfoState);
   const { openToastMessage } = useToastMessage();
 
   const onSubmit: SubmitHandler<UserSignUpType> = async (data) => {
@@ -55,6 +56,14 @@ const SignUpPage = () => {
       studentId: data.studentId,
     });
   };
+
+  useEffect(() => {
+    if (!checked) return;
+    openToastMessage('유효한 접근이 아닙니다');
+    setTimeout(() => {
+      window.location.replace('/');
+    }, 1000);
+  }, []);
 
   const onChangeEmailForm = () => {
     openToastMessage('인증 메일을 보내는 중입니다', 'warn');

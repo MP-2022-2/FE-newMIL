@@ -1,7 +1,9 @@
 import CheckBox from '@/Components/CheckBox';
 import Button from '@/Components/Button';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import useToastMessage from '@/Utils/Hooks/useToastMessage';
+import { useRecoilState } from 'recoil';
+import { personalInfoState } from '@/Utils/Stores/Recoil/theme';
 import {
   Wrapper,
   InfoContainer,
@@ -13,7 +15,7 @@ import {
 } from './style';
 
 const InfoPage = () => {
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useRecoilState(personalInfoState);
   const { openToastMessage } = useToastMessage();
 
   useEffect(() => {
@@ -47,7 +49,9 @@ const InfoPage = () => {
       </PersonalContainer>
       <InfoFormContainer>
         <CheckBoxContainer>
-          <CheckBox handleClick={() => setChecked(!checked)}>개인정보 활용에 동의합니다.</CheckBox>
+          <CheckBox checked={checked} handleClick={() => setChecked(!checked)}>
+            개인정보 활용에 동의합니다.
+          </CheckBox>
         </CheckBoxContainer>
         <ButtonContainer>
           <Button url="/user/signup/student" disabled={checked}>
