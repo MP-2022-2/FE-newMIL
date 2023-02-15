@@ -1,5 +1,5 @@
 import { ReactComponent as CancelIcon } from 'icons/cancel.svg';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { SubjectOriginalType } from '@/@Types/subject';
 import { ListContainer, ListTag, ChipContainer, ChipTag } from './style';
 import { ListProps } from './types';

@@ -46,6 +46,9 @@ const SignUpPage = () => {
       identity: role === 'graduate' ? 'ROLE_GRADUATE' : 'ROLE_STUDENT',
       company: role === 'graduate' ? data.company : 'null',
       track: 'NONE',
+    }).then((res: any) => {
+      res.status === 'success' && window.location.replace('/');
+      openToastMessage(res.message, res.status);
     });
     setUser({
       ...user,
@@ -297,21 +300,23 @@ const SignUpPage = () => {
           id="signup"
           type="submit"
           disabled={
-            isVerifiedEmail === '' ||
+            isVerifiedEmail !== '' ||
             isSubmitting ||
+            !!errors.company ||
             !!errors.userId ||
             !!errors.password ||
             !!errors.pwcheck ||
             !!errors.studentId ||
-            !!errors.name ||
+            (role === 'graduate' && !!errors.company) ||
             !getValues('userId') ||
             !getValues('password') ||
             !getValues('pwcheck') ||
             !getValues('studentId') ||
-            !getValues('name')
+            !getValues('name') ||
+            (role === 'graduate' && !getValues('company'))
           }
         >
-          다음으로
+          회원가입
         </Button>
       </SignUpFormContainer>
     </Wrapper>

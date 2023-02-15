@@ -1,9 +1,8 @@
 import Header from '@/Components/Header';
 import instance from '@/Utils/Stores/Api/axios';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState, useEffect, useCallback } from 'react';
 import { Icon } from '@iconify/react';
-import Button from '@/Components/Button';
 import {
   PostContainer,
   PostHeader,

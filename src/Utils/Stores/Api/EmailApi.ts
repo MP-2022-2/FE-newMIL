@@ -12,11 +12,11 @@ interface EmailApiReturn extends ApiReturn {
 export const emailApi = (data: UserAuthType) => {
   const { email, randomCode, onToggleEmailVerifiedForm } = data;
 
-  const postData = onToggleEmailVerifiedForm === 'certified' ? { email } : { email, randomCode };
+  const postData = onToggleEmailVerifiedForm === 'verified' ? { email, randomCode } : { email };
   const postURL =
-    onToggleEmailVerifiedForm === 'certified'
-      ? `${process.env.REACT_APP_API_URL}/user/certification`
-      : `${process.env.REACT_APP_API_URL}/user/verification`;
+    onToggleEmailVerifiedForm === 'verified'
+      ? `${process.env.REACT_APP_API_URL}/user/verification`
+      : `${process.env.REACT_APP_API_URL}/user/certification`;
 
   return new Promise<EmailApiReturn>((resolve) => {
     axios
@@ -27,7 +27,7 @@ export const emailApi = (data: UserAuthType) => {
           message: res.data.msg,
           verified: onToggleEmailVerifiedForm !== 'certified',
           verifiedEmail: onToggleEmailVerifiedForm === 'verified' ? email : '',
-          toggleForm: onToggleEmailVerifiedForm === 'certified' ? 'verified' : 'certified',
+          toggleForm: onToggleEmailVerifiedForm === 'verified' ? 'certified' : 'verified',
         });
       })
       .catch((err) => {

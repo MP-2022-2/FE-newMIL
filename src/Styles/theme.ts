@@ -143,12 +143,6 @@ const size = {
   full: '1296px',
 };
 
-const Animation = {
-  Btnhover: `
-    
-  `,
-};
-
 const layout: {
   gutter: number;
   column: number;
@@ -171,7 +165,6 @@ const theme = {
   layout,
   PC,
   Mobile,
-  Animation,
 };
 
 export default theme;

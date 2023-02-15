@@ -6,19 +6,14 @@ import { setToastState } from '@/Utils/Stores/Recoil/toast';
 import useToastMessage from '@/Utils/Hooks/useToastMessage';
 import { ToastFunction } from './types';
 import { ToastContainer } from './style';
-
-const color = [
-  { type: 'success', icon: 'mdi:success-circle', color: `${theme.color.good}` },
-  { type: 'warn', icon: 'material-symbols:warning-rounded', color: `${theme.color.ajouGold}` },
-  { type: 'error', icon: 'ic:baseline-error', color: `${theme.color.bad}` },
-];
+import { toastConfig } from '@/Utils/Stores/config';
 
 export const ToastMessage: ToastFunction = () => {
   const { closeToastMessage } = useToastMessage();
   const toast = useRecoilValue(setToastState);
   const toastId = useRef<null | ReturnType<typeof setTimeout>>(null);
   const [animationState, setAnimationState] = useState<string>('fadeIn');
-  const isType = color.filter((e) => e.type === toast.type);
+  const isType = toastConfig.filter((e) => e.type === toast.type);
 
   const removeToast = useCallback(() => {
     if (toastId.current) clearTimeout(toastId.current);

@@ -15,9 +15,22 @@ export const trackApi = (data: TrackType) => {
     });
 };
 
-export const signUpApi = (data: SignUpType) => {
-  axios.post(`${process.env.REACT_APP_API_URL}/user/signup`, data).catch((err) => {
-    if (err.response.status === 400) alert('정보가 올바르지 않습니다.');
-    if (err.response.status === 409) alert('이미 존재하는 정보입니다.');
+export const signUpApi = (data: SignUpType) =>
+  new Promise((resolve) => {
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/user/signup`, data)
+      .then((res) => {
+        resolve({
+          status: 'success',
+          message: res.data.msg,
+          succeed: true,
+        });
+      })
+      .catch((err) => {
+        resolve({
+          status: 'error',
+          message: err.response.data.msg,
+          succeed: false,
+        });
+      });
   });
-};
