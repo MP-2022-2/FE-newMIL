@@ -1,19 +1,33 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import instance from '@/Utils/Stores/Api/axios';
 import { useParams } from 'react-router-dom';
+import useToastMessage from '@/Utils/Hooks/useToastMessage';
 import { LikeButtonContainer, LikeButtonWrapper, LikedScore, HeartIcon } from './style';
 
 export default function LikeButton({ score, status }: { score: number; status: boolean }) {
   const [isLiked, setLiked] = useState(status);
   const [hasScore, setScore] = useState(score);
   const { boardPath, idx } = useParams();
+  const { openToastMessage } = useToastMessage();
 
   const postData = async () => {
     await instance({
       method: 'post',
       url: `board/${boardPath}/${idx}/postlike`,
-    });
-    isLiked ? setScore(hasScore - 1) : setScore(hasScore + 1);
+    })
+      .then(() => {
+        if (isLiked) {
+          setScore(hasScore - 1);
+          openToastMessage('좋아요를 취소하였습니다', 'success');
+        } else {
+          openToastMessage('좋아요를 눌렀습니다', 'success');
+          setScore(hasScore + 1);
+        }
+      })
+      .catch(() => {
+        openToastMessage('알 수 없는 오류가 발생했습니다');
+      });
+
     setLiked(!isLiked);
   };
 
