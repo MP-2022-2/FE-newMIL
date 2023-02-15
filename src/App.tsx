@@ -3,8 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import LoginRoutes from '@/Routes/LoginRoute';
 import LoginPage from '@/Pages/Login';
-import SignUpPage from '@/Pages/SignUp';
-import InfoForm from '@/Pages/SignUp/Components/InfoForm';
+import { InfoPage, SignUpPage } from '@/Pages/SignUp';
 import MainPage from '@/Pages/Main';
 import InterviewPage from '@/Pages/Media/Interview';
 import ProfessorPage from '@/Pages/Media/Professor';
@@ -38,7 +37,8 @@ function App() {
           <Route path="user">
             <Route path="login" element={<LoginPage />} />
             <Route path="signup">
-              <Route path="info" element={<InfoForm />} />
+              <Route path="info" element={<InfoPage />} />
+              <Route path=":role" element={<SignUpPage />} />
             </Route>
           </Route>
 

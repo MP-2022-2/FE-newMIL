@@ -1,13 +1,13 @@
 import { ReactComponent as CancelIcon } from 'icons/cancel.svg';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { SubjectOriginalType } from '@/@Types/subject';
 import { ListContainer, ListTag, ChipContainer, ChipTag } from './style';
 import { ListProps } from './types';
-import { TrackContext } from '../SignUpForm';
 
 const List = (props: ListProps) => {
   const { data, filter, sm = false, is = 'default' } = props;
-  const { isChosenList, setIsChosenList } = useContext(TrackContext);
+  // const { isChosenList, setIsChosenList } = useContext(TrackContext);
+  const [isChosenList, setIsChosenList] = useState([] as any);
 
   const listData = data.filter((val) => {
     if (filter === '') {

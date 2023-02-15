@@ -1,12 +1,12 @@
 import SearchBar from '@/Components/SearchBar';
 import Button from '@/Components/Button';
 import { useForm } from 'react-hook-form';
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import useDebounce from '@/Utils/Hooks/useDebounce';
 import { SubjectOriginalType } from '@/@Types/subject';
-import { trackApi } from '@/Utils/Store/Api/SignUpApi';
+import { trackApi } from '@/Utils/Stores/Api/SignUpApi';
 import List from '../_List';
-import { DivideBar } from '../SignUpForm/style';
+import { DivideBar } from '../../style';
 import {
   SelectContainer,
   TrackFormWrapper,
@@ -15,7 +15,6 @@ import {
   SubTitle,
   SubLink,
 } from './style';
-import { TrackContext } from '../SignUpForm';
 
 interface TrackProps {
   studentId: number;
@@ -23,8 +22,8 @@ interface TrackProps {
 
 const TrackForm = (props: TrackProps) => {
   const { studentId } = props;
+  const [isChosenList, setIsChosenList] = useState([]);
   const { register, watch } = useForm({ mode: 'onChange' });
-  const { isChosenList } = useContext(TrackContext);
   const [search, setSearch] = useState('');
 
   const debounceValue = useDebounce(search);

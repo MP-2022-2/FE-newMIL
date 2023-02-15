@@ -1,9 +1,10 @@
+import { SignUpToggleType } from '@/Pages/SignUp/SignUpPage';
 import { SubjectType } from './subject';
 
 export interface UserAuthType {
   email: string;
   randomCode?: string;
-  reset?: boolean;
+  onToggleEmailVerifiedForm: SignUpToggleType;
 }
 
 export interface UserType {
