@@ -4,8 +4,9 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Input } from '@/Components/Form';
 import Button from '@/Components/Button';
 import { useState } from 'react';
-import instance from '@/Utils/Api/axios';
+import instance from '@/Utils/Stores/Api/axios';
 import { useForm } from 'react-hook-form';
+import useToastMessage from '@/Utils/Hooks/useToastMessage';
 import {
   Label,
   Category,
@@ -19,6 +20,7 @@ import Navigation from '../Components/Navigation';
 import { BoardList } from '../index';
 
 export default function Editor() {
+  const { openToastMessage } = useToastMessage();
   const [isCategory, setIsCategory] = useState('free');
   const [isContent, setIsContent] = useState('');
 
@@ -29,8 +31,16 @@ export default function Editor() {
       method: 'post',
       url: `board/${isCategory}`,
       data: { boardType: isCategory.toUpperCase(), title: getValues('title'), content: isContent },
-    });
-    window.location.replace('/board/free');
+    })
+      .then(() => {
+        openToastMessage('글을 작성하였습니다', 'success');
+        setTimeout(() => {
+          window.location.replace('/board/free');
+        }, 1000);
+      })
+      .catch(() => {
+        openToastMessage('알 수 없는 오류가 발생했습니다');
+      });
   };
 
   return (

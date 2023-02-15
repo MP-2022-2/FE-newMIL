@@ -5,9 +5,17 @@ import Post from '@/Pages/Board/Post';
 import ErrorPage from '@/404';
 import Editor from '@/Pages/Board/Editor';
 import MyPage from '@/Pages/MyPage';
+import useToastMessage from '@/Utils/Hooks/useToastMessage';
+import { useEffect } from 'react';
 
 const LoginRoute = () => {
   const status = useLogin();
+  const { openToastMessage } = useToastMessage();
+
+  useEffect(() => {
+    if (status) return;
+    openToastMessage('로그인을 진행해주세요', 'warn');
+  }, []);
 
   return status ? <Outlet /> : <Navigate to="/user/login" />;
 };

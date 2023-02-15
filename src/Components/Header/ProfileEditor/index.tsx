@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import Input from '@/Components/Form/_Input';
 import { useRecoilValue } from 'recoil';
-import { userState } from '@/Recoil/user';
+import { userState } from '@/Utils/Stores/Recoil/user';
 import Button from '@/Components/Button';
 import { useForm } from 'react-hook-form';
-import instance from '@/Utils/Api/axios';
+import instance from '@/Utils/Stores/Api/axios';
 import { ProfileEditorContainer, Dim, EditorModal } from './style';
 
 export default function ProfileEditor({ onClick }: { onClick: () => void }) {

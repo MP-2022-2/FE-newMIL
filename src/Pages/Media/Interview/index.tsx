@@ -2,7 +2,7 @@ import Header from '@/Components/Header';
 import GridSection from '@/Components/Section';
 import { useRecoilValue } from 'recoil';
 import { TrackList } from '@/Utils/Constants/track';
-import { trackState } from '@/Recoil/theme';
+import { trackState } from '@/Utils/Stores/Recoil/theme';
 import VideoComponent from './Components/Video';
 import Navigation from './Components/Track';
 import { BoardWrapper, BoardContainer, NaviContainer } from './style';

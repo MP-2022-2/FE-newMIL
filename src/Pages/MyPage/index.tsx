@@ -4,10 +4,11 @@ import SearchBar from '@/Components/SearchBar';
 import { useForm } from 'react-hook-form';
 import useDebounce from '@/Utils/Hooks/useDebounce';
 import { useState, useCallback, useEffect } from 'react';
-import { userState } from '@/Recoil/user';
+import { userState } from '@/Utils/Stores/Recoil/user';
 import { useRecoilValue } from 'recoil';
-import instance from '@/Utils/Api/axios';
+import instance from '@/Utils/Stores/Api/axios';
 import List from './Components/_List';
+
 import {
   MyPageWrapper,
   MyPageContainer,

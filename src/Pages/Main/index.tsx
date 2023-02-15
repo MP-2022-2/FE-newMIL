@@ -5,8 +5,8 @@ import talkComputer from '@/assets/animation/talk-computer.json';
 import GridSection from '@/Components/Section';
 import Footer from '@/Components/Footer';
 import { Link } from 'react-router-dom';
-import { useCallback, useState, useEffect } from 'react';
-import instance from '@/Utils/Api/axios';
+import { useState, useEffect } from 'react';
+import instance from '@/Utils/Stores/Api/axios';
 import { CommentTypes } from '@/Pages/Board/Post/types';
 import {
   MainContainer,
@@ -40,7 +40,8 @@ export default function MainPage() {
   };
 
   useEffect(() => {
-    if (getCookie('accessToken') !== undefined) getNewPostData();
+    if (!getCookie('accessToken')) return;
+    getNewPostData();
   }, []);
 
   return (

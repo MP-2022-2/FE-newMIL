@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil';
-import { userDataState } from '@/Recoil/user';
+import { userDataState } from '@/Utils/Stores/Recoil/user';
 import { APILoginType } from '@/@Types/UserType';
 
 const useLogin = () => {
