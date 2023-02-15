@@ -1,15 +1,15 @@
 import GridSection from '@/Components/Section';
 import useScrollFade from '@/Utils/Hooks/useScrollFade';
 import { useRecoilValue } from 'recoil';
-import { userState } from '@/Recoil/user';
+import { userState } from '@/Utils/Stores/Recoil/user';
 import { switchingRole } from '@/Pages/MyPage/index';
 import { InfoRole, InfoStudentId } from '@/Pages/MyPage/style';
 import { useCallback, useState, useEffect } from 'react';
-import instance from '@/Utils/Api/axios';
 import { getCookie } from '@/Pages/Login';
 import GPA from '@/Pages/MyPage/Components/GPA';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import instance from '@/Utils/Stores/Api/axios';
 import { UserInfoContainer, InfoContainer, Area, MainLoginButton } from './style';
 
 export default function UserInfo() {
@@ -28,7 +28,8 @@ export default function UserInfo() {
   }, [user]);
 
   useEffect(() => {
-    if (getCookie('accesstoken') !== undefined) getGPA();
+    if (!getCookie('accessToken')) return;
+    getGPA();
   }, []);
 
   return (

@@ -1,7 +1,7 @@
 import { atom, selector } from 'recoil';
 import { APILoginType, UserSignUpType } from '@/@Types/UserType';
 import { getCookie } from '@/Pages/Login';
-import instance from '@/Utils/Api/axios';
+import instance from '@/Utils/Stores/Api/axios';
 
 export const userState = atom<APILoginType>({
   key: 'userState',

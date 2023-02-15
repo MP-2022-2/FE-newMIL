@@ -1,12 +1,16 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Button from '@/Components/Button';
 import { Input } from '@/Components/Form';
-import { loginApi } from '@/Utils/Api/loginApi';
 import { UserLoginType } from '@/@Types/UserType';
 import { Link } from 'react-router-dom';
+import { loginApi } from '@/Utils/Stores/Api/loginApi';
+import useToastMessage from '@/Utils/Hooks/useToastMessage';
+
 import { LoginFormContainer, IDCheckBoxContainer, SignUpContainer, SignUpLink } from './style';
 
 const LoginForm = () => {
+  const { openToastMessage } = useToastMessage();
+
   const {
     register,
     handleSubmit,
@@ -29,7 +33,14 @@ const LoginForm = () => {
       localStorage.removeItem('userId');
       localStorage.removeItem('idCheck');
     }
-    loginApi({ userId: data.userId, password: data.password });
+    loginApi({ userId: data.userId, password: data.password }).then((res: any) => {
+      if (res.status === 'success') {
+        setTimeout(() => {
+          window.location.replace('/');
+        }, 500);
+      }
+      openToastMessage(res.message, res.status);
+    });
   };
 
   return (
@@ -80,7 +91,7 @@ const LoginForm = () => {
       </Button>
       <SignUpContainer>
         <p>아직 가입을 안하셨나요?</p>
-        <Link to="/user/signup">
+        <Link to="/user/signup/info">
           <SignUpLink>회원가입</SignUpLink>
         </Link>
       </SignUpContainer>

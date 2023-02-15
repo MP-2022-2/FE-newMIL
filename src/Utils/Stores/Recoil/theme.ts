@@ -14,3 +14,8 @@ export const trackState = atom<string>({
   key: 'trackState',
   default: '전체',
 });
+
+export const personalInfoState = atom<boolean>({
+  key: 'personalInfoState',
+  default: true,
+});

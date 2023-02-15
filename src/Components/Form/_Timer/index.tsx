@@ -14,7 +14,6 @@ const Timer = (props: TimerProps) => {
       setMinutes(Number(mm));
       setSeconds(Number(ss));
       setReset(false);
-      console.log('e');
     }
 
     const countdown = setInterval(() => {

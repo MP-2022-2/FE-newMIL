@@ -127,6 +127,7 @@ const color = {
   white: '#fefefe',
   gray: '#dfdfdf',
   bad: '#FF3E55',
+  good: '#39e75f',
   darkBlue: '#0A2B52',
   ajouBlue: '#0066B3',
   ajouGold: '#BB8732',
@@ -140,12 +141,6 @@ const size = {
   mobile: '786px',
   desktop: '787px',
   full: '1296px',
-};
-
-const Animation = {
-  Btnhover: `
-    
-  `,
 };
 
 const layout: {
@@ -170,7 +165,6 @@ const theme = {
   layout,
   PC,
   Mobile,
-  Animation,
 };
 
 export default theme;
